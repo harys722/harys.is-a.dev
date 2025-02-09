@@ -8,33 +8,48 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
-            font-family: Arial, sans-serif; /* Set a default font for the body */
-            background-color: #f0f0f0; /* Optional background color */
-            padding: 20px; /* Some padding around the body */
+            /* Set the background color to lightning yellow */
+            background-color: #F7DC6F; 
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            /* Add some margin between the top of the page and the content */
+            margin-top: 30px;
         }
 
         .header {
-            display: flex; /* Use flexbox to align items horizontally */
-            align-items: center; /* Vertically center items */
-            margin-bottom: 30px; /* Space between header and main content */
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
         }
 
         .logo {
-            width: 100px; /* Set the width of the image */
-            height: auto; /* Maintain aspect ratio */
-            margin-right: 20px; /* Space between the logo and the site name */
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
         }
 
-        h1 {
-            margin: 0; /* Remove default margin from h1 */
-            font-size: 2em; /* Optional: set a font size for the main title */
+        /* Make text elements visible on the bright background */
+        h1, h2, h3, p, button, ul, li {
+            color: #000000; /* Set text color to black */
+            /* Make all text elements darker so they show up */
+            font-weight: bolder;
+        }
+        
+        /* Make links stand out */
+        a {
+            color: #007bff; /* Set link color to a more visible color */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        a:hover {
+            color: #0056b3; /* Set hover color to a darker version of the link color */
         }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
-        <h1>- HARYs -</h1> <!-- Display the site name next to the image -->
+        <h1>- HARYs -</h1>
     </div>
 
     <h2>About</h2>
