@@ -7,24 +7,43 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a default font for the body */
+            background-color: #f0f0f0; /* Optional background color */
+            padding: 20px; /* Some padding around the body */
+        }
+
+        .header {
+            display: flex; /* Use flexbox to align items horizontally */
+            align-items: center; /* Vertically center items */
+            margin-bottom: 30px; /* Space between header and main content */
+        }
+
         .logo {
-            width: 100px;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
+            width: 100px; /* Set the width of the image */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Space between the logo and the site name */
+        }
+
+        h1 {
+            margin: 0; /* Remove default margin from h1 */
+            font-size: 2em; /* Optional: set a font size for the main title */
         }
     </style>
 </head>
 <body>
-    <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
-    <h1>Welcome to My Website</h1>
+    <div class="header">
+        <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
+        <h1>- HARYs -</h1> <!-- Display the site name next to the image -->
+    </div>
+
     <h2>About</h2>
     <p>I have made this website to show my working and skills. Hope you will like my works!</p>
     <h3>My Works</h3>
     <ul>
         <li>EconMaster Bot Project</li>
         <li>Handling Discord Server Named: The Community</li>
-        <li>Currenlty Learning Python</li>
+        <li>Currently Learning Python</li>
     </ul>
     <button onclick="window.open('https://discord.gg/CPN5eYPABx', '_blank')">Join My Discord Server</button>
 </body>
