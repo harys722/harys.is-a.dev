@@ -1,66 +1,55 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and font for the body */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    background-color: green; /* Change this to your preferred background color */
+    color: white;           /* Text color */
+    font-family: Arial, sans-serif; /* Font style */
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-}
-
-header nav {
-    margin: 0;
-}
-
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-header nav a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
-}
-
+/* Style headers */
 h1 {
-    font-size: 2em;
-    margin-bottom: 1em;
+    font-size: 2.5em;       /* Size of the main header */
+    margin-bottom: 0.5em;   /* Space below the header */
 }
 
 h2 {
-    font-size: 1.5em;
-    margin-bottom: 1em;
+    font-size: 2em;         /* Size of the subheader */
+    margin-bottom: 0.5em;
 }
 
-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+h3 {
+    font-size: 1.5em;       /* Size of the smaller header */
+    margin-bottom: 0.5em;
 }
 
-section ul li {
-    margin-bottom: 1em;
+/* Style paragraphs */
+p {
+    line-height: 1.6;       /* Space between lines for readability */
+    margin-bottom: 1em;     /* Space below paragraphs */
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
+/* Style lists */
+ul {
+    margin-left: 20px;      /* Indent unordered lists */
+}
+
+/* Add a simple button style */
+button {
+    background-color: white; /* Button background color */
+    color: green;           /* Button text color */
+    padding: 10px 20px;     /* Button padding */
+    border: none;           /* Remove border */
+    border-radius: 5px;     /* Rounded corners */
+    cursor: pointer;        /* Change cursor on hover */
+}
+
+/* Change button color on hover */
+button:hover {
+    background-color: green; /* Change background on hover */
+    color: white;            /* Change text color on hover */
 }
