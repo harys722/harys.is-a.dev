@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>- HARYs - | The Bot Developer & Discord Server Manager</title>
+    <title>- HARYs - | The Bot Developer & Discord Servers Manager</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
@@ -21,23 +21,23 @@
 
         .header {
             display: flex;
-            align-items: center;
+            align-items: center; /* Align items vertically */
             margin-bottom: 30px;
+            text-align: center; /* Center-align text for h1 and h2 */
         }
 
         .logo {
             width: 100px;
             height: auto;
-            margin-right: 20px;
+            margin-right: 20px; /* Space between logo and title */
         }
 
         /* Make text elements visible on the bright background */
         h1, h2, h3, p, button, ul, li {
             color: #000000; /* Set text color to black */
-            /* Make all text elements darker so they show up */
             font-weight: bolder;
         }
-        
+
         /* Make links stand out */
         a {
             color: #007bff; /* Set link color to a more visible color */
@@ -47,14 +47,14 @@
         a:hover {
             color: #0056b3; /* Set hover color to a darker version of the link color */
         }
-        
+
         /* Center content vertically and horizontally */
         .content {
             margin-left: auto;
             margin-right: auto;
             max-width: 80%;
         }
-        
+
         /* Add some spacing between list items */
         ul {
             list-style: none;
@@ -65,14 +65,34 @@
         ul li {
             margin-bottom: 10px;
         }
+
+        /* Style buttons */
+        button {
+            background-color: #007bff; /* Blue background color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-right: 10px; /* Add space between buttons */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: green; /* Change background color to green on hover */
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
-        <h1>- HARYs -</h1>
-        <h6>The Bot Developer & Discord Server Manager</h6>
+        <div>
+            <h1>- HARYs -</h1>
+        </div>
     </div>
+    <h2>The Bot Developer & Discord Server Manager</h2> <!-- Subtitle under main title -->
 
     <div class="content">
         <h2>About Me</h2>
@@ -111,9 +131,11 @@
         </ul>
 
         <p>Click On These Buttons For Magic!</p>
-        <button onclick="window.open('https://discord.gg/CPN5eYPABx', '_blank')">Discord Server</button>
-        <button onclick="window.open('https://github.com/harys722', '_blank')">Github</button>
-        <button onclick="window.open('https://bit.ly/when_life_begins', '_blank')">Must Read</button>
+        <div>
+            <button onclick="window.open('https://discord.gg/CPN5eYPABx', '_blank')">Discord Server</button>
+            <button onclick="window.open('https://github.com/harys722', '_blank')">Github</button>
+            <button onclick="window.open('https://bit.ly/when_life_begins', '_blank')">Must Read</button>
+        </div>
     </div>
 </body>
 </html>
