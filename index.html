@@ -110,14 +110,14 @@
         }
 
         /* Footer styling */
-            footer {
-                background-color: #ffcc00;
-                text-align: center;
-                padding: 15px 0;
-                position: fixed; /* This is the line we need to change */
-                bottom: -60px; /* This line is also affecting visibility */
-                width: 100%;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        footer {
+            background-color: #ffcc00;
+            text-align: center;
+            padding: 15px 0;
+            position: relative; /* Change 'fixed' to 'relative' */
+            /* Remove the 'bottom' property */
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
         }
         .skills {
             display: flex;
