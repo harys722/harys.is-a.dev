@@ -110,20 +110,15 @@
         }
 
         /* Footer styling */
-        footer {
-            background-color: #ffcc00;
-            text-align: center;
-            padding: 15px 0;
-            position: fixed;
-            bottom: -60px; /* Changed this line to move the footer off the screen */
-            width: 100%;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            footer {
+                background-color: #ffcc00;
+                text-align: center;
+                padding: 15px 0;
+                position: fixed; /* This is the line we need to change */
+                bottom: -60px; /* This line is also affecting visibility */
+                width: 100%;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
         }
-
-        footer p {
-            margin: 0;
-        }
-
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -291,7 +286,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2023 - HARYs | All Rights Reserved</p>
+        <p>© 2023 - HARYs | All Rights Reserved</p>
     </footer>
 
     <script>
