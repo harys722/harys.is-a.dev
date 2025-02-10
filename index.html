@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>- HARYs - | The Bot Developer & Discord Servers Manager</title>
-    <link rel="stylesheet" href="style.css">
+    <title>- HARYs - | The Bot Developer & Discord Server Manager</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
             /* Set the background color to lightning yellow */
             background-color: #F7DC6F; 
             font-family: Arial, sans-serif;
+            margin: 0 auto;
+            width: 80%;
+            max-width: 1200px; /* Set a max-width for large screens */
             padding: 20px;
-            /* Add some margin between the top of the page and the content */
-            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .header {
@@ -44,47 +47,73 @@
         a:hover {
             color: #0056b3; /* Set hover color to a darker version of the link color */
         }
+        
+        /* Center content vertically and horizontally */
+        .content {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 80%;
+        }
+        
+        /* Add some spacing between list items */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
         <h1>- HARYs -</h1>
+        <h6>The Bot Developer & Discord Server Manager</h6>
     </div>
 
-    <h2>About Me</h2>
-    <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
-    <h3>My Works</h3>
-    <ul>
-        <li>Bot Project</li>
-        <li>Discord Manager & Moderator</li>
-        <li>Currently Learning Python</li>
-    </ul>
+    <div class="content">
+        <h2>About Me</h2>
+        <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
+        
+        <h3>My Works</h3>
+        <ul>
+            <li>Bot Project</li>
+            <li>Discord Manager & Moderator</li>
+            <li>Currently Learning Python</li>
+        </ul>
+        
+        <h2>Discord Servers</h2>
+        <p>I'm currently handling multiple Discord Servers. I'm moderator in several servers, some of the most famous servers are as follows:</p>
+        <ul>
+            <li><a href="https://discord.gg/CPN5eYPABx" target="_blank">The Community 🌏</a>
+                <ul>
+                    <li style="font-size: 0.8em; color: #e67e22;">Server Owner</li>
+                </ul>
+            </li>
+            <li><a href="https://discord.gg/RxSrYtXVK8" target="_blank">Wizards Community</a>
+                <ul>
+                    <li style="font-size: 0.8em; color: #dd0000;">GrandWizManager</li>
+                </ul>
+            </li>
+            <li><a href="https://discord.gg/uP4tue5NkV" target="_blank">Cosmos Lounge</a>
+                <ul>
+                    <li style="font-size: 0.8em; color: #1abc9c;">Moderator</li>
+                </ul>
+            </li>
+            <li><a href="https://discord.gg/gdVSTUTznt" target="_blank">The Royal Server</a>
+                <ul>
+                    <li style="font-size: 0.8em; color: #1abc9c;">Moderator</li>
+                </ul>
+            </li>
+        </ul>
 
-    <h2>Discord Servers</h2>
-    <p>I'm currently handling multiple Discord Servers. I'm moderator in several servers, some of the most famous servers are as follows:</p>
-            <ul>
-                <li><a href="https://discord.gg/CPN5eYPABx" target="_blank">The Community 🌏</a></li>
-                    <ul>
-                        <li style="font-size: 0.8em; color: #e67e22;">Server Owner</li>
-                    </ul>
-                <li><a href="https://discord.gg/RxSrYtXVK8" target="_blank">Wizards Community</a></li>
-                    <ul>
-                        <li style="font-size: 0.8em; color: #dd0000;">GrandWizManager</li>
-                    </ul>
-                <li><a href="https://discord.gg/uP4tue5NkV" target="_blank">Cosmos Lounge</a></li>
-                    <ul>
-                        <li style="font-size: 0.8em; color: #1abc9c;">Moderator</li>
-                    </ul>
-                <li><a href="https://discord.gg/gdVSTUTznt" target="_blank">The Royal Server</a></li>
-                    <ul>
-                        <li style="font-size: 0.8em; color: #1abc9c;">Moderator</li>
-                    </ul>
-            </ul>
-
-    <p>Click On These Buttons For Magic!</p>
-    <button onclick="window.open('https://discord.gg/CPN5eYPABx', '_blank')">Discord Server</button>
-    <button onclick="window.open('https://github.com/harys722', '_blank')">Github</button>
-    <button onclick="window.open('https://bit.ly/when_life_begins', '_blank')">Must Read</button>
+        <p>Click On These Buttons For Magic!</p>
+        <button onclick="window.open('https://discord.gg/CPN5eYPABx', '_blank')">Discord Server</button>
+        <button onclick="window.open('https://github.com/harys722', '_blank')">Github</button>
+        <button onclick="window.open('https://bit.ly/when_life_begins', '_blank')">Must Read</button>
+    </div>
 </body>
 </html>
