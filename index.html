@@ -8,8 +8,13 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css" type="text/css">
     <style>
+        /* General styles */
         body {
-            position: relative; /* Ensure body has relative positioning */
+            font-family: Arial, sans-serif;
+            background-color: #e9f4ff; /* Light blue background */
+            color: #333; /* Dark text */
+            margin: 0;
+            padding-bottom: 60px; /* Space for footer */
         }
 
         /* Style for the canvas to cover the entire viewport */
@@ -22,41 +27,129 @@
             pointer-events: none; /* Make canvas not block other interactions */
             z-index: 999; /* Make sure it is on top */
         }
-        
-        /* Example for content styling */
+
+        /* Header styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffcc00; /* Bright yellow */
+            color: #003366; /* Dark blue text */
+            padding: 20px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 30px; /* Space between links */
+        }
+
+        .nav-bar li {
+            list-style: none;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            color: #003366; /* Dark blue for links */
+            transition: color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            color: #ff6600; /* Darker yellow on hover */
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 100px; /* Adjust logo size */
+            height: auto;
+            margin-right: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em; /* Header title size */
+            margin: 0; /* Remove default margin */
+        }
+
+        h2 {
+            color: #ff6600; /* A darker yellow for subtitles */
+        }
+
+        /* Content styling */
         .content {
             margin: 20px;
-            z-index: 10; /* Ensure that content is above snowfall */
-            position: relative; /* Make positioning relative for layering */
+            padding: 20px;
+            background-color: #ffffff; /* White background for content section */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
         }
+
+        ul {
+            padding-left: 20px; /* Indent list items */
+        }
+
+        button {
+            background-color: #ffcc00; /* Lightning yellow buttons */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded edges */
+            padding: 10px 20px; /* Padding inside buttons */
+            color: #003366; /* Dark blue text */
+            cursor: pointer; /* Pointer on hover */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+        }
+
+        button:hover {
+            background-color: #ffb300; /* Darker yellow on hover */
+            color: #fff; /* White text on hover */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #003366; /* Dark blue footer */
+            color: #ffffff; /* White text */
+            text-align: center; /* Centered text */
+            padding: 15px 0; /* Padding for footer */
+            position: fixed; /* Fixed footer */
+            bottom: 0; /* Aligns to the bottom of the page */
+            width: 100%; /* Full width */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
     </style>
 </head>
 
 <body>
     <canvas id="snowfall"></canvas> <!-- Canvas for snowfall effect -->
-    
+
     <div class="header">
-        <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
-        <div>
+        <div class="logo-container">
+            <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
             <h1>- HARYs -</h1>
         </div>
+        <div class="nav-bar">
+            <ul>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#my-works">My Works</a></li>
+                <li><a href="#discord-servers">Discord Servers</a></li>
+                <li><a href="#">Join Us</a></li>
+            </ul>
+        </div>
     </div>
-    
+
     <h2>The Discord Bot Developer & Server Manager</h2>
 
     <div class="content">
-        <h2>About Me</h2>
+        <h2 id="about-me">About Me</h2>
         <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
 
-        <h3>My Works</h3>
+        <h3 id="my-works">My Works</h3>
         <ul>
             <li>Bot Project</li>
             <li>Discord Manager & Moderator</li>
             <li>Currently Learning Python</li>
         </ul>
 
-        <h2>Discord Servers</h2>
-        <p>I'm currently handling multiple Discord Servers. I'm moderator in several servers, some of the most famous servers are as follows:</p>
+        <h2 id="discord-servers">Discord Servers</h2>
+        <p>I'm currently handling multiple Discord Servers. I'm a moderator in several servers, some of the most famous servers are as follows:</p>
         <ul>
             <li><a href="https://discord.gg/CPN5eYPABx" target="_blank">The Community 🌏</a>
                 <ul>
@@ -88,6 +181,10 @@
         </div>
     </div>
 
+    <footer>
+        <p>&copy; 2023 - HARYs | All Rights Reserved</p>
+    </footer>
+
     <script>
         const canvas = document.getElementById('snowfall');
         const ctx = canvas.getContext('2d');
@@ -98,7 +195,6 @@
         let snowflakes = [];
 
         function createSnowflake() {
-            // Create a snowflake with random position and size
             const x = Math.random() * canvas.width;
             const y = Math.random() * canvas.height;
             const radius = Math.random() * 4 + 1;
@@ -114,7 +210,6 @@
                 ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
             }
             ctx.fill();
-            // Update snowflake positions
             for (let flake of snowflakes) {
                 flake.y += flake.radius / 2; // Fall speed
                 if (flake.y > canvas.height) {
@@ -129,14 +224,12 @@
             requestAnimationFrame(animate);
         }
 
-        // Create multiple initial snowflakes
         for (let i = 0; i < 100; i++) {
             createSnowflake();
         }
 
         animate();
-        
-        // Adjust canvas size on window resize
+
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
