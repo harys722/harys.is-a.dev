@@ -1,32 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>- HARYs - | The Discord Bot Developer & Server Manager</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        body {
+            position: relative; /* Ensure body has relative positioning */
+        }
+
+        /* Style for the canvas to cover the entire viewport */
+        #snowfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Make canvas not block other interactions */
+            z-index: 999; /* Make sure it is on top */
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Your existing styles for the rest of the content */
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        h1, h2, h3, p, button {
+            color: #000000;
+            font-weight: bolder;
+        }
+
+        /* Add any other styles you might need */
+        
+        /* Example for content styling */
+        .content {
+            margin: 20px;
+            z-index: 10; /* Ensure that content is above snowfall */
+            position: relative; /* Make positioning relative for layering */
+        }
+    </style>
 </head>
+
 <body>
+    <canvas id="snowfall"></canvas> <!-- Canvas for snowfall effect -->
+    
     <div class="header">
         <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
         <div>
             <h1>- HARYs -</h1>
         </div>
     </div>
-    <h2>The Discord Bot Developer & Server Manager</h2> <!-- Subtitle under main title -->
+    
+    <h2>The Discord Bot Developer & Server Manager</h2>
 
     <div class="content">
         <h2>About Me</h2>
         <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
-        
+
         <h3>My Works</h3>
         <ul>
             <li>Bot Project</li>
             <li>Discord Manager & Moderator</li>
             <li>Currently Learning Python</li>
         </ul>
-        
+
         <h2>Discord Servers</h2>
         <p>I'm currently handling multiple Discord Servers. I'm moderator in several servers, some of the most famous servers are as follows:</p>
         <ul>
@@ -59,5 +108,61 @@
             <button onclick="window.open('https://bit.ly/when_life_begins', '_blank')">Must Read</button>
         </div>
     </div>
+
+    <script>
+        const canvas = document.getElementById('snowfall');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let snowflakes = [];
+
+        function createSnowflake() {
+            // Create a snowflake with random position and size
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const radius = Math.random() * 4 + 1;
+            snowflakes.push({ x, y, radius });
+        }
+
+        function updateSnowflakes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.beginPath();
+            for (let flake of snowflakes) {
+                ctx.moveTo(flake.x, flake.y);
+                ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+            }
+            ctx.fill();
+            // Update snowflake positions
+            for (let flake of snowflakes) {
+                flake.y += flake.radius / 2; // Fall speed
+                if (flake.y > canvas.height) {
+                    flake.y = -flake.radius;
+                    flake.x = Math.random() * canvas.width; // Random x position
+                }
+            }
+        }
+
+        function animate() {
+            updateSnowflakes();
+            requestAnimationFrame(animate);
+        }
+
+        // Create multiple initial snowflakes
+        for (let i = 0; i < 100; i++) {
+            createSnowflake();
+        }
+
+        animate();
+        
+        // Adjust canvas size on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
+
 </html>
