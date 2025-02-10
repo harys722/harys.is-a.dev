@@ -115,7 +115,7 @@
             text-align: center;
             padding: 15px 0;
             position: fixed;
-            bottom: 0;
+            bottom: -60px; /* Changed this line to move the footer off the screen */
             width: 100%;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
         }
@@ -137,10 +137,6 @@
             border-radius: 5px;
             padding: 10px 15px;
             margin: 5px;
-        }
-
-        .site-description {
-            text-align: center;
         }
 
         /* Projects styles */
@@ -204,9 +200,7 @@
         <h1>- HARYs -</h1>
     </div>
 
-    <div class="content" id="site-description">
-        <h2>The Discord Bot Developer & Server Manager</h2>
-    </div>
+    <h2 style="text-align:center;">The Discord Bot Developer & Server Manager</h2> <!-- Added style attribute to center the text -->    
     
     <div class="content" id="about-me">
         <h2>About Me</h2>
