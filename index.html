@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>- HARYs - | The Discord Bot Developer & Server Manager</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <style>
         body {
             position: relative;
@@ -139,17 +140,37 @@
             margin: 5px;
         }
 
-        /* Testimonial styles */
-        .testimonial {
+        /* Projects styles */
+        .project {
             background-color: #f7f7f7;
             margin: 20px 0;
             padding: 15px;
             border-radius: 8px;
+            border: 1px solid #ddd;
         }
 
-        .testimonial h4 {
+        .project h4 {
             margin: 0 0 10px;
             color: #ff6600;
+        }
+
+        .contact-card {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .contact-card div {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 0 10px;
+            width: calc(33.33% - 20px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card div h4 {
+            margin-top: 0;
         }
 
         .join-us {
@@ -172,7 +193,8 @@
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#my-works">My Works</a></li>
                 <li><a href="#discord-servers">Discord Servers</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#get-in-touch">Get in Touch</a></li>
                 <li><a href="#join-us">Join Us</a></li>
             </ul>
         </div>
@@ -230,19 +252,37 @@
         </ul>
     </div>
 
-    <div class="content" id="testimonials">
-        <h2>Testimonials</h2>
-        <div class="testimonial">
-            <h4>John Doe</h4>
-            <p>"HARYs has revolutionized our server with his amazing bot! It's user-friendly and incredibly powerful."</p>
+    <div class="content" id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h4>Discord Bot Project</h4>
+            <p>a Discord bot that automates server moderation and enhances user engagement.</p>
         </div>
-        <div class="testimonial">
-            <h4>Jane Smith</h4>
-            <p>"As a moderator, I find HARYs's contributions invaluable. He is attentive and dedicated!"</p>
+        <div class="project">
+            <h4>Personal Website</h4>
+            <p>This personal website, showcasing my skills, works, and ways to get in touch.</p>
         </div>
-        <div class="testimonial">
-            <h4>Alex Johnson</h4>
-            <p>"HARYs is passionate about learning and it shows in the quality of his work. Highly recommend!"</p>
+        <div class="project">
+            <h4>Python Learning Journey</h4>
+            <p>A documented journey of learning Python, including projects and achievements.</p>
+        </div>
+    </div>
+
+    <div class="content" id="get-in-touch">
+        <h2>Get in Touch</h2>
+        <div class="contact-card">
+            <div>
+                <h4>Email</h4>
+                <p><a href="mailto:your-email@example.com">your-email@example.com</a></p>
+            </div>
+            <div>
+                <h4>Discord</h4>
+                <p><a href="https://discord.com/users/your-discord-id" target="_blank">your-discord-id</a></p>
+            </div>
+            <div>
+                <h4>GitHub</h4>
+                <p><a href="https://github.com/your-github-username" target="_blank">your-github-username</a></p>
+            </div>
         </div>
     </div>
 
