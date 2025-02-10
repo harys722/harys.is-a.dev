@@ -1,55 +1,82 @@
-/* Reset some default browser styles */
-body, h1, h2, h3, p, ul {
-    margin: 0;
-    padding: 0;
-}
+    body {
+        background-color: #F7DC6F; 
+        font-family: Arial, sans-serif;
+        margin: 0 auto;
+        width: 80%;
+        max-width: 1200px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* Set a background color and font for the body */
-body {
-    background-color: green; 
-    color: white;           
-    font-family: Arial, sans-serif; /* Font style */
-}
+    .header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        text-align: center;
+    }
 
-/* Style headers */
-h1 {
-    font-size: 2.5em;       
-    margin-bottom: 0.5em;   
-}
+    .logo {
+        width: 100px;
+        height: auto;
+        margin-right: 20px; 
+    }
 
-h2 {
-    font-size: 2em;         
-    margin-bottom: 0.5em;
-}
+    /* Make text elements visible on the bright background */
+    h1, h2, h3, p, button {
+        color: #000000; /* Set text color to black */
+        font-weight: bolder;
+    }
 
-h3 {
-    font-size: 1.5em;       
-    margin-bottom: 0.5em;
-}
+    /* Make links stand out */
+    a {
+        color: #007bff; 
+        text-decoration: none; 
+    }
 
-/* Style paragraphs */
-p {
-    line-height: 1.6;       
-    margin-bottom: 1em;     
-}
+    a:hover {
+        color: #0056b3; 
+    }
 
-/* Style lists */
-ul {
-    margin-left: 20px;      
-}
+    .content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80%;
+    }
 
-/* Add a simple button style */
-button {
-    background-color: white; /* Button background color */
-    color: green;           /* Button text color */
-    padding: 10px 20px;     /* Button padding */
-    border: none;           /* Remove border */
-    border-radius: 5px;     /* Rounded corners */
-    cursor: pointer;        /* Change cursor on hover */
-}
+    /* Style for ul elements */
+    ul {
+        list-style: disc;
+        padding: 0;
+        margin: 0;
+    }
 
-/* Change button color on hover */
-button:hover {
-    background-color: green; /* Change background on hover */
-    color: white;            /* Change text color on hover */
-}
+    /* Style for li elements */
+    li {
+        color: #000000; /* Explicitly set text color to black */
+        margin-bottom: 10px;
+    }
+
+    /* Style for nested ul elements */
+    li ul {
+        list-style: disc;
+        padding-left: 20px;
+        margin-top: 5px;
+    }
+
+    button {
+        background-color: #007bff; /* Blue background color */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-right: 10px; 
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: green; 
+    }
