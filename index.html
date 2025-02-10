@@ -8,11 +8,11 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css" type="text/css">
     <style>
-        /* General styles */
         body {
+            position: relative;
             font-family: Arial, sans-serif;
-            background-color: #e9f4ff; /* Light blue background */
-            color: #333; /* Dark text */
+            background-color: #f5f5f5;
+            color: #333;
             margin: 0;
             padding-bottom: 60px; /* Space for footer */
         }
@@ -24,132 +24,189 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Make canvas not block other interactions */
-            z-index: 999; /* Make sure it is on top */
+            pointer-events: none;
+            z-index: 999;
         }
 
-        /* Header styles */
         .header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            background-color: #ffcc00; /* Bright yellow */
-            color: #003366; /* Dark blue text */
+            justify-content: space-between;
+            background-color: #ffcc00;
             padding: 20px;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
         }
 
+        /* Navigation Bar */
         .nav-bar {
             display: flex;
-            gap: 30px; /* Space between links */
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .nav-bar ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
         }
 
         .nav-bar li {
-            list-style: none;
+            margin: 0 20px;
         }
 
         .nav-bar a {
             text-decoration: none;
-            color: #003366; /* Dark blue for links */
+            color: #333;
+            font-weight: bold;
             transition: color 0.3s;
         }
 
         .nav-bar a:hover {
-            color: #ff6600; /* Darker yellow on hover */
+            color: #ff6600;
         }
 
         /* Logo styling */
         .logo {
-            width: 100px; /* Adjust logo size */
+            width: 100px;
             height: auto;
-            margin-right: 20px;
         }
 
         h1 {
-            font-size: 2.5em; /* Header title size */
-            margin: 0; /* Remove default margin */
+            font-size: 2.5em;
+            margin: 0;
         }
 
         h2 {
-            color: #ff6600; /* A darker yellow for subtitles */
+            color: #ff6600;
+            margin-top: 40px;
         }
 
-        /* Content styling */
         .content {
             margin: 20px;
+            z-index: 10;
+            position: relative;
             padding: 20px;
-            background-color: #ffffff; /* White background for content section */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         ul {
-            padding-left: 20px; /* Indent list items */
+            padding-left: 20px;
         }
 
         button {
-            background-color: #ffcc00; /* Lightning yellow buttons */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Rounded edges */
-            padding: 10px 20px; /* Padding inside buttons */
-            color: #003366; /* Dark blue text */
-            cursor: pointer; /* Pointer on hover */
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #ffb300; /* Darker yellow on hover */
-            color: #fff; /* White text on hover */
+            background-color: #ffb300;
         }
 
         /* Footer styling */
         footer {
-            background-color: #003366; /* Dark blue footer */
-            color: #ffffff; /* White text */
-            text-align: center; /* Centered text */
-            padding: 15px 0; /* Padding for footer */
-            position: fixed; /* Fixed footer */
-            bottom: 0; /* Aligns to the bottom of the page */
-            width: 100%; /* Full width */
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            background-color: #ffcc00;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
         }
 
+        footer p {
+            margin: 0;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: #ff6600;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin: 5px;
+        }
+
+        /* Testimonial styles */
+        .testimonial {
+            background-color: #f7f7f7;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .testimonial h4 {
+            margin: 0 0 10px;
+            color: #ff6600;
+        }
+
+        .join-us {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff8e1;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <canvas id="snowfall"></canvas> <!-- Canvas for snowfall effect -->
+    <canvas id="snowfall"></canvas>
 
     <div class="header">
-        <div class="logo-container">
-            <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
-            <h1>- HARYs -</h1>
-        </div>
+        <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
         <div class="nav-bar">
             <ul>
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#my-works">My Works</a></li>
                 <li><a href="#discord-servers">Discord Servers</a></li>
-                <li><a href="#">Join Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#join-us">Join Us</a></li>
             </ul>
         </div>
+        <h1>- HARYs -</h1>
     </div>
 
     <h2>The Discord Bot Developer & Server Manager</h2>
 
-    <div class="content">
-        <h2 id="about-me">About Me</h2>
+    <div class="content" id="about-me">
+        <h2>About Me</h2>
         <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
+        <div class="skills">
+            <div class="skill">JavaScript</div>
+            <div class="skill">Python</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Discord.js</div>
+            <div class="skill">HTML & CSS</div>
+        </div>
+    </div>
 
-        <h3 id="my-works">My Works</h3>
+    <div class="content" id="my-works">
+        <h2>My Works</h2>
+        <p>Throughout my journey, I've worked on various projects that showcase my skills and creativity:</p>
         <ul>
-            <li>Bot Project</li>
-            <li>Discord Manager & Moderator</li>
-            <li>Currently Learning Python</li>
+            <li><strong>Bot Project:</strong> A full-featured Discord bot that automates server moderation and enhances user engagement.</li>
+            <li><strong>Discord Manager & Moderator:</strong> Experience in managing and moderating multiple Discord servers, ensuring a safe environment for users.</li>
+            <li><strong>Learning Python:</strong> Currently expanding my programming proficiency by learning Python for backend development and automation.</li>
         </ul>
+    </div>
 
-        <h2 id="discord-servers">Discord Servers</h2>
-        <p>I'm currently handling multiple Discord Servers. I'm a moderator in several servers, some of the most famous servers are as follows:</p>
+    <div class="content" id="discord-servers">
+        <h2>Discord Servers</h2>
+        <p>I'm currently handling multiple Discord Servers. I'm a moderator in several servers, including:</p>
         <ul>
             <li><a href="https://discord.gg/CPN5eYPABx" target="_blank">The Community 🌏</a>
                 <ul>
@@ -172,13 +229,28 @@
                 </ul>
             </li>
         </ul>
+    </div>
 
-        <p>Click On These Buttons For A Magic!</p>
-        <div>
-            <button onclick="window.open('https://discord.gg/CPN5eYPABx', '_blank')">Discord Server</button>
-            <button onclick="window.open('https://github.com/harys722', '_blank')">Github</button>
-            <button onclick="window.open('https://bit.ly/when_life_begins', '_blank')">Must Read</button>
+    <div class="content" id="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonial">
+            <h4>John Doe</h4>
+            <p>"HARYs has revolutionized our server with his amazing bot! It's user-friendly and incredibly powerful."</p>
         </div>
+        <div class="testimonial">
+            <h4>Jane Smith</h4>
+            <p>"As a moderator, I find HARYs's contributions invaluable. He is attentive and dedicated!"</p>
+        </div>
+        <div class="testimonial">
+            <h4>Alex Johnson</h4>
+            <p>"HARYs is passionate about learning and it shows in the quality of his work. Highly recommend!"</p>
+        </div>
+    </div>
+
+    <div class="content join-us" id="join-us">
+        <h2>Join Us!</h2>
+        <p>Are you looking to collaborate on cool projects or learn together? Join my Discord community where we share resources, knowledge, and fun!</p>
+        <button onclick="window.open('https://discord.gg/CPN5eYPABx', '_blank')">Join Discord</button>
     </div>
 
     <footer>
