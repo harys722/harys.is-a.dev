@@ -43,10 +43,11 @@
             align-items: center;
             justify-content: space-between;  /* Space between logo/title and nav links */
             background-color: #ffcc00;
-            padding: 10px 20px;  /* Adjust padding for smaller header */
+            padding: 10px 15px; /* Adjust padding for header */
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
             width: 100%;  /* Ensure header fits full width */
             position: relative; /* Align with body */
+            overflow-x: auto; /* Allow horizontal scrolling if necessary */
         }
 
         /* Header left side: logo & title */
@@ -66,7 +67,6 @@
         /* Navigation Bar */
         .nav-bar {
             display: flex;
-            margin-left: auto;  /* Push nav bar to the right */
             align-items: center; /* Center align items in nav bar */
         }
 
@@ -74,10 +74,11 @@
             display: flex;
             list-style: none;
             padding: 0;
+            margin: 0; /* Remove margin for nav items */
         }
 
         .nav-bar li {
-            margin: 0 15px;  /* Adjust spacing between links */
+            margin: 0 10px; /* Adjust spacing between links */
         }
 
         .nav-bar a {
@@ -99,7 +100,6 @@
         h2 {
             color: #ff6600;
             margin-top: 40px;
-            font-size: 1.4em; /* Reduced font size for section headers */
         }
 
         .content {
@@ -204,8 +204,9 @@
 
         /* Dark mode Contact styles */
         .contact-card div.dark-mode {
-            background-color: #262626;
+            background-color: #333333;
             color: #f5f5f5;
+            border-color: #444444;
         }
 
         .join-us {
@@ -285,11 +286,11 @@
         <h2>Projects</h2>
         <div class="project">
             <h4>Discord Bot Project</h4>
-            <p>A Discord bot that automates server moderation and enhances user engagement.</p>
+            <p>a Discord bot that automates server moderation and enhances user engagement.</p>
         </div>
         <div class="project">
             <h4>Personal Website</h4>
-            <p>This personal website showcases my skills, works, and ways to get in touch.</p>
+            <p>This personal website, showcasing my skills, works, and ways to get in touch.</p>
         </div>
         <div class="project">
             <h4>Python Learning Journey</h4>
