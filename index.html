@@ -59,12 +59,15 @@
         .header .title {
             flex: 1;  /* Allow title to use available space */
             color: black; /* Ensure title text is always black */
+            text-decoration: none; /* Remove underline from the link */
+            font-weight: bold; /* Make title bold */
         }
 
         /* Navigation Bar */
         .nav-bar {
             display: flex;
             margin-left: auto;  /* Push nav bar to the right */
+            align-items: center; /* Center align items in nav bar */
         }
 
         .nav-bar ul {
@@ -79,7 +82,7 @@
 
         .nav-bar a {
             text-decoration: none;
-            color: black; /* Header text */
+            color: black; /* Uniform link color */
             font-weight: bold;
             transition: color 0.3s;
         }
@@ -119,10 +122,11 @@
             background-color: #ffcc00;
             border: none;
             border-radius: 5px;
-            padding: 10px 20px;
+            padding: 10px; /* Adjust padding for icon only */
             color: #333;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-size: 24px; /* Increase icon size */
         }
 
         button:hover {
@@ -217,11 +221,12 @@
     <canvas id="snowfall"></canvas>
 
     <div class="header">
-        <div class="header-content">
+        <div class="header-content" style="display: flex; align-items: center;">
             <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
-            <span class="title">- HARYs -</span>
+            <a href="https://harys722.netlify.app/" class="title">- HARYs -</a>
         </div>
         <div class="nav-bar">
+            <button id="toggle-mode" aria-label="Toggle Dark/Light Mode">☀️</button> <!-- Default to light mode icon -->
             <ul>
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#my-works">My Works</a></li>
@@ -231,7 +236,6 @@
                 <li><a href="#join-us">Join Us</a></li>
             </ul>
         </div>
-        <button id="toggle-mode">🌗</button>
     </div>
     
     <div class="content" id="about-me">
@@ -375,8 +379,10 @@
             const body = document.body;
             body.classList.toggle('dark-mode');
             body.classList.toggle('light-mode');
-            toggleButton.textContent = body.classList.contains('dark-mode') ? '🔅' : '🌗';
-            
+
+            // Change the icon based on the current mode
+            toggleButton.innerHTML = body.classList.contains('dark-mode') ? '🌗' : '☀️';
+
             // Update content class for dark mode
             const contents = document.querySelectorAll('.content');
             contents.forEach(content => {
