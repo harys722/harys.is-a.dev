@@ -10,10 +10,21 @@
         body {
             position: relative;
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
             margin: 0;
             padding-bottom: 60px; /* Space for footer */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #181818;
+            color: #f5f5f5;
         }
 
         /* Style for the canvas to cover the entire viewport */
@@ -29,19 +40,31 @@
 
         .header {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-between;  /* Space between logo/title and nav links */
             background-color: #ffcc00;
-            padding: 20px;
+            padding: 10px 20px;  /* Adjust padding for smaller header */
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;  /* Ensure header fits full width */
+            position: relative; /* Align with body */
+        }
+
+        /* Header left side: logo & title */
+        .header .logo {
+            width: 50px;  /* Adjust logo size */
+            height: auto;
+            margin-right: 10px;  /* Space between logo and title */
+        }
+
+        .header .title {
+            flex: 1;  /* Allow title to use available space */
+            color: black; /* Ensure title text is always black */
         }
 
         /* Navigation Bar */
         .nav-bar {
             display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
+            margin-left: auto;  /* Push nav bar to the right */
         }
 
         .nav-bar ul {
@@ -51,12 +74,12 @@
         }
 
         .nav-bar li {
-            margin: 0 20px;
+            margin: 0 15px;  /* Adjust spacing between links */
         }
 
         .nav-bar a {
             text-decoration: none;
-            color: #333;
+            color: black; /* Header text */
             font-weight: bold;
             transition: color 0.3s;
         }
@@ -65,14 +88,8 @@
             color: #ff6600;
         }
 
-        /* Logo styling */
-        .logo {
-            width: 100px;
-            height: auto;
-        }
-
         h1 {
-            font-size: 2.5em;
+            font-size: 1.8em; /* Reduce title size to fit better */
             margin: 0;
         }
 
@@ -89,10 +106,13 @@
             background-color: #fff8e1;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        ul {
-            padding-left: 20px;
+        /* Dark mode Content styles */
+        .content.dark-mode {
+            background-color: #262626;
+            color: #f5f5f5;
         }
 
         button {
@@ -115,10 +135,15 @@
             text-align: center;
             padding: 15px 0;
             position: relative; /* Change 'fixed' to 'relative' */
-            /* Remove the 'bottom' property */
             width: 100%;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
         }
+
+        /* Footer text color */
+        footer p {
+            color: black; /* Ensures footer text is always black */
+        }
+
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -141,6 +166,14 @@
             padding: 15px;
             border-radius: 8px;
             border: 1px solid #ddd;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        /* Dark mode Project styles */
+        .project.dark-mode {
+            background-color: #333333;
+            color: #f5f5f5;
+            border-color: #444444;
         }
 
         .project h4 {
@@ -161,10 +194,13 @@
             margin: 0 10px;
             width: calc(33.33% - 20px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .contact-card div h4 {
-            margin-top: 0;
+        /* Dark mode Contact styles */
+        .contact-card div.dark-mode {
+            background-color: #262626;
+            color: #f5f5f5;
         }
 
         .join-us {
@@ -177,11 +213,14 @@
     </style>
 </head>
 
-<body>
+<body class="light-mode">
     <canvas id="snowfall"></canvas>
 
     <div class="header">
-        <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
+        <div class="header-content">
+            <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
+            <span class="title">- HARYs -</span>
+        </div>
         <div class="nav-bar">
             <ul>
                 <li><a href="#about-me">About Me</a></li>
@@ -192,9 +231,8 @@
                 <li><a href="#join-us">Join Us</a></li>
             </ul>
         </div>
-        <h1>- HARYs -</h1>
-        <h3 style="text-align:center;">The Discord Bot Developer & Server Manager</h3> <!-- Added style attribute to center the text -->
-    </div>    
+        <button id="toggle-mode">🌗</button>
+    </div>
     
     <div class="content" id="about-me">
         <h2>About Me</h2>
@@ -330,6 +368,32 @@
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+        });
+
+        const toggleButton = document.getElementById('toggle-mode');
+        toggleButton.addEventListener('click', () => {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            toggleButton.textContent = body.classList.contains('dark-mode') ? '🔅' : '🌗';
+            
+            // Update content class for dark mode
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.toggle('dark-mode');
+            });
+
+            // Update project class for dark mode
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.classList.toggle('dark-mode');
+            });
+
+            // Update contact card class for dark mode
+            const contactCards = document.querySelectorAll('.contact-card div');
+            contactCards.forEach(card => {
+                card.classList.toggle('dark-mode');
+            });
         });
     </script>
 </body>
