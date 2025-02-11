@@ -239,7 +239,7 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="content" id="about-me">
         <h2>About Me</h2>
         <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
@@ -344,7 +344,8 @@
 
         function updateSnowflakes() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            // Change fill color based on body class
+            ctx.fillStyle = document.body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 204, 0, 0.8)'; // White in dark mode, orange in light mode
             ctx.beginPath();
             for (let flake of snowflakes) {
                 ctx.moveTo(flake.x, flake.y);
