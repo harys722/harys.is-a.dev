@@ -1,82 +1,166 @@
-    body {
-        background-color: #F7DC6F; 
-        font-family: Arial, sans-serif;
-        margin: 0 auto;
-        width: 80%;
-        max-width: 1200px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+/* Global Styles */
+body {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding-bottom: 60px;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    .header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-        text-align: center;
-    }
+/* Light mode styles */
+body.light-mode {
+  background-color: #2c3e50; /* Deep purple */
+  color: #ccc; /* Light gray */
+}
 
-    .logo {
-        width: 100px;
-        height: auto;
-        margin-right: 20px; 
-    }
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #212121; /* Deep gray */
+  color: #f5f5f5; /* Light white */
+}
 
-    /* Make text elements visible on the bright background */
-    h1, h2, h3, p, button {
-        color: #000000; /* Set text color to black */
-        font-weight: bolder;
-    }
+/* Header Styles */
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333; /* Deep gray */
+  padding: 10px 15px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
 
-    /* Make links stand out */
-    a {
-        color: #007bff; 
-        text-decoration: none; 
-    }
+.header .logo {
+  width: 50px;
+  height: auto;
+}
 
-    a:hover {
-        color: #0056b3; 
-    }
+.header .title {
+  flex: 1;
+  color: #ccc; /* Light gray */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.5em;
+}
 
-    .content {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 80%;
-    }
+/* Navigation */
+.nav-bar {
+  display: flex;
+  align-items: center;
+}
 
-    /* Style for ul elements */
-    ul {
-        list-style: disc;
-        padding: 0;
-        margin: 0;
-    }
+.nav-bar ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    /* Style for li elements */
-    li {
-        color: #000000; /* Explicitly set text color to black */
-        margin-bottom: 10px;
-    }
+.nav-bar li {
+  margin: 0 10px;
+}
 
-    /* Style for nested ul elements */
-    li ul {
-        list-style: disc;
-        padding-left: 20px;
-        margin-top: 5px;
-    }
+.nav-bar a {
+  text-decoration: none;
+  color: #ccc; /* Light gray */
+  font-weight: 600;
+  transition: color 0.3s;
+}
 
-    button {
-        background-color: #007bff; /* Blue background color */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        font-size: 1em;
-        cursor: pointer;
-        margin-right: 10px; 
-        transition: background-color 0.3s;
-    }
+.nav-bar a:hover {
+  color: #ff9900; /* Orange-pink */
+  text-shadow: 1px 1px 2px #fff;
+}
 
-    button:hover {
-        background-color: green; 
-    }
+/* Section Heading */
+h2 {
+  color: #ff9900; /* Orange-pink */
+  margin: 40px 0 20px;
+  font-size: 2em;
+  text-align: center;
+}
+
+/* Main Content */
+.content {
+  margin: 20px;
+  z-index: 10;
+  padding: 20px;
+  background-color: #2c3e50; /* Deep purple */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+button {
+  background-color: #333; /* Deep gray */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #ccc; /* Light gray */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: #ff9900; /* Orange-pink */
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background-color: #333; /* Deep gray */
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+  color: #ccc; /* Light gray */
+  margin: 0;
+}
+
+.socials {
+  margin-top: 10px;
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #ccc; /* Light gray */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.socials a:hover {
+  color: #ff9900; /* Orange-pink */
+}
+
+@media (max-width: 600px) {
+  .nav-bar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-bar li {
+    margin: 5px 0;
+  }
+
+  .header {
+    padding: 10px 5px;
+  }
+}
