@@ -1,29 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>- HARYs - | The Discord Bot Developer & Server Manager</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding-bottom: 60px; /* Space for footer */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #181818;
+            color: #f5f5f5;
+        }
+
+        .header {
+            position: sticky; /* Make the header sticky */
+            top: 0; /* Stick to the top of the viewport */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffcc00;
+            padding: 10px 15px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 100%; /* Ensures header won't exceed the viewport */
+            box-sizing: border-box; /* Includes padding in the element's total width */
+            overflow: hidden; /* Prevents overflow from children */
+            z-index: 1000;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .header .title {
+            flex: 1;
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.5em;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-bar ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-bar li {
+            margin: 0 10px;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            color: #ff6600;
+            text-shadow: 1px 1px 2px #fff;
+        }
+
+        h2 {
+            color: #ff6600;
+            margin: 40px 0 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .content {
+            margin: 20px;
+            z-index: 10;
+            padding: 20px;
+            background-color: #fff8e1;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        button {
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #ffb300;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #ffcc00;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            color: black;
+            margin: 0;
+        }
+
+        .socials {
+            margin-top: 10px;
+        }
+
+        .socials a {
+            margin: 0 10px;
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .socials a:hover {
+            color: #ff6600;
+        }
+
+        @media (max-width: 600px) {
+            .nav-bar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-bar li {
+                margin: 5px 0;
+            }
+
+            .header {
+                padding: 10px 5px;
+            }
+        }
+    </style>
 </head>
+
 <body class="light-mode">
+
     <div class="header">
-        <div class="header-content">
+        <div class="header-content" style="display: flex; align-items: center;">
             <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
             <a href="https://harys722.netlify.app/" class="title">- HARYs -</a>
-            <div class="toggle-button">☰</div>
         </div>
         <div class="nav-bar">
-            <div class="toggle-container">
-                <select id="theme-select">
-                    <option value="light">Light</option>
-                    <option value="dark">Dark</option>
-                    <option value="system">System</option>
-                </select>
-            </div>
+            <button id="toggle-mode" aria-label="Toggle Dark/Light Mode">🌘</button>
             <ul>
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#my-works">My Works</a></li>
@@ -34,7 +195,7 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="content" id="about-me">
         <h2>About Me</h2>
         <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
@@ -59,9 +220,9 @@
                     <li style="font-size: 0.8em;">👑 Server Owner</li>
                 </ul>
             </li>
-            <li><a href="https://discord.gg/RxSrYtXVK8" target="_blank">Wizards Community</a>
+            <li><a href="https://discord.gg/RxSrYtXVK8" target="_blank">Erensko API</a>
                 <ul>
-                    <li style="font-size: 0.8em;">⚜️ Manager</li>
+                    <li style="font-size: 0.8em;">🛡️ Moderator</li>
                 </ul>
             </li>
             <li><a href="https://discord.gg/uP4tue5NkV" target="_blank">Cosmos Lounge</a>
@@ -125,7 +286,54 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Dark/light mode toggle
+        const toggleButton = document.getElementById('toggle-mode');
+        toggleButton.addEventListener('click', () => {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+
+            // Change the icon based on the current mode
+            toggleButton.innerHTML = body.classList.contains('dark-mode') ? '🌖' : '🌘';
+
+            // Update content colors based on the mode
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                if (body.classList.contains('dark-mode')) {
+                    content.classList.add('dark-mode');
+                    content.style.backgroundColor = '#262626'; // Dark background
+                    content.style.color = '#f5f5f5'; // Light text
+                } else {
+                    content.classList.remove('dark-mode');
+                    content.style.backgroundColor = '#fff8e1'; // Light background
+                    content.style.color = '#333333'; // Dark text
+                }
+            });
+
+            // Update project class for dark mode
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                if (body.classList.contains('dark-mode')) {
+                    project.classList.add('dark-mode');
+                } else {
+                    project.classList.remove('dark-mode');
+                }
+            });
+
+            // Update contact card class for dark mode
+            const contactCards = document.querySelectorAll('.contact-card div');
+            contactCards.forEach(card => {
+                if (body.classList.contains('dark-mode')) {
+                    card.style.backgroundColor = '#333333'; // Dark contact card
+                    card.style.color = '#f5f5f5'; // Light text on cards
+                } else {
+                    card.style.backgroundColor = '#f7f7f7'; // Light contact card
+                    card.style.color = '#333333'; // Dark text on cards
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
