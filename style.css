@@ -87,6 +87,11 @@ body.dark-mode #theme-select {
     text-decoration: none;
     color: inherit;
     font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-bar a:hover {
+    color: #ffcc00;
 }
 
 .toggle-container {
@@ -107,8 +112,8 @@ body.dark-mode #theme-select {
     color: inherit;
 }
 
-#theme-select i {
-    margin-right: 5px;
+#theme-select:focus {
+    outline: none;
 }
 
 .content {
@@ -176,6 +181,11 @@ footer .socials a {
     margin: 0 10px;
     color: inherit;
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .socials a:hover {
+    color: #ffcc00;
 }
 
 /* Mobile Responsiveness */
@@ -190,43 +200,3 @@ footer .socials a {
         justify-content: space-between;
         align-items: center;
     }
-
-    .toggle-button {
-        display: block;
-        cursor: pointer;
-        font-size: 1.5em;
-    }
-
-    .nav-bar {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: inherit;
-        z-index: 101;
-    }
-
-    .nav-bar.show {
-        display: flex;
-    }
-
-    .nav-bar ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .nav-bar li {
-        margin: 10px 0;
-    }
-
-    .toggle-container {
-        margin-right: 0;
-    }
-
-    .contact-card {
-        flex-direction: column;
-        align-items: center;
-    }
-}
