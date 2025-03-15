@@ -29,12 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load theme from local storage or system preference
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
-        themeSelect.value = savedTheme;
-    } else {
-        setTheme('system'); // Default to system preference
+    let initialTheme = savedTheme;
+
+    if (!savedTheme){
+        initialTheme = 'system';
     }
+
+    setTheme(initialTheme);
+    themeSelect.value = initialTheme;
 
     // Theme change event listener
     themeSelect.addEventListener('change', function() {
