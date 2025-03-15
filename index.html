@@ -14,14 +14,15 @@
         <div class="header-content">
             <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
             <a href="https://harys722.netlify.app/" class="title">- HARYs -</a>
+            <div class="toggle-button">☰</div>
         </div>
         <div class="nav-bar">
             <div class="toggle-container">
-                <div id="theme-toggle">
-                    <i class="fas fa-sun" data-theme="light"></i>
-                    <i class="fas fa-moon" data-theme="dark"></i>
-                    <i class="fas fa-desktop" data-theme="system"></i>
-                </div>
+                <select id="theme-select">
+                    <option value="light"><i class="fas fa-sun"></i> Light</option>
+                    <option value="dark"><i class="fas fa-moon"></i> Dark</option>
+                    <option value="system"><i class="fas fa-desktop"></i> System</option>
+                </select>
             </div>
             <ul>
                 <li><a href="#about-me">About Me</a></li>
