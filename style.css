@@ -11,14 +11,26 @@ body.light-mode {
     color: #333;
 }
 
+body.light-mode .header,
+body.light-mode .content,
+body.light-mode footer {
+    background: rgba(255, 255, 255, 0.4); /* White glass */
+    backdrop-filter: blur(10px);
+}
+
 body.dark-mode {
     background-color: #1a1a1a;
     color: #eee;
 }
 
-.header {
-    background: rgba(255, 255, 255, 0.1);
+body.dark-mode .header,
+body.dark-mode .content,
+body.dark-mode footer {
+    background: rgba(255, 204, 0, 0.1); /* Lightning yellow glass */
     backdrop-filter: blur(10px);
+}
+
+.header {
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -26,6 +38,8 @@ body.dark-mode {
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .header-content {
@@ -87,8 +101,6 @@ body.dark-mode {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -111,8 +123,6 @@ body.dark-mode {
     margin-bottom: 20px;
     padding: 15px;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
 }
 
 .contact-card {
@@ -143,9 +153,9 @@ body.dark-mode {
 footer {
     text-align: center;
     padding: 20px 0;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     margin-top: 20px;
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 footer .socials a {
@@ -156,6 +166,11 @@ footer .socials a {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .nav-bar {
         flex-direction: column;
         align-items: flex-start;
@@ -173,5 +188,14 @@ footer .socials a {
     .contact-card {
         flex-direction: column;
         align-items: center;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-bar {
+        width: 100%;
     }
 }
