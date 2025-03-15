@@ -7,17 +7,17 @@ body {
 }
 
 body.light-mode {
-    background-color: #fff9e6; /* Light yellowish background */
+    background-color: #fff9e6;
     color: #333;
 }
 
 body.light-mode .header,
 body.light-mode .content,
 body.light-mode footer,
-body.light-mode #theme-toggle {
-    background: rgba(255, 255, 230, 0.6); /* Light yellowish glass */
+body.light-mode #theme-select {
+    background: rgba(255, 255, 230, 0.6);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(240, 240, 220, 0.5); /* Light border */
+    border: 1px solid rgba(240, 240, 220, 0.5);
 }
 
 body.dark-mode {
@@ -28,27 +28,10 @@ body.dark-mode {
 body.dark-mode .header,
 body.dark-mode .content,
 body.dark-mode footer,
-body.dark-mode #theme-toggle {
-    background: rgba(255, 204, 0, 0.15); /* Lightning yellow glass */
+body.dark-mode #theme-select {
+    background: rgba(255, 204, 0, 0.15);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 204, 0, 0.3); /* Yellow border */
-}
-
-/* ... (rest of your CSS) ... */
-
-#theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 8px 12px;
-    border-radius: 5px;
-}
-
-#theme-toggle i {
-    font-size: 1.2em;
-    cursor: pointer;
-    color: inherit;
-    margin: 0 5px;
+    border: 1px solid rgba(255, 204, 0, 0.3);
 }
 
 .header {
@@ -66,6 +49,7 @@ body.dark-mode #theme-toggle {
 .header-content {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .logo {
@@ -80,6 +64,7 @@ body.dark-mode #theme-toggle {
     font-weight: 600;
     text-decoration: none;
     color: inherit;
+    flex-grow: 1;
 }
 
 .nav-bar {
@@ -113,6 +98,17 @@ body.dark-mode #theme-toggle {
     border-radius: 5px;
     color: inherit;
     font-size: 1em;
+    background: inherit;
+    border: inherit;
+}
+
+#theme-select option {
+    background: inherit;
+    color: inherit;
+}
+
+#theme-select i {
+    margin-right: 5px;
 }
 
 .content {
@@ -125,7 +121,7 @@ body.dark-mode #theme-toggle {
 
 .content h2 {
     margin-bottom: 15px;
-    color: #ffcc00; /* Lightning Yellow */
+    color: #ffcc00;
 }
 
 .content ul {
@@ -159,7 +155,7 @@ body.dark-mode #theme-toggle {
 }
 
 .join-us button {
-    background-color: #ffcc00; /* Lightning Yellow */
+    background-color: #ffcc00;
     color: #333;
     padding: 10px 20px;
     border: none;
@@ -189,19 +185,31 @@ footer .socials a {
         align-items: flex-start;
     }
 
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .toggle-button {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5em;
+    }
+
     .nav-bar {
-        display: none; /* Hide nav by default on mobile */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 60px; /* Adjust as needed */
+        top: 60px;
         left: 0;
-        background: inherit; /* Use same glass effect */
+        background: inherit;
         z-index: 101;
     }
 
     .nav-bar.show {
-        display: flex; /* Show nav when class 'show' is added */
+        display: flex;
     }
 
     .nav-bar ul {
@@ -213,29 +221,12 @@ footer .socials a {
         margin: 10px 0;
     }
 
+    .toggle-container {
+        margin-right: 0;
+    }
+
     .contact-card {
         flex-direction: column;
         align-items: center;
     }
-
-    .header-content {
-        flex-direction: row; /* Return to row */
-        justify-content: space-between;
-        width: 100%;
-        align-items: center;
-    }
-
-    .toggle-button {
-        display: block; /* Show toggle button */
-        cursor: pointer;
-        font-size: 1.5em; /* Adjust size */
-    }
-
-    .toggle-container{
-        margin-right: 0;
-    }
-}
-
-.toggle-button {
-    display: none; /* Hide by default */
 }
