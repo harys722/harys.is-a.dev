@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     const themeSelect = document.getElementById('theme-select');
     const body = document.body;
+    const navBar = document.querySelector('.nav-bar');
+    const toggleButton = document.createElement('div');
+    toggleButton.classList.add('toggle-button');
+    toggleButton.textContent = '☰'; // Hamburger icon
+
+    document.querySelector('.header-content').appendChild(toggleButton);
+
+    toggleButton.addEventListener('click', function() {
+        navBar.classList.toggle('show');
+    });
 
     function setTheme(theme) {
         if (theme === 'dark') {
@@ -27,18 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Load theme from local storage or system preference
     const savedTheme = localStorage.getItem('theme');
-    let initialTheme = savedTheme;
-
-    if (!savedTheme){
-        initialTheme = 'system';
-    }
+    let initialTheme = savedTheme || 'system';
 
     setTheme(initialTheme);
     themeSelect.value = initialTheme;
 
-    // Theme change event listener
     themeSelect.addEventListener('change', function() {
         setTheme(this.value);
     });
