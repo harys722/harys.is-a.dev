@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const themeSelect = document.getElementById('theme-select');
     const body = document.body;
     const navBar = document.querySelector('.nav-bar');
     const toggleButton = document.createElement('div');
     toggleButton.classList.add('toggle-button');
-    toggleButton.textContent = '☰'; // Hamburger icon
+    toggleButton.textContent = '☰';
 
     document.querySelector('.header-content').appendChild(toggleButton);
 
     toggleButton.addEventListener('click', function() {
         navBar.classList.toggle('show');
     });
+
+    const themeToggle = document.getElementById('theme-toggle');
 
     function setTheme(theme) {
         if (theme === 'dark') {
@@ -27,23 +28,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 body.classList.remove('light-mode');
                 body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'system');
-                themeSelect.value = 'system';
             } else {
                 body.classList.remove('dark-mode');
                 body.classList.add('light-mode');
                 localStorage.setItem('theme', 'system');
-                themeSelect.value = 'system';
             }
         }
+        updateActiveThemeIcon();
     }
 
-    const savedTheme = localStorage.getItem('theme');
-    let initialTheme = savedTheme || 'system';
+    function updateActiveThemeIcon() {
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'system' : 'light');
+        themeToggle.querySelectorAll('i').forEach(icon => {
+            icon.classList.remove('active');
+            if (icon.dataset.theme === currentTheme) {
+                icon.classList.add('active');
+            } else if (currentTheme === 'system' && icon.dataset.theme === (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) {
+                icon.classList.add('active');
+            }
+        });
+    }
 
-    setTheme(initialTheme);
-    themeSelect.value = initialTheme;
-
-    themeSelect.addEventListener('change', function() {
-        setTheme(this.value);
+    themeToggle.addEventListener('click', function(event) {
+        if (event.target.tagName === 'I') {
+            const theme = event.target.dataset.theme;
+            setTheme(theme);
+        }
     });
+
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    setTheme(savedTheme);
 });
