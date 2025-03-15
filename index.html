@@ -7,19 +7,23 @@
     <title>- HARYs - | The Discord Bot Developer & Server Manager</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="light-mode">
-    <canvas id="snowfall"></canvas>
-
     <div class="header">
-        <div class="header-content" style="display: flex; align-items: center;">
+        <div class="header-content">
             <img src="https://i.postimg.cc/vHsJNFgf/harys722.png" alt="Website Logo" class="logo">
             <a href="https://harys722.netlify.app/" class="title">- HARYs -</a>
         </div>
         <div class="nav-bar">
-            <button id="toggle-mode" aria-label="Toggle Dark/Light Mode">🌘</button>
+            <div class="toggle-container">
+                <select id="theme-select">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="system">System</option>
+                </select>
+            </div>
             <ul>
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#my-works">My Works</a></li>
@@ -31,7 +35,6 @@
         </div>
     </div>
 
-    <!-- Content Sections -->
     <div class="content" id="about-me">
         <h2>About Me</h2>
         <p>I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!</p>
