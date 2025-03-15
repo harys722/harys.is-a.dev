@@ -7,17 +7,17 @@ body {
 }
 
 body.light-mode {
-    background-color: #f9f9f9;
+    background-color: #fff9e6; /* Light yellowish background */
     color: #333;
 }
 
 body.light-mode .header,
 body.light-mode .content,
 body.light-mode footer,
-body.light-mode #theme-select {
-    background: rgba(255, 255, 255, 0.6); /* White glass, less transparent */
+body.light-mode #theme-toggle {
+    background: rgba(255, 255, 230, 0.6); /* Light yellowish glass */
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(200, 200, 200, 0.5); /* Light border */
+    border: 1px solid rgba(240, 240, 220, 0.5); /* Light border */
 }
 
 body.dark-mode {
@@ -28,10 +28,27 @@ body.dark-mode {
 body.dark-mode .header,
 body.dark-mode .content,
 body.dark-mode footer,
-body.dark-mode #theme-select {
-    background: rgba(255, 204, 0, 0.15); /* Lightning yellow glass, slightly more opaque */
+body.dark-mode #theme-toggle {
+    background: rgba(255, 204, 0, 0.15); /* Lightning yellow glass */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 204, 0, 0.3); /* Yellow border */
+}
+
+/* ... (rest of your CSS) ... */
+
+#theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+#theme-toggle i {
+    font-size: 1.2em;
+    cursor: pointer;
+    color: inherit;
+    margin: 0 5px;
 }
 
 .header {
