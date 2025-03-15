@@ -13,9 +13,11 @@ body.light-mode {
 
 body.light-mode .header,
 body.light-mode .content,
-body.light-mode footer {
-    background: rgba(255, 255, 255, 0.4); /* White glass */
+body.light-mode footer,
+body.light-mode #theme-select {
+    background: rgba(255, 255, 255, 0.6); /* White glass, less transparent */
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(200, 200, 200, 0.5); /* Light border */
 }
 
 body.dark-mode {
@@ -25,9 +27,11 @@ body.dark-mode {
 
 body.dark-mode .header,
 body.dark-mode .content,
-body.dark-mode footer {
-    background: rgba(255, 204, 0, 0.1); /* Lightning yellow glass */
+body.dark-mode footer,
+body.dark-mode #theme-select {
+    background: rgba(255, 204, 0, 0.15); /* Lightning yellow glass, slightly more opaque */
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 204, 0, 0.3); /* Yellow border */
 }
 
 .header {
@@ -38,8 +42,8 @@ body.dark-mode footer {
     position: sticky;
     top: 0;
     z-index: 100;
-    width: 100%; /* Full width */
-    box-sizing: border-box; /* Include padding in width */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .header-content {
@@ -88,9 +92,6 @@ body.dark-mode footer {
 }
 
 #theme-select {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 8px 12px;
     border-radius: 5px;
     color: inherit;
@@ -154,8 +155,8 @@ footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 20px;
-    width: 100%; /* Full width */
-    box-sizing: border-box; /* Include padding in width */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 footer .socials a {
@@ -172,8 +173,18 @@ footer .socials a {
     }
 
     .nav-bar {
+        display: none; /* Hide nav by default on mobile */
         flex-direction: column;
-        align-items: flex-start;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust as needed */
+        left: 0;
+        background: inherit; /* Use same glass effect */
+        z-index: 101;
+    }
+
+    .nav-bar.show {
+        display: flex; /* Show nav when class 'show' is added */
     }
 
     .nav-bar ul {
@@ -191,11 +202,23 @@ footer .socials a {
     }
 
     .header-content {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row; /* Return to row */
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
     }
 
-    .nav-bar {
-        width: 100%;
+    .toggle-button {
+        display: block; /* Show toggle button */
+        cursor: pointer;
+        font-size: 1.5em; /* Adjust size */
     }
+
+    .toggle-container{
+        margin-right: 0;
+    }
+}
+
+.toggle-button {
+    display: none; /* Hide by default */
 }
