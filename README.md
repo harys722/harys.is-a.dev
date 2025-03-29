@@ -1,11 +1,2 @@
-# Bot Website
-
-This website is a simple demonstration of what a Discord bot website can look like.
-
-## Installation
-
-To use this website, simply clone this repository and open the `index.html` file in your web browser.
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
+# - HARYs -
+I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!
