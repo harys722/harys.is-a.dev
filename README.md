@@ -1,2 +1,2 @@
-# - HARYs -
-I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape. Enhancing my skills and expanding my horizons through continuous learning. That's who I am!
+<h1>harys722</h1>
+<p>Hey,👋 This is my personal website to showcase my skills and stuff. Feel free to send me a message in Discord or shoot me an email at <a href="mailto:contact@harys.is-a.dev" title="Send me a message" target="_blank">contact@harys.is-a.dev</a>.</p>
