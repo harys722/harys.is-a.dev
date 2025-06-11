@@ -7,5 +7,13 @@
     { "source": "/reddit", "destination": "https://www.reddit.com/u/harys722", "permanent": true },
     { "source": "/fun-guild/invite", "destination": "https://discord.gg/dz4f9bTcqe", "permanent": true },
     { "source": "/the-community/invite", "destination": "https://discord.gg/CPN5eYPABx", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/images/(.*)", "destination": "/images/$1" },
+    { "source": "/api/v1/(.*)", "destination": "/api/v1/$1" },
+    { "source": "/", "destination": "/index.html" },
+    {  "source": "/api", "destination": "/api.html" },
+    { "source": "/images", "destination": "/images/index.html" },
+    { "source": "/(.*)", "destination": "/404.html" }
   ]
 }
