@@ -1,3 +1,11 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/github", "destination": "https://github.com/harys722/", "permanent": true },
+    { "source": "/bluesky", "destination": "https://harys722.bsky.social/", "permanent": true },
+    { "source": "/discord", "destination": "https://discord.com/users/1203357768610746385/", "permanent": true },
+    { "source": "/reddit", "destination": "https://www.reddit.com/u/harys722", "permanent": true },
+    { "source": "/fun-guild/invite", "destination": "https://discord.gg/dz4f9bTcqe", "permanent": true },
+    { "source": "/the-community/invite", "destination": "https://discord.gg/CPN5eYPABx", "permanent": true }
+  ]
 }
