@@ -4,10 +4,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-        window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-        });
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -18,14 +20,12 @@ document.querySelectorAll('.server-row').forEach(row => {
         const popup = document.getElementById(targetId);
         const allPopups = document.querySelectorAll('.popup');
 
-    // Close all other pop-ups
+        // Close all other pop-ups
         allPopups.forEach(p => {
-            if (p !== popup) {
-                p.style.display = 'none';
-            }
+            p.style.display = 'none';
         });
 
-    // Toggle the clicked pop-up
+        // Toggle the clicked pop-up
         if (popup.style.display === 'table-row') {
             popup.style.display = 'none';
         } else {
