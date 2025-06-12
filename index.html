@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>- HARYs - | Portfolio</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Meta tags for Discord -->
+    <meta name="theme-color" content="#FFD700" />
+    <meta property="og:title" content="- HARYs - | Portfolio" />
+    <meta property="og:description" content="I am a young student and passionate developer. This is my portfolio website to showcase my skills and stuff." />
+    <meta property="og:image" content="images/harys722.png" />
+
+    <!-- Links -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="container">
         <div class="header">
@@ -42,47 +49,116 @@
 
             <section id="discord" class="section" style="--section-index: 3;">
                 <h2 class="text-3xl font-bold mb-4 gradient-text text-center">Discord Servers</h2>
-                <p class="text-lg">I'm currently handling multiple Discord Servers. I'm a moderator in several servers, including:</p>
+                <p class="text-lg">I'm currently handling multiple Discord Servers. Click a row to view more details about each server:</p>
                 <table>
                     <tr>
-                        <th width="300">📝 Server Name</th>
-                        <th width="300">🔗 Invitation Link</th>
+                        <th width="400">📝 Server Name</th>
                         <th width="300">📌 Position</th>
                     </tr>
-                    <tr>
+                    <tr class="server-row" data-target="popup-1">
                         <td>The Community</td>
-                        <td><a href="https://discord.gg/CPN5eYPABx" title="The Community" class="hover:underline" target="_blank">CPN5eYPABx ↗</a></td>
                         <td>Owner</td>
                     </tr>
-                    <tr>
+                    <tr class="popup" id="popup-1">
+                        <td colspan="2">
+                            <div class="popup-content">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">The Community</h3>
+                                <p><strong>Position:</strong> Owner</p>
+                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/CPN5eYPABx" target="_blank" class="hover:underline">CPN5eYPABx ↗</a></p>
+                                <p><strong>Description:</strong> A vibrant community for connecting, sharing, and collaborating on various interests.</p>
+                                <p><strong>Members:</strong> ~500 (approximate)</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="server-row" data-target="popup-2">
                         <td>Fun | Chat & Hangout</td>
-                        <td><a href="https://discord.gg/dz4f9bTcqe" title="Fun | Chat & Hangout" class="hover:underline" target="_blank">dz4f9bTcqe ↗</a></td>
                         <td>Owner</td>
                     </tr>
-                    <tr>
+                    <tr class="popup" id="popup-2">
+                        <td colspan="2">
+                            <div class="popup-content">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Fun | Chat & Hangout</h3>
+                                <p><strong>Position:</strong> Owner</p>
+                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/dz4f9bTcqe" target="_blank" class="hover:underline">dz4f9bTcqe ↗</a></p>
+                                <p><strong>Description:</strong> A laid-back server for casual chats, memes, and hanging out.</p>
+                                <p><strong>Members:</strong> ~300 (approximate)</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="server-row" data-target="popup-3">
                         <td>Erensko API</td>
-                        <td><a href="https://discord.gg/pgwGsPRdYs" title="Erensko API" class="hover:underline" target="_blank">pgwGsPRdYs ↗</a></td>
                         <td>Moderator</td>
                     </tr>
-                    <tr>
+                    <tr class="popup" id="popup-3">
+                        <td colspan="2">
+                            <div class="popup-content">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Erensko API</h3>
+                                <p><strong>Position:</strong> Moderator</p>
+                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/pgwGsPRdYs" target="_blank" class="hover:underline">pgwGsPRdYs ↗</a></p>
+                                <p><strong>Description:</strong> A server for developers using the Erensko API, with support and updates.</p>
+                                <p><strong>Members:</strong> ~200 (approximate)</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="server-row" data-target="popup-4">
                         <td>Guess The Number Support</td>
-                        <td><a href="https://discord.gg/bQqbcaupuH" title="Guess The Number Support" class="hover:underline" target="_blank">bQqbcaupuH ↗</a></td>
                         <td>Moderator</td>
                     </tr>
-                    <tr>
+                    <tr class="popup" id="popup-4">
+                        <td colspan="2">
+                            <div class="popup-content">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Guess The Number Support</h3>
+                                <p><strong>Position:</strong> Moderator</p>
+                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/bQqbcaupuH" target="_blank" class="hover:underline">bQqbcaupuH ↗</a></p>
+                                <p><strong>Description:</strong> Support server for the Guess The Number game, offering help and community events.</p>
+                                <p><strong>Members:</strong> ~150 (approximate)</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="server-row" data-target="popup-5">
                         <td>Cosmos Lounge</td>
-                        <td><a href="https://discord.gg/uP4tue5NkV" title="Cosmos Lounge" class="hover:underline" target="_blank">uP4tue5NkV ↗</a></td>
                         <td>Moderator</td>
                     </tr>
-                    <tr>
+                    <tr class="popup" id="popup-5">
+                        <td colspan="2">
+                            <div class="popup-content">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Cosmos Lounge</h3>
+                                <p><strong>Position:</strong> Moderator</p>
+                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/uP4tue5NkV" target="_blank" class="hover:underline">uP4tue5NkV ↗</a></p>
+                                <p><strong>Description:</strong> A chill server for space enthusiasts and casual discussions.</p>
+                                <p><strong>Members:</strong> ~250 (approximate)</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="server-row" data-target="popup-6">
                         <td>The Royal Server</td>
-                        <td><a href="https://discord.gg/gdVSTUTznt" title="The Royal Server" class="hover:underline" target="_blank">gdVSTUTznt ↗</a></td>
                         <td>Senior Moderator</td>
                     </tr>
-                    <tr>
+                    <tr class="popup" id="popup-6">
+                        <td colspan="2">
+                            <div class="popup-content">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">The Royal Server</h3>
+                                <p><strong>Position:</strong> Senior Moderator</p>
+                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/gdVSTUTznt" target="_blank" class="hover:underline">gdVSTUTznt ↗</a></p>
+                                <p><strong>Description:</strong> A premium community with exclusive events and discussions.</p>
+                                <p><strong>Members:</strong> ~400 (approximate)</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="server-row" data-target="popup-7">
                         <td>SHIELDER</td>
-                        <td><a href="https://discord.gg/hVSjw7gXk5" title="SHIELDER" class="hover:underline" target="_blank">hVSjw7gXk5 ↗</a></td>
                         <td>Alpha Tester</td>
+                    </tr>
+                    <tr class="popup" id="popup-7">
+                        <td colspan="2">
+                            <div class="popup-content">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">SHIELDER</h3>
+                                <p><strong>Position:</strong> Alpha Tester</p>
+                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/hVSjw7gXk5" target="_blank" class="hover:underline">hVSjw7gXk5 ↗</a></p>
+                                <p><strong>Description:</strong> A testing server for the SHIELDER project, focused on security and innovation.</p>
+                                <p><strong>Members:</strong> ~100 (approximate)</p>
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </section>
