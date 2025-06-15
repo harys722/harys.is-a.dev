@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Embed Builder | Free Discord Tools</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/deb.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../images/harys722.png" alt="Profile Image" title="Harys | Embed Builder">
+            <span>Discord Embed Builder</span>
+        </div>
+
+        <div class="content">
+            <section class="section" style="--section-index: 1;">
+                <h2 class="text-3xl font-bold mb-4 gradient-text text-center">Create Your Discord Embed</h2>
+                <p class="text-lg mb-4">Build up to 10 embeds with custom properties, preview them, generate code, or send via webhook. Matches Discord API limits.</p>
+                
+                <div class="card">
+                    <div class="tabs" id="embed-tabs"></div>
+                    <button onclick="addEmbed()">Add Embed</button>
+                    <button onclick="removeEmbed()" id="remove-embed" style="display: none;">Remove Embed</button>
+                    <button onclick="clearAllEmbeds()" id="clear-all-embeds" style="display: none;">Clear All Embeds</button>
+                </div>
+
+                <div class="card" id="embed-properties-card">
+                    <h3 class="text-xl font-semibold gradient-text mb-4">Embed Properties</h3>
+                    <div id="embed-forms">
+                        <label>Message Content (shared across all embeds, max 2000 chars)</label>
+                        <textarea id="message-content" placeholder="Message content to send with embeds" maxlength="2000" rows="3"></textarea>
+                        <span class="counter" id="counter-message-content">0/2000</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-semibold gradient-text mb-4">Embed Preview</h3>
+                    <div id="embed-preview"></div>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-semibold gradient-text mb-4">Generated Code</h3>
+                    <div class="tabs" id="code-tabs">
+                        <div class="tab active" data-code="json">JSON</div>
+                        <div class="tab" data-code="discordpy">discord.py</div>
+                        <div class="tab" data-code="discordjs">discord.js</div>
+                    </div>
+                    <button onclick="copyCode()">Copy Code</button>
+                    <pre id="code-output"></pre>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-semibold gradient-text mb-4">Send via Webhook</h3>
+                    <input type="text" id="webhook-url" placeholder="Webhook URL (e.g., https://discord.com/api/webhooks/...)">
+                    <button onclick="sendWebhook()">Send Embed</button>
+                    <p id="webhook-status"></p>
+                </div>
+            </section>
+
+            <footer>
+                <p>© 2025 harys722. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+  
+    <script src="./assets/js/deb.js"></script>
+</body>
+</html>
