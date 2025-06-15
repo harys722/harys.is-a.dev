@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>- HARYs - | Free Discord Tools</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        .header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #FFD700;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .header img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        .error-card {
+            background-color: #2d2d2d;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #FFD700;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+        .error-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: 0.5s;
+        }
+        .error-card:hover::before {
+            left: 100%;
+        }
+        .error-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        button {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            margin-top: 20px;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #B9BBBE;
+            border-top: 1px solid #FFD700;
+            margin-top: 10px;
+            animation: fadeIn 1s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://harys.is-a.dev/images/harys722.png" alt="Profile Image" title="Images Storage">
+            <span>Free Discord Tools</span>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="error-card">
+                    <h1 class="text-4xl font-bold gradient-text mb-4">A Local Images Storage For The Website</h1>
+                    <p class="text-lg mb-6">
+                        Hey, here you can find some awesome Discord tools.
+                    </p>
+                    <img src="https://harys.is-a.dev/images/images-storage.png" style="display: block; margin: 0 auto;" alt="Image" title="Images Storage">
+               <!--     <p class="gradient-text">
+                       <a href="https://harys.is-a.dev/harys722.png" title="harys722" target="_blank" class="hover:underline">harys722</a>
+                    </p> -->
+                </div>
+            <button class="button" onclick="history.back()">Go Back</button>
+            <button class="button" onclick="window.location.href='https://harys.is-a.dev'">Home Page</button>
+        </section>
+        </div>
+    <footer>
+            <p>© 2025 harys722. All rights reserved.</p>
+        </footer>
+</body>
+</html>
