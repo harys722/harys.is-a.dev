@@ -1,0 +1,318 @@
+    html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            color: #e5e7eb;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2c6e6e 0%, #4a8f8f 50%, #2c6e6e 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 20s ease-in-out infinite;
+            z-index: -1;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#glow)"><circle cx="10%" cy="20%" r="2" fill="#FFD700" opacity="0.7"><animate attributeName="cx" values="10%;12%;10%" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/></circle><circle cx="80%" cy="30%" r="1.5" fill="#FFA500" opacity="0.6"><animate attributeName="cx" values="80%;82%;80%" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;0.9;0.6" dur="4s" repeatCount="indefinite"/></circle><circle cx="50%" cy="70%" r="2.5" fill="#FFD700" opacity="0.8"><animate attributeName="cx" values="50%;52%;50%" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/></circle><circle cx="30%" cy="10%" r="1" fill="#FFA500" opacity="0.7"><animate attributeName="cx" values="30%;32%;30%" dur="5.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.7;0.9;0.7" dur="3.5s" repeatCount="indefinite"/></circle><circle cx="60%" cy="80%" r="2" fill="#FFD700" opacity="0.6"><animate attributeName="cx" values="60%;62%;60%" dur="4.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/></circle></g></svg>');
+            z-index: -1;
+            pointer-events: none;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        .header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #FFD700;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .header img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        .section {
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: calc(0.2s * var(--section-index));
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background-color: #2d2d2d;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 1px solid #FFD700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            background: #1a1a1a;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .tab:hover {
+            background: #40444B;
+            transform: scale(1.05);
+        }
+        .tab.active {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+        }
+        .embed-preview {
+            background-color: #36393f;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #5865F2;
+            max-width: 400px;
+            margin: 10px auto;
+            font-size: 14px;
+            position: relative;
+            min-height: 60px;
+            display: block;
+        }
+        .message-content {
+            background-color: #2f3136;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 0 auto 5px auto;
+            font-size: 14px;
+            color: #dcddde;
+            max-width: 400px;
+            text-align: center;
+            display: block;
+        }
+        .embed-preview .author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .embed-preview .author img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .embed-preview .title {
+            font-weight: 600;
+            color: #00b0f4;
+            margin-bottom: 8px;
+        }
+        .embed-preview .description {
+            margin-bottom: 12px;
+            white-space: pre-wrap;
+        }
+        .embed-preview .fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .embed-preview .field {
+            flex: 1 1 100%;
+            margin-bottom: 8px;
+        }
+        .embed-preview .field.inline {
+            flex: 0 0 45%;
+        }
+        .embed-preview .field strong {
+            display: block;
+            font-weight: 600;
+        }
+        .embed-preview .image img {
+            max-width: 100%;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        .embed-preview .thumbnail {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .embed-preview .thumbnail img {
+            max-width: 80px;
+            border-radius: 4px;
+        }
+        .embed-preview .footer {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+            font-size: 12px;
+            color: #72767d;
+        }
+        .embed-preview .footer img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .embed-preview .timestamp {
+            font-size: 12px;
+            color: #72767d;
+        }
+        .footer-separator {
+            font-size: 12px;
+            color: #72767d;
+            margin: 0 4px;
+        }
+        input, textarea, select {
+            background-color: #1a1a1a;
+            color: #e5e7eb;
+            border: 1px solid #FFD700;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="color"] {
+            width: 50px;
+            height: 30px;
+            padding: 2px;
+            cursor: pointer;
+        }
+        input[type="datetime-local"], input[type="text"].timestamp-manual {
+            background-color: #1a1a1a;
+            border: 1px solid #FFD700;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .toggle {
+            display: inline-block;
+            background: #1a1a1a;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .toggle.active {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+        }
+        button {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px 5px;
+            font-weight: 600;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+        }
+        pre {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #FFD700;
+            font-family: 'Courier New', monospace;
+        }
+        a {
+            color: #FFD700;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+        a:hover {
+            color: #FFA500;
+            text-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #B9BBBE;
+            border-top: 1px solid #FFD700;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-in;
+        }
+        .field {
+            border: 1px solid #4b5563;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .error {
+            color: #ff4d4d;
+            font-size: 0.9rem;
+            margin-top: 2px;
+            display: flexz;
+        }
+        .counter {
+            font-size: 0.8rem;
+            color: #B9BBBE;
+            text-align: right;
+            display: block;
+            margin-top: 2px;
+        }
+        .timestamp-display {
+            font-size: 0.9rem;
+            color: #B9BBBE;
+            margin-top: 5px;
+        }
+        .no-embeds {
+            text-align: center;
+            color: #B9BBBE;
+            font-size: 1rem;
+            margin: 20px 0;
+        }
