@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Tester | Free AI Tools</title>
+    <link rel="stylesheet" href="../assets/css/gat.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://harys.is-a.dev/images/gemini-ai.png" alt="Gemini AI" />
+            Gemini AI Tester
+        </div>
+        
+        <div class="setup-container" id="setupContainer">
+        <div class="content">
+            <h1>Gemini AI</h1>
+            <p>Test your Gemini API key and start chatting!</p>
+        </div>
+        
+        <div class="form-group">
+            <label for="apiKey">Gemini API Key</label>
+            <input type="password" id="apiKey" placeholder="Enter your Gemini API key..." />
+        </div>
+        
+        <button class="btn" id="testBtn" onclick="testApiKey()">
+            <span id="btnText">Srart Testing</span>
+        </button>
+        <div class="api-container">
+            <p><strong>Need an API key?</strong> Go and get it <a href="https://aistudio.google.com/apikey" target="_blank">here</a> !</p>
+        </div>
+        
+        <div class="status" id="status" style="display: none;"></div>
+    </div>
+    
+    <div class="container chat-container chat-interface" id="chatContainer">
+                    <button class="back-btn" onclick="goBack()">← Back to Setup</button>
+            
+            <div class="header">
+                Your API key is valid! Start chatting below.
+            </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai">
+                <strong>Gemini:</strong> Hello! I'm Gemini AI. How can I help you today?
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)" />
+            <button class="send-btn" onclick="sendMessage()">
+                <span id="sendIcon">→</span>
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 harys722. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/gat.js"></script>
+</body>
+</html>
