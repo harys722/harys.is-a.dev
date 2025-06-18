@@ -44,6 +44,9 @@
   ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/:path*", "destination": "/404.html" }
+    { "source": "/:path*", "destination": "/404.html" },
+    { "source": "/README.md", "destination": "/404.html" },
+    { "source": "/CNAME", "destination": "/404.html" },
+    { "source": "/google6e69179a7ec15e2f", "destination": "/404.html" }
   ]
 }
