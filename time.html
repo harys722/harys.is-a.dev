@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker | harys722</title>
+
+    <!-- Links -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/time.css"
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="./images/clock.png" alt="" title="Time">
+            <span>Time Tracker</span>
+        </div>
+        <div class="time-display">
+            <div class="location-header">
+                <span class="flag">🇵🇰</span>
+                <span>Karachi, Pakistan</span>
+            </div>
+            <div class="current-time pulse" id="myTime">--:--:--</div>
+            <div class="current-date" id="myDate">Loading...</div>
+        </div>
+        
+        <div class="greeting-message">
+            <div class="greeting" id="greeting">Good day!</div>
+            <div class="timezone-info" id="timezoneInfo">
+                Determining your timezone...
+            </div>
+            <div class="location-info">
+                The time above is the current time in Karachi, Pakistan (UTC+5), where I live and work. 
+                This page updates every second to show you the exact time in my timezone.
+            </div>
+            
+            <div class="visitor-time">
+                <h3>Your Local Time:</h3>
+                <div class="visitor-time-display" id="visitorTime">--:--:--</div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 harys722. All rights reserved.</p>
+        </footer>
+    </div>
+  
+    <script src="./assets/js/time.js"></script>
+</body>
+</html>
