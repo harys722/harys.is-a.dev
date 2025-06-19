@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker | Free Tools</title>
+
+    <!-- Links -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/color.css">
+</head>
+<body>
+    <div class="header">
+        <img src="https://harys.is-a.dev/images/color-picker.png" alt="Timestamp" />
+        <h1>Color Picker</h1>
+    </div>
+
+    <div class="subtitle">
+        <p>Use this color picker tool to pick a color and test its appearance for your projects, Discord bot embeds, role colours, and more! Get color's hex code, RGB, RGBA, HSL, HSLA, and integer values.</p>
+    </div>
+
+    <div class="main-content">
+        <div class="section">
+            <div class="section-title">🎨 Color Selection</div>
+            <div class="color-display-container">
+                <div class="color-display" id="colorDisplay"></div>
+                <button class="random-btn" onclick="generateRandomColor()">Random</button>
+            </div>
+            
+            <div class="picker-controls">
+                <div class="control-group">
+                    <label>Hue</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="hueSlider" min="0" max="360" value="43" aria-label="Hue slider">
+                        <span class="slider-value" id="hueValue">43</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Saturation</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="satSlider" min="0" max="100" value="95" aria-label="Saturation slider">
+                        <span class="slider-value" id="satValue">95%</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Lightness</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="lightSlider" min="0" max="100" value="50" aria-label="Lightness slider">
+                        <span class="slider-value" id="lightValue">50%</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Alpha</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="alphaSlider" min="0" max="100" value="100" aria-label="Alpha slider">
+                        <span class="slider-value" id="alphaValue">100%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 20px;">🎯 Color Presets</div>
+            <div class="presets-grid" id="presetsGrid"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📋 Color Formats</div>
+            <div class="format-grid">
+                <div class="format-item">
+                    <div class="format-label">
+                        HEX
+                        <button class="copy-btn" onclick="copyToClipboard('hexValue')">Copy</button>
+                    </div>
+                    <div class="format-value" id="hexValue">#F59E0B</div>
+                </div>
+                
+                <div class="format-item">
+                    <div class="format-label">
+                        RGB
+                        <button class="copy-btn" onclick="copyToClipboard('rgbValue')">Copy</button>
+                    </div>
+                    <div class="format-value" id="rgbValue">rgb(245, 158, 11)</div>
+                </div>
+                
+                <div class="format-item">
+                    <div class="format-label">
+                        RGBA
+                        <button class="copy-btn" onclick="copyToClipboard('rgbaValue')">Copy</button>
+                    </div>
+                    <div class="format-value" id="rgbaValue">rgba(245, 158, 11, 1)</div>
+                </div>
+                
+                <div class="format-item">
+                    <div class="format-label">
+                        HSL
+                        <button class="copy-btn" onclick="copyToClipboard('hslValue')">Copy</button>
+                    </div>
+                    <div class="format-value" id="hslValue">hsl(43, 95%, 50%)</div>
+                </div>
+                
+                <div class="format-item">
+                    <div class="format-label">
+                        HSLA
+                        <button class="copy-btn" onclick="copyToClipboard('hslaValue')">Copy</button>
+                    </div>
+                    <div class="format-value" id="hslaValue">hsla(43, 95%, 50%, 1)</div>
+                </div>
+                
+                <div class="format-item">
+                    <div class="format-label">
+                        Integer
+                        <button class="copy-btn" onclick="copyToClipboard('intValue')">Copy</button>
+                    </div>
+                    <div class="format-value" id="intValue">16096779</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="advanced-controls">
+        <div class="section">
+            <div class="section-title">🌈 Color Harmony</div>
+            <select class="harmony-select" id="harmonyType" onchange="generateHarmony()">
+                <option value="complementary">Complementary</option>
+                <option value="triadic">Triadic</option>
+                <option value="analogous">Analogous</option>
+                <option value="tetradic">Tetradic</option>
+                <option value="monochromatic">Monochromatic</option>
+            </select>
+            <div class="harmony-colors" id="harmonyColors"></div>
+        </div>
+    </div>
+
+    <div class="gradient-section">
+        <div class="section-title">✨ Gradient Generator</div>
+        <div class="gradient-display" id="gradientDisplay"></div>
+        <div class="gradient-controls">
+            <label>Type:</label>
+            <select id="gradientType" onchange="updateGradient()">
+                <option value="linear">Linear</option>
+                <option value="radial">Radial</option>
+                <option value="conic">Conic</option>
+            </select>
+            
+            <label>Angle:</label>
+            <input type="range" id="gradientAngle" min="0" max="360" value="45" onchange="updateGradient()">
+            <span id="angleValue">45°</span>
+            
+            <button class="copy-btn" onclick="copyToClipboard('gradientValue')" style="margin-left: auto;">Copy CSS</button>
+        </div>
+        <div class="format-value" id="gradientValue" style="margin-top: 12px;">linear-gradient(45deg, #f59e0b, #0a61f4)</div>
+    </div>
+
+    <footer>
+        © 2025 harys722. All rights reserved.
+    </footer>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="../assets/js/color.js"></script>
+</body>
+</html>
