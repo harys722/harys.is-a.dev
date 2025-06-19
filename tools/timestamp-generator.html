@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timestamp Generator | Free Discord Tools</title>
+
+    <!-- Links-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/time-gen.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+        <div class="header">
+            <img src="https://harys.is-a.dev/images/timestamp.png" alt="Timestamp" />
+            <h1>Timestamp Generator</h1>
+        </div>
+
+        <div class="subtitle">
+            <p>This tool can generate Unix timestamps for you! Just enter the date and time, choose a format, and copy paste it into your project! It can also be used in Discord. Users will see the exact date and time when they hover over the timestamp.</p>
+        </div>
+
+        <div class="timezone-display" id="timezoneDisplay">
+            Loading timezone...
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <div>
+                    <label for="dateInput">Select Date</label>
+                    <input type="date" id="dateInput">
+                </div>
+                <div>
+                    <label for="timeInput">Select Time</label>
+                    <input type="time" id="timeInput">
+                </div>
+            </div>
+            <label>Quick Actions</label>
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="setNow()">Now</button>
+                <button class="quick-btn" onclick="setTomorrow()">Tomorrow</button>
+                <button class="quick-btn" onclick="setNext3Days()">Next 3 Days</button>
+                <button class="quick-btn" onclick="setNextWeek()">Next Week</button>
+                <button class="quick-btn" onclick="setNextMonth()">Next Month</button>
+            </div>
+        </div>
+
+            <div class="unix-display">
+                <div class="unix-label">Unix Timestamp</div>
+                <div class="unix-value" id="unixValue">1718668800</div>
+            </div>
+
+            <h2 class="results-title">Discord Timestamp Formats</h2>
+            
+            <div id="timestampResults">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+        <br>
+            <div class="info-unix">
+                <h3>What is Unix time stamp?</h3>
+                <p>A Unix timestamp is a way of tracking time. The count starts from the Unix epoch on January 1, 1970 UTC. Therefore, a Unix timestamp is simply the number of seconds between a specific date and the Unix epoch.</p>
+            
+
+            <table class="time-reference-table">
+                    <thead>
+                        <tr>
+                            <th>Human Readable Time</th>
+                            <th>Seconds</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 Hour</td>
+                            <td>3600 Seconds</td>
+                        </tr>
+                        <tr>
+                            <td>1 Day</td>
+                            <td>86400 Seconds</td>
+                        </tr>
+                        <tr>
+                            <td>1 Week</td>
+                            <td>604800 Seconds</td>
+                        </tr>
+                        <tr>
+                            <td>1 Month (30.44 days)</td>
+                            <td>2629743 Seconds</td>
+                        </tr>
+                        <tr>
+                            <td>1 Year (365.24 days)</td>
+                            <td>31556926 Seconds</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+            <p><strong>January 19, 2038</strong></p>
+            <p>On this date, Unix timestamps will stop working due to a 32-bit overflow. Before that moment, millions of applications will either need to adopt a new convention for timestamps or migrate to 64-bit systems, which will buy timestamps a little more time.</p>
+            </div>
+
+            <footer>
+        <p>© 2025 harys722. All rights reserved.</p>
+    </footer>
+    </div>
+
+    <script>
+
+    <script src="/assets/js/time-gen.js"></script>
+</body>
+</html>
