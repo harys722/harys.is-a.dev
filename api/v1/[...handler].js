@@ -2,7 +2,7 @@ export default function handler(req, res) {
   const { handler } = req.query; // array of path segments
 
   // define valid API routes
-  const validRoutes = ['time', 'list', 'encode', 'decode', 'emoji', 'color', 'list'];
+  const validRoutes = ['ALL', 'API'];
 
   if (handler && validRoutes.includes(handler[0])) {
     // process valid route
