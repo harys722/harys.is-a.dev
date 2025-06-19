@@ -1,5 +1,9 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/:slug", "destination": "/404.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(css|js)/(.*)",
@@ -13,9 +17,6 @@
   ],
   "redirects": [
     { "source": "/vercel.json", "destination": "/404.html", "permanent": false },
-    { "source": "/README.md", "destination": "/404.html", "permanent": false },
-    { "source": "/CNAME", "destination": "/404.html", "permanent": false },
-    { "source": "/google6e69179a7ec15e2f", "destination": "/404.html", "permanent": false },
     { "source": "/github", "destination": "https://github.com/harys722/", "permanent": true },
     { "source": "/bluesky", "destination": "https://harys722.bsky.social/", "permanent": true },
     { "source": "/discord", "destination": "https://discord.com/users/1203357768610746385/", "permanent": true },
@@ -24,29 +25,13 @@
     { "source": "/the-community/invite", "destination": "https://discord.gg/CPN5eYPABx", "permanent": true },
     {
       "source": "/assets/css/:path*",
-      "missing": [
-        {
-          "type": "header",
-          "key": "referer"
-        }
-      ],
-      "destination": "/404.html",
-      "permanent": false
+      "missing": [{ "type": "header", "key": "referer" }],
+      "destination": "/404.html"
     },
     {
-      "source": "/assets/js/:path*", 
-      "missing": [
-        {
-          "type": "header",
-          "key": "referer"
-        }
-      ],
-      "destination": "/404.html",
-      "permanent": false
+      "source": "/assets/js/:path*",
+      "missing": [{ "type": "header", "key": "referer" }],
+      "destination": "/404.html"
     }
-  ],
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/:path*", "destination": "/404.html" }
   ]
 }
