@@ -1,5 +1,5 @@
 // Import questions from separate file
-const { questions } = require('/assets/code/data.js');
+import { questions } from './assets/code/data.js'
 
 export default function handler(req, res) {
   // Set CORS headers for cross-origin requests
