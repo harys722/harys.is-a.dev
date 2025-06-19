@@ -1,5 +1,5 @@
 // Import questions from separate file
-import { questions } from './assets/code/data.js'
+import { questions } from '..../assets/code/data.js'
 
 export default function handler(req, res) {
   // Set CORS headers for cross-origin requests
@@ -31,7 +31,6 @@ export default function handler(req, res) {
       question: randomQuestion,
       id: randomIndex + 1,
       total_questions: questions.length,
-      generated_at: new Date().toISOString(),
       info: {
         credits: "Made by harys722, only available for cool people!",
         website: "https://harys.is-a.dev/"
