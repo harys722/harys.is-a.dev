@@ -2,7 +2,8 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/:slug", "destination": "/404.html" }
+    { "source": "/api/(.*)", "destination": "/404.html" },
+    { "source": "/(.*)", "destination": "/404.html" }
   ],
   "headers": [
     {
@@ -30,6 +31,11 @@
     },
     {
       "source": "/assets/js/:path*",
+      "missing": [{ "type": "header", "key": "referer" }],
+      "destination": "/404.html"
+    },
+    {
+      "source": "/assets/code/:path*",
       "missing": [{ "type": "header", "key": "referer" }],
       "destination": "/404.html"
     }
