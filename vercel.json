@@ -2,8 +2,6 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/api/v1/(.*)", "destination": "/api/v1/[...handler].js" },
-    { "source": "/api/(.*)", "destination": "/404.html" },
     { "source": "/(.*)", "destination": "/404.html" }
   ],
   "headers": [
