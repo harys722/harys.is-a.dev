@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/api/v1/(.*)", "destination": "/api/v1/(.*)" },
+    { "source": "/api/v1/(.*)", "destination": "/api/v1/:slug" },
     { "source": "/(.*)", "destination": "/404.html" }
   ],
   "headers": [
