@@ -26,6 +26,7 @@
     { "source": "/reddit", "destination": "https://www.reddit.com/u/harys722", "permanent": true },
     { "source": "/fun-guild/invite", "destination": "https://discord.gg/dz4f9bTcqe", "permanent": true },
     { "source": "/the-community/invite", "destination": "https://discord.gg/CPN5eYPABx", "permanent": true },
+    { "source": "/free-domains", "destination": "https://free-domains.harys.is-a.dev/", "permanent": true },
     {
       "source": "/assets/css/:path*",
       "missing": [{ "type": "header", "key": "referer" }],
