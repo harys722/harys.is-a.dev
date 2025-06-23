@@ -3,159 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>- HARYs - | Free Discord Tools</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            position: relative;
-            font-family: 'Inter', sans-serif;
-            color: #e5e7eb;
-        }
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            font-size: 36px;
-            font-weight: 800;
-            padding: 20px;
-            animation: fadeIn 1s ease-in;
-        }
-        .header img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid #FFD700;
-            object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .header img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        }
-        .error-card {
-            background-color: #2d2d2d;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #FFD700;
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
-            position: relative;
-            overflow: hidden;
-        }
-        .error-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-            transition: 0.5s;
-        }
-        .error-card:hover::before {
-            left: 100%;
-        }
-        .error-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        button {
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            color: #1a1a1a;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-weight: 600;
-            animation: pulse 2s infinite;
-            margin-top: 20px;
-        }
-        button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #B9BBBE;
-            border-top: 1px solid #FFD700;
-            margin-top: 10px;
-            animation: fadeIn 1s ease-in;
-        }
-    </style>
+    <title>Free Powerful Tools | harys722</title>
+    <meta name="description" content="A curated collection of powerful tools to help you work smarter, not harder. Discord tools, utilities, and more.">
+
+    <!-- Links -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tools.css">
 </head>
 <body>
+    <div class="spacer"></div>
     <div class="container">
         <div class="header">
-            <img src="https://harys.is-a.dev/images/harys722.png" alt="Profile Image" title="Images Storage">
-            <span>Free Discord Tools</span>
+            <img src="https://harys.is-a.dev/images/tools.png" alt="Tools">
+            <h1>Free Powerful Tools</h1>
         </div>
-
-        <section class="section">
-            <div class="container">
-                <div class="error-card">
-                    <h1 class="text-4xl font-bold gradient-text mb-4">A Local Images Storage For The Website</h1>
-                    <p class="text-lg mb-6">
-                        Hey, here you can find some awesome Discord tools.
-                    </p>
-                    <img src="https://harys.is-a.dev/images/images-storage.png" style="display: block; margin: 0 auto;" alt="Image" title="Images Storage">
-               <!--     <p class="gradient-text">
-                       <a href="https://harys.is-a.dev/harys722.png" title="harys722" target="_blank" class="hover:underline">harys722</a>
-                    </p> -->
+        <div class="spacer"></div>
+        <div class="subtitle">
+            A collection of powerful tools designed specifically for Discord and developers to increase your productivity. We've created these amazing tools to help you with your projects, such as Discord bots, services, servers, and many more. Just to help you!
+        <br><br><strong>Work smarter, not harder.</strong>
+        </div>
+        <div class="spacer"></div>
+        <section class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">📝</div>
+                <div class="tool-title">Discord Embed Builder</div>
+                <div class="tool-description">
+                    Format and preview Discord embeds that can be used in bots, webhooks, etc, with formatting buttons, copy to clipboard, and JSON export for webhooks/bots.
                 </div>
-            <button class="button" onclick="history.back()">Go Back</button>
-            <button class="button" onclick="window.location.href='https://harys.is-a.dev'">Home Page</button>
+                <ul class="tool-features">
+                    <li>Live preview</li>
+                    <li>Copy to clipboard</li>
+                    <li>JSON export</li>
+                    <li>Webhook support</li>
+                </ul>
+                <div class="tool-actions">
+                    <a href="https://harys.is-a.dev/tools/discord-embed-builder" class="btn" target="_blank">🚀 Try it Out!</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🤖</div>
+                <div class="tool-title">Gemini API Tester</div>
+                <div class="tool-description">
+                    This tool helps you validate your Gemini API key. Test your Gemini API key to make sure it's working and valid, then start chatting!
+                </div>
+                <ul class="tool-features">
+                    <li>Validate API key</li>
+                    <li>Let it confirmed</li>
+                    <li>AI Chat</li>
+                    <li>Good interface</li>
+                </ul>
+                <div class="tool-actions">
+                    <a href="https://harys.is-a.dev/tools/gemini-api-tester" class="btn" target="_blank">🚀 Try it Out!</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🎨</div>
+                <div class="tool-title">Color Picker</div>
+                <div class="tool-description">
+                    Use this color picker tool to pick a color and test its appearance for your projects, Discord bot embeds, role colours, and more! Get color's hex code, RGB, RGBA, HSL, HSLA, and integer values.
+                </div>
+                <ul class="tool-features">
+                    <li>Color conversion</li>
+                    <li>Previews</li>
+                    <li>Gradient generator</li>
+                    <li>Harmony Feature</li>
+                </ul>
+                <div class="tool-actions">
+                    <a href="https://harys.is-a.dev/tools/color-picker" class="btn" target="_blank">🚀 Try it Out!</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">⏰</div>
+                <div class="tool-title">Timestamp Generator</div>
+                <div class="tool-description">
+                    This tool can generate Unix timestamps for you! Just enter the date and time, choose a format, and copy paste it into your project! It can also be used in Discord. Users will see the exact date and time when they hover over the timestamp.
+                </div>
+                <ul class="tool-features">
+                    <li>Unix conversion</li>
+                    <li>All Discord formats</li>
+                    <li>Timezone support</li>
+                    <li>Live preview</li>
+                </ul>
+                <div class="tool-actions">
+                    <a href="https://harys.is-a.dev/tools/timestamp-generator" class="btn" target="_blank">🚀 Try it Out!</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🌈</div>
+                <div class="tool-title">ANSI Text Colorizer</div>
+                <div class="tool-description">
+                    This tool is planned and work in progress. Stay tuned for the updates!<br><br>
+                    These features may be added:
+                </div>
+                <ul class="tool-features">
+                    <li>ANSI color editor</li>
+                    <li>Code block preview</li>
+                    <li>Highlighting</li>
+                    <li>Palette selector</li>
+                </ul>
+                <div class="tool-actions">
+                    <a href="https://harys.is-a.dev/tools" class="btn-disabled" target="_blank">🚀 Try it Out!</a>
+                </div>
+            </div>
+            <div class="coming-soon-card">
+                <div class="coming-soon-icon">📚</div>
+                <h3>More Tools Coming Soon!</h3>
+                <div>
+                    I'm building even more tools and resources – from web utilities to automation scripts.<br>
+                    <span style="color:#FFD700">Have a suggestion for a tool?</span>
+                    <a href="mailto:contact@harys.is-a.dev" class="suggestion-link">Let me know!</a>
+                </div>
+            </div>
         </section>
-        </div>
-    <footer>
-            <p>© 2025 harys722. All rights reserved.</p>
+        <div class="spacer"></div>
+        <footer>
+            © 2025 harys722. All rights reserved.
         </footer>
+    </div>
 </body>
 </html>
