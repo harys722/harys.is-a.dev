@@ -1,4 +1,4 @@
-import questions from '../../assets/code/questions';
+import questions from '/assets/code/questions';
 
 export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
