@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANSI Text Colorizer | Free Discord Tools</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/colored-text.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../images/marker.png" alt="">
+            <h1>ANSI Text Colorizer</h1>
+        </div>
+        <div class="subtitle">
+            <p>Create beautiful colored messages using ANSI color codes that can be used in Discord. Please note that most of these colored text formats are only viewable on desktops and not on mobile devices, where they appear as a standard code box.</p>
+        </div>
+
+        <div class="editor" role="region" aria-label="Text editor">
+            <h2 class="editor-title">Create Your Colored Text</h2>
+            
+            <div class="button-grid">
+                <div class="button-row">
+                    <button data-ansi="0" class="button style-button" aria-label="Reset all formatting">Reset All</button>
+                    <button data-ansi="1" class="button style-button ansi-1" aria-label="Toggle bold text">Bold</button>
+                    <button data-ansi="4" class="button style-button ansi-4" aria-label="Toggle underlined text">Underline</button>
+                </div>
+                <div class="button-row">
+                    <p><strong>FG</strong><br><small>(Foreground)</small></p>
+                    <button data-ansi="30" class="button style-button" aria-label="Dark gray text color"> </button>
+                    <button data-ansi="31" class="button style-button" aria-label="Red text color"> </button>
+                    <button data-ansi="32" class="button style-button" aria-label="Green text color"> </button>
+                    <button data-ansi="33" class="button style-button" aria-label="Yellow text color"> </button>
+                    <button data-ansi="34" class="button style-button" aria-label="Blue text color"> </button>
+                    <button data-ansi="35" class="button style-button" aria-label="Magenta text color"> </button>
+                    <button data-ansi="36" class="button style-button" aria-label="Cyan text color"> </button>
+                    <button data-ansi="37" class="button style-button" aria-label="White text color"> </button>
+                </div>
+                <div class="button-row">
+                    <p><strong>BG</strong><br><small>(Background)</small></p>
+                    <button data-ansi="40" class="button style-button" aria-label="Dark background color"> </button>
+                    <button data-ansi="41" class="button style-button" aria-label="Red background color"> </button>
+                    <button data-ansi="42" class="button style-button" aria-label="Green background color"> </button>
+                    <button data-ansi="43" class="button style-button" aria-label="Yellow background color"> </button>
+                    <button data-ansi="44" class="button style-button" aria-label="Blue background color"> </button>
+                    <button data-ansi="45" class="button style-button" aria-label="Magenta background color"> </button>
+                    <button data-ansi="46" class="button style-button" aria-label="Cyan background color"> </button>
+                    <button data-ansi="47" class="button style-button" aria-label="Light background color"> </button>
+                </div>
+            </div>
+
+            <div id="textarea" contenteditable="true" role="textbox" aria-label="Text editor for Discord colored messages" aria-multiline="true">Welcome to an <span class="ansi-4"><span class="ansi-33">Advanced</span></span> <span class="ansi-37">ANSI</span> <span class="ansi-31">C</span><span class="ansi-32">o</span><span class="ansi-33">l</span><span class="ansi-34">o</span><span class="ansi-35">r</span><span class="ansi-36">e</span><span class="ansi-37">d</span> Text Generator that create <span class="ansi-40">beautiful</span> <span class="ansi-37">c</span><span class="ansi-35">o</span><span class="ansi-32">l</span><span class="ansi-34">o</span><span class="ansi-35">r</span><span class="ansi-31">e</span><span class="ansi-33">d</span> <span class="ansi-1">messages</span> which can be used in <span class="ansi-45"><span class="ansi-37">Discord</span></span>!</div>
+
+            <div class="error-message" id="error-message" role="alert" aria-live="assertive"></div>
+
+            <div class="actions">
+                <button class="copy-btn" aria-label="Copy formatted text for Discord">Copy Text</button>
+                <button class="clear-btn" aria-label="Clear all text">Clear Text</button>
+            </div>
+        </div>
+        
+        <footer>
+            <small>
+                Made with ❤︎ by harys22 using open source code by <a href="https://gist.github.com/rebane2001/07f2d8e80df053c70a1576d27eabe97c" target="_blank">Rebane</a>.
+            </small>
+            <br><br>
+            © 2025 harys722. All rights reserved.
+        </footer>
+    </div>
+
+    <div class="tooltip">Tooltip</div>
+  
+    <script src="../assets/js/colored-text.js"></script>
+</body>
+</html>
