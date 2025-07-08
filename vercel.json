@@ -27,6 +27,7 @@
     { "source": "/fun-guild/invite", "destination": "https://discord.gg/dz4f9bTcqe", "permanent": true },
     { "source": "/the-community/invite", "destination": "https://discord.gg/CPN5eYPABx", "permanent": true },
     { "source": "/free-domains", "destination": "https://domains.is-a.shop/", "permanent": true },
+    { "source": "/api", "destination": "https://open-api.js.org/", "permanent": true },
     {
       "source": "/assets/css/:path*",
       "missing": [{ "type": "header", "key": "referer" }],
