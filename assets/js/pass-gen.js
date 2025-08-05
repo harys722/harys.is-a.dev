@@ -1,22 +1,87 @@
-let isPasswordVisible = true;
+let isPasswordVisible = false;
+
+function saveUserPreferences() {
+	const preferences = {
+		length: document.getElementById('lengthSlider').value,
+		uppercase: document.getElementById('uppercase').checked,
+		lowercase: document.getElementById('lowercase').checked,
+		numbers: document.getElementById('numbers').checked,
+		symbols: document.getElementById('symbols').checked,
+		excludeSimilar: document.getElementById('excludeSimilar').checked,
+		excludeAmbiguous: document.getElementById('excludeAmbiguous').checked,
+		isPasswordVisible: isPasswordVisible
+	};
+	localStorage.setItem('passwordGeneratorPrefs', JSON.stringify(preferences));
+}
+
+function loadUserPreferences() {
+	const saved = localStorage.getItem('passwordGeneratorPrefs');
+	if (saved) {
+		try {
+			const preferences = JSON.parse(saved);
+
+			// Restore length
+			document.getElementById('lengthSlider').value = preferences.length || 16;
+			updateLength(preferences.length || 16);
+
+			// Restore checkboxes
+			document.getElementById('uppercase').checked = preferences.uppercase !== false;
+			document.getElementById('lowercase').checked = preferences.lowercase !== false;
+			document.getElementById('numbers').checked = preferences.numbers !== false;
+			document.getElementById('symbols').checked = preferences.symbols !== false;
+			document.getElementById('excludeSimilar').checked = preferences.excludeSimilar || false;
+			document.getElementById('excludeAmbiguous').checked = preferences.excludeAmbiguous || false;
+
+			// Restore visibility preference
+			isPasswordVisible = preferences.isPasswordVisible || false;
+			updateVisibilityIcon();
+
+		} catch (e) {
+			console.log('Error loading preferences, using defaults');
+		}
+	}
+}
+
+function addPreferenceListeners() {
+	document.getElementById('lengthSlider').addEventListener('input', saveUserPreferences);
+	document.getElementById('uppercase').addEventListener('change', saveUserPreferences);
+	document.getElementById('lowercase').addEventListener('change', saveUserPreferences);
+	document.getElementById('numbers').addEventListener('change', saveUserPreferences);
+	document.getElementById('symbols').addEventListener('change', saveUserPreferences);
+	document.getElementById('excludeSimilar').addEventListener('change', saveUserPreferences);
+	document.getElementById('excludeAmbiguous').addEventListener('change', saveUserPreferences);
+}
 
 function updateLength(value) {
 	document.getElementById('lengthDisplay').textContent = value;
 }
 
-function togglePasswordVisibility() {
-	const passwordField = document.getElementById('passwordField');
+function updateVisibilityIcon() {
 	const visibilityIcon = document.getElementById('visibilityIcon');
-
-	isPasswordVisible = !isPasswordVisible;
+	const passwordField = document.getElementById('passwordField');
 
 	if (isPasswordVisible) {
+		// Show password
 		passwordField.style.filter = 'none';
-		visibilityIcon.textContent = '👁️';
+		visibilityIcon.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>`;
 	} else {
+		// Hide password 
 		passwordField.style.filter = 'blur(4px)';
-		visibilityIcon.textContent = '🙈';
+		visibilityIcon.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 14.8335C21.3082 13.3317 22 12 22 12C22 12 18.3636 5 12 5C11.6588 5 11.3254 5.02013 11 5.05822C10.6578 5.09828 10.3244 5.15822 10 5.23552M12 9C12.3506 9 12.6872 9.06015 13 9.17071C13.8524 9.47199 14.528 10.1476 14.8293 11C14.9398 11.3128 15 11.6494 15 12M3 3L21 21M12 15C11.6494 15 11.3128 14.9398 11 14.8293C10.1476 14.528 9.47198 13.8524 9.1707 13C9.11386 12.8392 9.07034 12.6721 9.04147 12.5M4.14701 9C3.83877 9.34451 3.56234 9.68241 3.31864 10C2.45286 11.1282 2 12 2 12C2 12 5.63636 19 12 19C12.3412 19 12.6746 18.9799 13 18.9418" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>`;
 	}
+}
+
+function togglePasswordVisibility() {
+	isPasswordVisible = !isPasswordVisible;
+	updateVisibilityIcon();
+	saveUserPreferences();
 }
 
 function calculateStrength(password) {
@@ -215,7 +280,10 @@ function showMessage(text, type) {
 	}, 3000);
 }
 
-// Generate initial password
+// Initialize on page load
 window.onload = function() {
+	loadUserPreferences();
+	addPreferenceListeners();
+	updateVisibilityIcon();
 	generatePassword();
 };
