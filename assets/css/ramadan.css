@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600&family=Lora:wght@400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      overflow-x: hidden;
+      background: linear-gradient(to bottom, #0a1128 0%, #1a1f3a 40%, #2d3561 100%);
+      min-height: 100vh;
+      color: #fff;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Stars */
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+    }
+
+    /* Crescent Moon */
+    .moon {
+      position: absolute;
+      top: 8%;
+      right: 12%;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #ffd700;
+      box-shadow: 0 0 60px rgba(255, 215, 0, 0.8), 0 0 100px rgba(255, 215, 0, 0.4);
+      animation: moonGlow 4s ease-in-out infinite;
+    }
+
+    .moon::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: 15px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #0a1128;
+      box-shadow: inset -10px -10px 20px rgba(255, 215, 0, 0.3);
+    }
+
+    @keyframes moonGlow {
+      0%, 100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.8), 0 0 100px rgba(255, 215, 0, 0.4); }
+      50% { box-shadow: 0 0 80px rgba(255, 215, 0, 1), 0 0 120px rgba(255, 215, 0, 0.6); }
+    }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 100px;
+      animation: drift 60s linear infinite;
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(calc(100vw + 100%)); }
+    }
+
+    /* Content Container */
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 40px;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.3);
+      margin-bottom: 15px;
+      letter-spacing: 3px;
+    }
+
+    .header .subtitle {
+      font-size: 1.3rem;
+      color: #e0e0e0;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+
+    /* Welcome Message */
+    .welcome {
+      max-width: 700px;
+      margin: 0 auto 50px;
+      animation: fadeIn 2s ease-out 0.5s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .welcome p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #d4d4d4;
+      margin-bottom: 20px;
+    }
+
+    /* Countdown Container */
+    .countdown-container {
+      margin: 50px 0;
+      animation: fadeInUp 1.5s ease-out 1s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .countdown-label {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: #ffd700;
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      letter-spacing: 2px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 15px;
+      padding: 30px 25px;
+      min-width: 140px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 215, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .time-box:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 215, 0, 0.6);
+      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2), inset 0 0 30px rgba(255, 215, 0, 0.1);
+    }
+
+    .time-value {
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+      display: block;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .time-label {
+      font-size: 1rem;
+      color: #b8b8b8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    /* Verse Container */
+    .verse {
+      max-width: 800px;
+      margin: 60px auto 40px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 2s ease-out 1.5s both;
+    }
+
+    .verse-text {
+      font-family: 'Amiri', serif;
+      font-size: 1.4rem;
+      line-height: 2;
+      color: #e8e8e8;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .verse-reference {
+      font-size: 1rem;
+      color: #ffd700;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* Celebration Message */
+    .celebration {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .celebration.active {
+      display: flex;
+    }
+
+    .celebration-content {
+      text-align: center;
+      padding: 60px;
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.95), rgba(45, 53, 97, 0.95));
+      border: 3px solid #ffd700;
+      border-radius: 30px;
+      box-shadow: 0 0 100px rgba(255, 215, 0, 0.8);
+      animation: scaleIn 0.8s ease-out;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .celebration-content h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      color: #ffd700;
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+      margin-bottom: 20px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .celebration-content p {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    /* Decorative Elements */
+    .decorative-star {
+      position: absolute;
+      color: #ffd700;
+      font-size: 2rem;
+      animation: float 4s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(180deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .header .subtitle {
+        font-size: 1rem;
+      }
+
+      .welcome p {
+        font-size: 1rem;
+      }
+
+      .countdown {
+        gap: 15px;
+      }
+
+      .time-box {
+        min-width: 100px;
+        padding: 20px 15px;
+      }
+
+      .time-value {
+        font-size: 2.5rem;
+      }
+
+      .time-label {
+        font-size: 0.8rem;
+      }
+
+      .countdown-label {
+        font-size: 1.3rem;
+      }
+
+      .verse {
+        padding: 25px;
+        margin: 40px 20px;
+      }
+
+      .verse-text {
+        font-size: 1.1rem;
+      }
+
+      .moon {
+        width: 80px;
+        height: 80px;
+        top: 5%;
+        right: 8%;
+      }
+
+      .moon::before {
+        width: 70px;
+        height: 70px;
+      }
+
+      .celebration-content {
+        padding: 40px 20px;
+        margin: 20px;
+      }
+
+      .celebration-content h2 {
+        font-size: 2.5rem;
+      }
+
+      .celebration-content p {
+        font-size: 1.2rem;
+      }
+    }
