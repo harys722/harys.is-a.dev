@@ -164,6 +164,17 @@
       letter-spacing: 2px;
     }
 
+    .countdown-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: #FDFDBO4;
+      margin-top: 30px;
+      margin-bottom: 0px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      letter-spacing: 2px;
+    }
+
+
     .countdown {
       display: flex;
       justify-content: center;
