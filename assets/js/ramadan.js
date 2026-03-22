@@ -39,8 +39,8 @@
       }
     }
 
-    // Ramadan date - Expected start date for Ramadan 2026 (adjust as needed)
-    const ramadanDate = new Date('2026-02-17T00:00:00');
+    // Ramadan date - Expected start date for Ramadan 2027
+    const ramadanDate = new Date('2027-02-07T00:00:00');
     
     // Update countdown
     function updateCountdown() {
