@@ -250,9 +250,19 @@ const OFFLINE_HTML = `<!DOCTYPE html>
   <div class="container">
 
     <div class="header">
-      <img src="images/no-signal.png" alt="No Signal" title="You are offline" />
-      <span>You are offline!</span>
-    </div>
+	<div id="signal-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="40" height="40">
+      <line x1="2" y1="2" x2="22" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+      <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+      <path d="M10.71 5.05A16 16 0 0 1 22.56 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+      <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+      <circle cx="12" cy="20" r="1" fill="#FFD700"/>
+    </svg>
+  </div>
+  <span>You are offline!</span>
+</div>
 
     <section class="section">
       <div class="container">
