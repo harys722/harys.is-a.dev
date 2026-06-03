@@ -4,7 +4,7 @@ const OFFLINE_HTML = `<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You are offline - No internet connection</title>
-  <link rel="icon" href="/images/offline.png" type="image/png">
+  <link rel="icon" href="images/no-signal.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -250,7 +250,7 @@ const OFFLINE_HTML = `<!DOCTYPE html>
   <div class="container">
 
     <div class="header">
-      <img src="/images/no-signal.png" alt="No Signal" title="You are offline" />
+      <img src="images/no-signal.png" alt="No Signal" title="You are offline" />
       <span>You are offline!</span>
     </div>
 
