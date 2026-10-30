@@ -1,0 +1,13 @@
+/* simple pages */
+.hero{display:flex;gap:18px;align-items:center;margin-bottom:14px}
+.hero h1{font-size:30px;margin:0 0 4px}.hero p{margin:0}
+.logo{flex:none;width:72px;height:72px;display:grid;place-items:center;border:1px solid var(--line);border-radius:6px;background:#221c0f}
+.logo .ic{width:40px;height:40px;color:var(--honey)}
+.lk{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--cream)}
+.lk:hover{border-color:var(--honey)}
+.lk .ic{width:26px;height:26px;color:var(--honey)}
+.lk small{display:block;color:var(--mute);font-size:13px}
+#card{cursor:grab;user-select:none;touch-action:none}
+#card img{pointer-events:none;-webkit-user-drag:none}
+.calm *,.calm *::before,.calm *::after{transition:none!important;animation:none!important}
+.calm .icon:hover{transform:none}

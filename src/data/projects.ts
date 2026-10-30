@@ -1,0 +1,8 @@
+
+
+export const PROJECTS=[
+ {n:"Free Domains",ic:"globe",tag:"A big list of free subdomains",d:["A curated list of free subdomain services for personal websites, portfolios, open-source projects and other online projects, so you can put a site online without buying a domain."],chips:["HTML","175 stars","27 forks"],l:[["Visit the site","https://freedomains.web.app/"],["GitHub","https://github.com/harys722/free-domains"]]},
+ {n:"Profilie",ic:"spark",tag:"Free templates for profiles and websites",d:["Free pre-built templates for social profiles, portfolios and websites. Profilie is a static site generator: fill in a few details and get a simple one-page website. It lives in its own GitHub organization."],chips:["Static site generator","Templates","5 stars"],l:[["Visit the site","https://profilie.js.org/"],["GitHub","https://github.com/profilie/profilie"]]},
+ {n:"Open API",ic:"ti-api",tag:"A free Open API service",d:["A free API with a variety of endpoints you can use in your own applications."],chips:["API","4 stars"],l:[["Visit the site","https://open-api.js.org/"],["GitHub","https://github.com/harys722/open-api"]]},
+ {n:"URL Shortener",ic:"link",tag:"Short links that run from a 404 page",d:["A fast, reliable short link generator that runs from a 404 page. Create and manage as many short URLs as you like."],chips:["CSS","7 stars"],l:[["Visit the site", "https://hrs.foo.ng/"], ["GitHub","https://github.com/harys722/url-shortener"]]},
+ {n:"Github Guides",ic:"b-github",tag:"Learn GitHub and GitHub Pages",d:["Guides to GitHub and GitHub Pages for developers who are just getting started."],chips:["Guides","5 stars"],l:[["Visit the site","https://gh-guides.rweb.site"],["GitHub","https://github.com/harys722/github-guides"]]}];

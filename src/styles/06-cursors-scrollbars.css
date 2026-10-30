@@ -1,0 +1,24 @@
+/* custom cursor (settings toggles the .cur class) */
+html{--ca:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M3 2l16 9-7 2-3 7z' fill='%23e6b422' stroke='%23130f08' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2,auto;
+--cp:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M3 2l16 9-7 2-3 7z' fill='%23f4ecd6' stroke='%23130f08' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2,pointer}
+html.cur *{cursor:var(--ca)}
+html.cur a,html.cur button,html.cur summary,html.cur label,html.cur .icon,html.cur .icon *{cursor:var(--cp)}
+html.cur .grip{cursor:nwse-resize}
+html.cur input[type=text],html.cur textarea{cursor:var(--ct)}
+.rz[data-d=n]{cursor:n-resize}.rz[data-d=s]{cursor:s-resize}.rz[data-d=e]{cursor:e-resize}.rz[data-d=w]{cursor:w-resize}
+.rz[data-d=ne]{cursor:ne-resize}.rz[data-d=sw]{cursor:sw-resize}.rz[data-d=nw]{cursor:nw-resize}.rz[data-d=se]{cursor:se-resize}
+.bar.gr,.bar.gr *{cursor:grabbing}
+html.cur .rz[data-d=n],html.cur .rz[data-d=s]{cursor:var(--cns)}
+html.cur .rz[data-d=e],html.cur .rz[data-d=w]{cursor:var(--cew)}
+html.cur .rz[data-d=ne],html.cur .rz[data-d=sw]{cursor:var(--cnesw)}
+html.cur .rz[data-d=nw],html.cur .rz[data-d=se]{cursor:var(--cnwse)}
+html.cur .bar,html.cur .bar *{cursor:var(--cg)}
+html.cur .bar button,html.cur .bar button *{cursor:var(--cp)}
+html.cur .bar.gr,html.cur .bar.gr *,html.cur .icon.drag,html.cur .icon.drag *,html.cur #card small.gr{cursor:var(--cgg)}
+html.cur #card small{cursor:var(--cg)}
+/* scrollbars */
+html.sb *{scrollbar-width:thin;scrollbar-color:var(--brass) var(--ink)}
+html.sb *::-webkit-scrollbar{width:12px;height:12px}
+html.sb *::-webkit-scrollbar-track,html.sb *::-webkit-scrollbar-corner{background:var(--ink)}
+html.sb *::-webkit-scrollbar-thumb{background:var(--brass);border:2px solid var(--ink);border-radius:6px}
+html.sb *::-webkit-scrollbar-thumb:hover{background:var(--honey)}

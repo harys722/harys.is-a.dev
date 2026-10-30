@@ -1,0 +1,25 @@
+#card img[hidden], #card p[hidden], #offline-badge[hidden] { display:none }
+#card .card-status { min-height:86px;margin:0;padding:14px 10px;color:var(--mute);font-size:13px;line-height:1.5 }
+#card .card-hint { margin-top:8px;font-size:11px }
+#card small span { color:var(--straw) }
+#offline-badge { display:flex;align-items:center;gap:6px;flex:none;padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--umber);color:var(--straw);font-size:12px }
+#offline-badge svg { width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round }
+@media(max-width:420px){#offline-badge{padding:6px}#offline-badge span{display:none}}
+.frame-wrap { height:100%;width:100% }
+.frame-wrap iframe { width:100%;height:100%;border:0 }
+.missing-path { overflow-wrap:anywhere;color:var(--mute) }
+#page-content { position:fixed;inset:0;z-index:100001;background:#1c170d;color:#f4ecd6;padding:24px;overflow:auto;font-family:system-ui,sans-serif }
+#page-content nav { display:flex;gap:16px;flex-wrap:wrap }
+#page-content article { max-width:800px;margin:24px 0 }
+.traffic-controls { display:flex;gap:12px;justify-content:center;margin-top:12px }
+.traffic-controls button { min-width:80px;min-height:44px }
+.traffic { gap:8px }
+.traffic .traffic-help { margin:0;text-align:center;font-size:12px;color:var(--mute) }
+.traffic canvas { width:min(100%,300px);touch-action:manipulation }
+.traffic .traffic-controls { margin-top:0;gap:8px }
+.traffic-controls button { min-width:70px }
+.dino-game,.snake-game { padding:18px;gap:10px }
+.dino-game .traffic-controls,.snake-game .traffic-controls { margin-top:0;gap:8px }
+.dino-game small,.snake-game small { font-size:11px;line-height:1.5;color:var(--mute) }
+.dino-game canvas,.snake-game canvas { box-shadow:0 5px 18px #0004;border-color:#62502b }
+.dino-game .btn[aria-pressed="true"] { background:var(--honey);border-color:var(--honey);color:var(--ink) }

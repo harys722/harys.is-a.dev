@@ -1,0 +1,19 @@
+{
+  "name": "harys-is-a-dev",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Harys' portfolio, built as a desktop-style single page site",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run build && node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  },
+  "engines": { "node": ">=18" }
+}

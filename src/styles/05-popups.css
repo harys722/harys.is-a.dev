@@ -1,0 +1,31 @@
+/* calendar */
+#cal{position:fixed;right:6px;bottom:calc(var(--bar) + 4px);width:300px;padding:14px;background:var(--umber);border:1px solid var(--line);border-radius:4px;box-shadow:0 10px 30px #000a;z-index:9001}
+#cal[hidden]{display:none}
+#cal .ct{font-size:34px;font-weight:800;letter-spacing:-.01em}
+#cal .cd{color:var(--mute);font-size:14px;margin-bottom:12px}
+#cal .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font-weight:600}
+#cal button{border:1px solid var(--line);background:var(--umber2);border-radius:2px;padding:3px 10px}
+#cal button:hover{background:var(--honey);color:var(--ink)}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cg em{font-style:normal;color:var(--mute);font-size:12px;padding:4px 0}
+.cg b{font-weight:400;padding:7px 0;border-radius:2px;font-size:14px}
+.cg b:hover{background:var(--umber2)}
+.cg b.today{background:var(--honey);color:var(--ink);font-weight:800}
+.cf{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);color:var(--mute);font-size:12px}
+/* context menu */
+#ctx{position:fixed;min-width:220px;padding:4px 0;background:var(--umber);border:1px solid var(--line);border-radius:4px;box-shadow:0 10px 30px #000a;z-index:9100}
+#ctx[hidden]{display:none}
+#ctx button{display:block;width:100%;padding:7px 16px;border:0;background:none;text-align:left;font-size:14px}
+#ctx button:hover{background:var(--honey);color:var(--ink)}
+#ctx hr{border:0;border-top:1px solid var(--line);margin:4px 0}
+/* settings */
+.row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row small{display:block;color:var(--mute);font-size:13px}
+.pad h2+.row{border-top:1px solid var(--line)}
+.pad h2:not(:first-child){margin-top:22px}
+input[role=switch]{appearance:none;flex:none;width:38px;height:22px;border:1px solid var(--line);background:var(--ink);border-radius:11px;position:relative}
+input[role=switch]::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--mute);transition:transform .15s}
+input[role=switch]:checked{background:var(--brass);border-color:var(--honey)}
+input[role=switch]:checked::after{transform:translateX(16px);background:var(--cream)}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.acts .btn{cursor:pointer}

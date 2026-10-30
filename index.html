@@ -1,176 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- HTML Meta Tags -->
-    <title>harys722</title>
-    <meta name="description" content="I am a young student and passionate developer. This is my portfolio website to showcase my skills and stuff.">
-
-    <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="harys722">
-    <meta itemprop="description" content="I am a young student and passionate developer. This is my portfolio website to showcase my skills and stuff.">
-    <meta itemprop="image" content="https://harys.is-a.dev/images/harys722.png">
-    
-    <!-- Discord Meta Tags -->
-    <meta name="theme-color" content="#FFD700" />
-    <meta property="og:title" content="- HARYs - | Portfolio" />
-    <meta property="og:description" content="I am a young student and passionate developer. This is my portfolio website to showcase my skills and stuff." />
-    <meta property="og:image" content="https://harys.is-a.dev/images/harys722.png" />
-
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://harys.is-a.dev">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="harys722">
-    <meta property="og:description" content="I am a young student and passionate developer. This is my portfolio website to showcase my skills and stuff.">
-    <meta property="og:image" content="https://harys.is-a.dev/images/harys722.png">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="harys722">
-    <meta name="twitter:description" content="I am a young student and passionate developer. This is my portfolio website to showcase my skills and stuff.">
-    <meta name="twitter:image" content="https://harys.is-a.dev/images/harys722.png">
-
-    <!-- Links -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/index.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harys</title>
+<meta name="description" content="Beginner web developer. Projects, free tools and Discord communities by Harys.">
+<meta name="theme-color" content="#1c170d">
+<meta property="og:title" content="Harys">
+<meta property="og:description" content="Beginner web developer. Projects, free tools and Discord communities by Harys.">
+<meta property="og:image" content="https://harys.is-a.dev/images/harys722.png">
+<meta property="og:url" content="https://harys.is-a.dev">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=DM+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="images/harys722.png" alt="Profile Image" title="Harys | Portfolio">
-            <span>- HARYs - | Portfolio</span>
-        </div>
-
-        <div class="content">
-            <section id="about" class="section" style="--section-index: 1;">
-                <h2 class="text-3xl font-bold mb-4 gradient-text text-center">About Me</h2>
-                <p class="text-lg">
-                    I am a young student and passionate developer dedicated to deepening my knowledge of technology and keeping up with the ever-evolving digital landscape.
-                    Enhancing my skills and expanding my horizons through continuous learning.
-                    That's who I am!
-                </p>
-                <br><br>
-                <center><img src="https://lanyard.cnrad.dev/api/1203357768610746385?idleMessage=Listening%20to%20nothing%20right%20now!&borderRadius=20px&showDisplayName=true&hideProfile=false&hideSpotify=false&bg=303446&theme=dark" 
-                            alt="Discord Status" title="Discord Status"/></center>
-            </section>
-            
-            <section id="works" class="section" style="--section-index: 2;">
-                <h2 class="text-3xl font-bold mb-4 gradient-text text-center">My Works</h2>
-                <p class="text-lg mb-2">Throughout my journey, I've worked on various projects that showcase my skills and creativity:</p>
-                <ul class="list-disc list-inside">
-                    <li><strong>Profilie:</strong> A full-featured static site generator tool that helps you make a simple one-page website.</li>
-                    <li><strong>Discord Manager & Moderator:</strong> Experience in managing and moderating multiple Discord servers, ensuring a safe environment for users.</li>
-                    <li><strong>Free Powerful Tools</strong> I'm working on free powerful tools to let you work smarter, not harder. I've already created several tools that you can take advantage of. (<a href="/tools" target="_blank">Click me to visit</a>)</li>
-                </ul>
-            </section>
-
-            <section id="discord" class="section" style="--section-index: 3;">
-                <h2 class="text-3xl font-bold mb-4 gradient-text text-center">Discord Servers</h2>
-                <p class="text-lg">I'm currently handling multiple Discord Servers. Click a row to view more details about each server:</p>
-                <table>
-                    <tr>
-                        <th width="400">📝 Server Name</th>
-                        <th width="300">📌 Position</th>
-                    </tr>
-                    <tr class="server-row" data-target="popup-1">
-                        <td>The Community</td>
-                        <td>Owner</td>
-                    </tr>
-                    <tr class="popup" id="popup-1">
-                        <td colspan="2">
-                            <div class="popup-content">
-                                <h3 class="text-xl font-semibold gradient-text mb-2">The Community</h3>
-                                <p><strong>Position:</strong> Owner</p>
-                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/CPN5eYPABx" target="_blank" class="hover:underline">CPN5eYPABx ↗</a></p>
-                                <p><strong>Description:</strong> A vibrant community for connecting, sharing, and collaborating on various interests.</p>
-                                <p><strong>Members:</strong> ~180</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="server-row" data-target="popup-2">
-                        <td>Guess The Number Support</td>
-                        <td>Moderator</td>
-                    </tr>
-                    <tr class="popup" id="popup-2">
-                        <td colspan="2">
-                            <div class="popup-content">
-                                <h3 class="text-xl font-semibold gradient-text mb-2">Guess The Number Support</h3>
-                                <p><strong>Position:</strong> Moderator</p>
-                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/bQqbcaupuH" target="_blank" class="hover:underline">bQqbcaupuH ↗</a></p>
-                                <p><strong>Description:</strong> Support server for the Guess The Number game, offering help and community events.</p>
-                                <p><strong>Members:</strong> ~400</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="server-row" data-target="popup-3">
-                        <td>Cosmos Lounge</td>
-                        <td>Moderator</td>
-                    </tr>
-                    <tr class="popup" id="popup-3">
-                        <td colspan="2">
-                            <div class="popup-content">
-                                <h3 class="text-xl font-semibold gradient-text mb-2">Cosmos Lounge</h3>
-                                <p><strong>Position:</strong> Moderator</p>
-                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/uP4tue5NkV" target="_blank" class="hover:underline">uP4tue5NkV ↗</a></p>
-                                <p><strong>Description:</strong> A chill server for space enthusiasts and casual discussions.</p>
-                                <p><strong>Members:</strong> ~250</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="server-row" data-target="popup-5">
-                        <td>The Royal Server</td>
-                        <td>Senior Moderator</td>
-                    </tr>
-                    <tr class="popup" id="popup-5">
-                        <td colspan="2">
-                            <div class="popup-content">
-                                <h3 class="text-xl font-semibold gradient-text mb-2">The Royal Server</h3>
-                                <p><strong>Position:</strong> Senior Moderator</p>
-                                <p><strong>Invite Link:</strong> <a href="https://discord.gg/gdVSTUTznt" target="_blank" class="hover:underline">gdVSTUTznt ↗</a></p>
-                                <p><strong>Description:</strong> A premium community with exclusive events and discussions.</p>
-                                <p><strong>Members:</strong> ~80</p>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </section>
-
-            <section id="projects" class="section" style="--section-index: 4;">
-                <h2 class="text-3xl font-bold mb-4 gradient-text text-center">Projects</h2>
-                <div class="project-card">
-                    <h3 class="text-xl font-semibold gradient-text">Profilie</h3>
-                    <p>A simple static site generator tool that can generate a powerful social website. <a href="https://profilie.js.org/" target="_blank">Try it out!</a></p>
-                </div>
-                <div class="project-card">
-                    <h3 class="text-xl font-semibold gradient-text">Personal Website</h3>
-                    <p>This personal website, showcasing my skills, works, and ways to get in touch.</p>
-                </div>
-                <div class="project-card">
-                    <h3 class="text-xl font-semibold gradient-text">Other Projects</h3>
-                    <p>I am working on many other several projects that you can view on my <a href="https://github.com/harys722/" target="_blank">GitHub</a>.</p>
-                </div>
-            </section>
-
-            <section id="contact" class="section" style="--section-index: 5;">
-                <h2 class="text-3xl font-bold mb-4 gradient-text text-center">Get in Touch</h2>
-                <div class="project-card" style="width: 100%; max-width: 800px; margin: 15px auto;">
-                    <p class="text-center">Reach out to me via email for collaboration or inquiries.</p>
-                    <p class="text-center"><a href="mailto:contact@harys.is-a.dev" target="_blank">contact@harys.is-a.dev</a></p>
-                </div>
-                <button onclick="window.open('mailto:contact@harys.is-a.dev', '_blank')">Send Me a Message</button>
-            </section>
-
-            <footer>
-                <p>© 2025 harys722. All rights reserved.</p>
-            </footer>
-        </div>
-    </div>
-
-    <script>navigator.serviceWorker?.register('/sw.js');</script>
-    <script src="./assets/js/index.js"></script>
+<div id="root"></div>
+<aside id="card" aria-label="Discord status; open Contact" role="link" tabindex="0">
+  <small>Discord <span>· @harys722</span></small>
+  <img hidden data-src="https://lanyard.cnrad.dev/api/1203357768610746385?idleMessage=Listening%20to%20nothing%20right%20now!&borderRadius=6px&showDisplayName=true&hideProfile=false&hideSpotify=false&bg=1c170d&theme=dark" alt="Harys' Discord activity">
+  <p class="card-status" role="status">Loading Discord activity…</p>
+  <small class="card-hint">Open Contact ↗ · Drag to move</small>
+</aside>
+<div id="boot"><div class="bt"><img src="/images/harys722.png" alt="" width="72" height="72"><b>Harys</b><i class="pg"></i></div></div>
+<noscript><div style="position:fixed;inset:0;overflow:auto;padding:24px;background:#1c170d;color:#f4ecd6;font-family:system-ui,sans-serif;z-index:100000"><h1>Harys</h1><p>Beginner web developer. I build websites, free tools and open-source projects.</p><p>This portfolio is a desktop-style site and needs JavaScript. You can find me on <a style="color:#f2d98a" href="https://github.com/harys722/">GitHub</a> or write to <a style="color:#f2d98a" href="mailto:contact@harys.is-a.dev">contact@harys.is-a.dev</a>.</p></div></noscript>
+<script type="module" src="/src/main.ts"></script>
 </body>
 </html>

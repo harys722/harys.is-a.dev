@@ -1,47 +1,37 @@
 {
+  "framework": "vite",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/(.*)", "destination": "/404.html" }
-  ],
   "headers": [
     {
+      "source": "/sw.js",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    },
+    {
+      "source": "/app/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
       "source": "/assets/(css|js)/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
     }
   ],
   "redirects": [
     { "source": "/vercel.json", "destination": "/404.html", "permanent": false },
     { "source": "/README.md", "destination": "/404.html", "permanent": false },
     { "source": "/CNAME", "destination": "/404.html", "permanent": false },
-    { "source": "/google6e69179a7ec15e2f", "destination": "/404.html", "permanent": false },
     { "source": "/github", "destination": "https://github.com/harys722/", "permanent": true },
-    { "source": "/bluesky", "destination": "https://harys722.bsky.social/", "permanent": true },
+    { "source": "/gitlab", "destination": "https://gitlab.com/harys722", "permanent": true },
+    { "source": "/codepen", "destination": "https://codepen.io/harys722", "permanent": true },
+    { "source": "/bluesky", "destination": "https://bsky.app/profile/harys.is-a.dev", "permanent": true },
     { "source": "/discord", "destination": "https://discord.com/users/1203357768610746385/", "permanent": true },
     { "source": "/reddit", "destination": "https://www.reddit.com/u/harys722", "permanent": true },
     { "source": "/fun-guild/invite", "destination": "https://discord.gg/dz4f9bTcqe", "permanent": true },
     { "source": "/the-community/invite", "destination": "https://discord.gg/CPN5eYPABx", "permanent": true },
     { "source": "/free-domains", "destination": "https://domains.is-a.shop/", "permanent": true },
     { "source": "/api", "destination": "https://open-api.js.org/", "permanent": true },
-    {
-      "source": "/assets/css/:path*",
-      "missing": [{ "type": "header", "key": "referer" }],
-      "destination": "/404.html"
-    },
-    {
-      "source": "/assets/js/:path*",
-      "missing": [{ "type": "header", "key": "referer" }],
-      "destination": "/404.html"
-    },
-    {
-      "source": "/assets/code/:path*",
-      "missing": [{ "type": "header", "key": "referer" }],
-      "destination": "/404.html"
-    }
+    { "source": "/404", "destination": "/not-found", "permanent": false }
   ]
 }

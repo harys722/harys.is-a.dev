@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API Tester | Free AI Tools</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="stylesheet" href="../assets/css/gat.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header"><img src="/images/gemini-ai.png" alt="Gemini AI">Gemini API Tester</div>
+        <div class="setup-container" id="setupContainer">
+            <div class="content"><h1>Gemini AI</h1><p>Load the models available to your key, then test one and chat.</p></div>
+            <div class="form-group">
+                <label for="apiKey">Gemini API Key</label>
+                <input type="password" id="apiKey" placeholder="Enter your Gemini API key..." autocomplete="off" autocapitalize="off" spellcheck="false">
+            </div>
+            <div class="form-group" id="modelGroup" hidden>
+                <label for="modelSelect">Text-generation model</label>
+                <select id="modelSelect" aria-describedby="modelNote"></select>
+                <p id="modelNote" class="model-note">Testing and chatting use your Google API quota. Model access and limits depend on your Google project.</p>
+                <button class="text-button" type="button" onclick="reloadModels()">Reload model list</button>
+            </div>
+            <button class="btn" id="testBtn" type="button" onclick="testApiKey()"><span id="btnText">Load available models</span></button>
+            <div class="api-container"><p><strong>Need an API key?</strong> Get one in <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a>.</p></div>
+            <div class="status" id="status" role="status" aria-live="polite" style="display:none"></div>
+        </div>
+        <div class="chat-container chat-interface" id="chatContainer">
+            <div class="chat-toolbar">
+                <div class="chat-title"><span class="eyebrow">Your workspace</span><h2>Gemini chat</h2><p id="chatModel" class="model-note"></p></div>
+                <div class="chat-actions"><button class="secondary-button" type="button" onclick="newChat()">New chat</button><button class="secondary-button" type="button" onclick="goBack()">Change model</button></div>
+            </div>
+            <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+            <p id="chatActivity" class="chat-activity" role="status" hidden></p>
+            <div class="chat-input-container">
+                <textarea class="chat-input" id="chatInput" rows="2" aria-label="Chat message" placeholder="Ask a question or paste some code..." autocomplete="off" onkeydown="handleKeyPress(event)"></textarea>
+                <button class="secondary-button" id="stopBtn" type="button" onclick="stopRequest()" hidden>Stop</button>
+                <button class="send-btn" id="sendBtn" type="button" onclick="sendMessage()"><span id="sendIcon">Send</span></button>
+            </div>
+            <p class="composer-note">Enter to send · Shift + Enter for a new line. Chat stays in this page only.</p>
+        </div>
+        <footer class="tool-footer">
+            <a href="/tools" target="_top">Tools by Harys</a>
+            <small>Your API key and chat stay only in this page's memory. This tool does not save them to cookies or browser storage, or send them to Harys's servers. Requests go directly from your browser to Google's Gemini API.</small>
+            <small>Clear them below, or reload or leave this page to clear them automatically.</small>
+            <button class="text-button" id="clearKey" type="button" onclick="clearSession()">Clear key &amp; chat</button>
+        </footer>
+    </div>
+    <script src="../assets/js/gat.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+:root{
+  --ink:#130f08; --umber:#1c170d; --umber2:#2a2213; --line:#54431d;
+  --honey:#e6b422; --straw:#f2d98a; --brass:#a37f1b; --cream:#f4ecd6; --mute:#b8aa80; --rust:#c4573a;
+  --bar:44px;
+  font-family:'Bricolage Grotesque',system-ui,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:var(--ink);color:var(--cream)}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--straw)}
+.ic{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:2px solid var(--honey);outline-offset:2px}
+
+/* wallpaper */
+#wall{position:fixed;inset:0;width:100%;height:100%}

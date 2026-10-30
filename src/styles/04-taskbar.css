@@ -1,0 +1,27 @@
+/* taskbar */
+#bar{position:fixed;left:0;right:0;bottom:0;height:var(--bar);display:flex;align-items:center;gap:6px;padding:0 6px;background:var(--umber2);border-top:1px solid var(--line);z-index:9000}
+#start{height:32px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--umber);border-radius:2px;font-weight:800;letter-spacing:.02em}
+#start:hover,#start[aria-expanded=true]{background:var(--honey);color:var(--ink)}
+#start i{width:10px;height:10px;background:var(--honey);display:block;transform:rotate(45deg)}
+#start:hover i,#start[aria-expanded=true] i{background:var(--ink)}
+#tasks{flex:1;display:flex;gap:4px;overflow:hidden}
+#tasks button{max-width:180px;min-width:0;height:32px;padding:0 10px;border:1px solid var(--line);background:var(--umber);border-radius:2px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tasks button.on{background:#4a3a12;border-color:var(--honey)}
+#tasks button.min{opacity:.6}
+#clock{padding:0 12px;height:36px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;border:1px solid var(--line);background:var(--ink);border-radius:2px;line-height:1.15;font-size:13px}
+#clock small{font-size:11px;color:var(--mute)}
+#clock:hover,#clock[aria-expanded=true]{border-color:var(--honey)}
+
+/* start menu */
+#menu{position:fixed;left:6px;bottom:calc(var(--bar) + 4px);width:250px;background:var(--umber);border:1px solid var(--line);border-radius:4px;box-shadow:0 10px 30px #000a;z-index:9001;padding-bottom:6px}
+#menu[hidden]{display:none}
+#menu h3{margin:0 0 6px;padding:12px 14px;font-size:16px;background:var(--brass);color:var(--ink)}
+#menu button,#menu a{display:flex;align-items:center;gap:10px;width:100%;padding:8px 14px;border:0;background:none;text-align:left;color:var(--cream);text-decoration:none;font-size:14px}
+#menu button:hover,#menu a:hover{background:var(--honey);color:var(--ink)}
+#menu .ic{width:18px;height:18px}
+#menu hr{border:0;border-top:1px solid var(--line);margin:6px 0}
+
+/* discord card */
+#card{position:fixed;right:14px;bottom:calc(var(--bar) + 14px);width:330px;padding:8px;background:var(--umber);border:1px solid var(--line);border-radius:4px}
+#card small{display:block;margin:0 0 6px 2px;color:var(--mute);font-size:12px}
+#card img{display:block;width:100%;height:auto;border-radius:6px}
