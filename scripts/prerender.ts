@@ -11,7 +11,7 @@ import {LINKS} from '../src/data/links';
 const origin='https://harys.is-a.dev';
 const escape=(s:unknown)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const link=(text:string,url:string)=>`<a href="${escape(url.startsWith('#')?'/'+url.slice(1):url)}">${escape(text)}</a>`;
-const article=(card:any)=>`<article><h2>${escape(card.n)}</h2><p>${escape(card.tag||'')}</p>${card.d.map((p:string)=>`<p>${escape(p)}</p>`).join('')}${(card.chips||[]).length?`<p>${card.chips.map(escape).join(' · ')}</p>`:''}<p>${(card.l||[[card.cta,card.url]]).map(([text,url]:string[])=>link(text,url)).join(' · ')}</p></article>`;
+const article=(card:any)=>`<article><h2>${escape(card.n)}</h2><p>${escape(card.tag||'')}</p>${card.image?`<img src="${escape(card.image)}" alt="${escape(card.imageAlt)}" width="1120" height="700" loading="lazy" style="max-width:100%;height:auto">`:''}${card.d.map((p:string)=>`<p>${escape(p)}</p>`).join('')}${card.role?`<p>${escape(card.role)}</p>`:''}${(card.chips||[]).length?`<p>${card.chips.map(escape).join(' · ')}</p>`:''}<p>${(card.l||[[card.cta,card.url]]).map(([text,url]:string[])=>link(text,url)).join(' · ')}</p></article>`;
 const raw=(page:string)=>readFileSync(`src/pages/html/${page}.html`,'utf8').replace(/<button\b[^>]*data-open="([^"]+)"[^>]*>([\s\S]*?)<\/button>/g,'<a href="/$1">$2</a>');
 const tools=TOOLS.map(([slug,title])=>`<article><h2>${link(String(title),'/tool/'+slug)}</h2><p>${escape(title)} — a free browser tool by Harys.</p></article>`).join('');
 const events=EVENTS.map(([id,title,description])=>`<article><h2>${link(title,'/'+id)}</h2><p>${escape(description)}</p></article>`).join('');

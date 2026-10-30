@@ -8,7 +8,7 @@ export const APPS={
   about:{t:'About',i:'user',w:680,h:640},
   works:{t:'Works',i:'brief',w:720,h:580},
   servers:{t:'Discord servers',i:'chat',w:720,h:500},
-  projects:{t:'Projects',i:'folder',w:760,h:680},
+  projects:{t:'Projects',i:'folder',w:940,h:720},
   tools:{t:'Tools',i:'code',w:740,h:460},
   contact:{t:'Contact',i:'mail',w:560,h:340},
   settings:{t:'Settings',i:'gear',w:640,h:620},
@@ -19,7 +19,7 @@ export const APPS={
   games:{t:'Games',i:'gamepad',w:560,h:340},
   'game/snake':{t:'Snake',i:'gamepad',w:460,h:640},
   'game/dino':{t:'Dino Run',i:'gamepad',w:720,h:390},
-  featured:{t:'Featured Projects',i:'star',w:840,h:660},
+  featured:{t:'Featured Projects',i:'star',w:940,h:720},
   'event/ramadan':{t:'Ramadan Countdown',i:'i-cal',w:900,h:620,src:'/events/ramadan.html'}
 };
 export const TOOLS=[['discord-embed-builder','Discord Embed Builder',0,'ti-embed'],['gemini-api-tester','Gemini API Tester',0,'ti-api'],['color-picker','Color Picker',0,'ti-color'],['timestamp-generator','Timestamp Generator',0,'ti-time'],['ansi-text-colorizer','ANSI Text Colorizer',0,'ti-ansi'],['password-generator','Password Generator',0,'ti-pass']];
