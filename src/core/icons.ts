@@ -1,24 +1,50 @@
 // @ts-nocheck
 import {$, lk, sv} from './util';
 
+// Resolve each viewport from the saved intention, never from a previous resize.
+// Right-side shortcuts use the right edge rather than a stale grid column.
+export function desktopLayout(items,width,height,card,preferences={}){
+  const px=14,cw=96,ch=100,size=92,bottom=height-44-px;
+  const rows=Math.max(1,Math.floor((bottom-px-size)/ch)+1);
+  const columns=Math.max(1,Math.floor((width-px*2-size)/cw)+1);
+  const result={},occupied=[];
+  const overlaps=(a,b)=>a[0]<b[0]+b[2]&&a[0]+a[2]>b[0]&&a[1]<b[1]+b[3]&&a[1]+a[3]>b[1];
+  const point=(side,col,row)=>[side==='right'?width-px-size-col*cw:px+col*cw,px+row*ch];
+  const counts={left:0,right:0};
+  for(const item of items){
+    const side=item.right?'right':'left',n=counts[side]++;
+    const pref=preferences[item.key];
+    const target=pref?point(pref.side,Math.min(columns-1,Math.max(0,pref.col||0)),Math.min(rows-1,Math.max(0,pref.row||0))):point(side,Math.floor(n/rows),n%rows);
+    let best=null,distance=Infinity;
+    for(const edge of [side,side==='right'?'left':'right'])for(let col=0;col<columns;col++)for(let row=0;row<rows;row++){
+      const p=point(edge,col,row),box=[...p,size,size];
+      if(p[0]<px||p[0]+size>width-px||p[1]+size>bottom||occupied.some(b=>overlaps(box,b))||(card&&overlaps(box,card)))continue;
+      const d=(p[0]-target[0])**2+(p[1]-target[1])**2;
+      if(d<distance){best=p;distance=d;}
+    }
+    if(best){result[item.key]=best;occupied.push([...best,size,size])}
+  }
+  return result;
+}
+
 export const desk=$('#desk'),CW=96,CH=100,PX=14;
-export let pos={v:lk('hs.icons',{})},dragged=false,dg=null;
+const saved=lk('hs.layout',{});
+let preferences=saved.custom||{},sorted=!!saved.sorted;
+export let pos={v:{}},dragged=false,dg=null;
 export const icons=()=>[...desk.querySelectorAll('.icon')];
-const hitCard=(x,y)=>{const c=$('#card');if(c.hidden)return false;const b=c.getBoundingClientRect(),l=PX+x*CW,t=PX+y*CH;return l<b.right&&l+92>b.left&&t<b.bottom&&t+92>b.top};
-const grid=()=>({c:Math.max(1,Math.floor((innerWidth-PX)/CW)),r:Math.max(1,Math.floor((innerHeight-44-PX)/CH))});
-function put(ic){const p=pos.v[ic.dataset.k];if(p){ic.style.left=PX+p[0]*CW+'px';ic.style.top=PX+p[1]*CH+'px'}}
-function settle(k,t){
-  const {c,r}=grid(),used=new Set(Object.keys(pos.v).filter(j=>j!==k).map(j=>pos.v[j].join()));let best=[0,0],bd=1e9;
-  for(let x=0;x<c;x++)for(let y=0;y<r;y++){if(used.has(x+','+y)||hitCard(x,y))continue;const d=(x-t[0])**2+(y-t[1])**2;if(d<bd){bd=d;best=[x,y]}}
-  pos.v[k]=best;
-}
+const save=()=>sv('hs.layout',{custom:preferences,sorted});
+function put(ic){const p=pos.v[ic.dataset.k];if(p){ic.style.left=p[0]+'px';ic.style.top=p[1]+'px'}}
 export function arrange(order){
-  const {c,r}=grid(),all=icons(),L=order||all.filter(i=>!i.dataset.r),R=order?[]:all.filter(i=>i.dataset.r);pos.v={};
-  L.forEach((ic,n)=>pos.v[ic.dataset.k]=[Math.floor(n/r),n%r]);
-  R.forEach((ic,n)=>pos.v[ic.dataset.k]=[c-1-Math.floor(n/r),n%r]);
-  all.forEach(ic=>settle(ic.dataset.k,pos.v[ic.dataset.k]));all.forEach(put);sv('hs.icons',pos.v);
+  preferences={};sorted=!!order;save();
+  dispatchEvent(new Event('desktop-arrange'));relayout();
 }
-export function relayout(){icons().forEach(ic=>{settle(ic.dataset.k,pos.v[ic.dataset.k]||[0,0]);put(ic)});sv('hs.icons',pos.v)}
+export function relayout(){
+  if(innerWidth<=820||innerHeight<=520)return;
+  const all=icons();if(sorted)all.sort((a,b)=>a.textContent.trim().localeCompare(b.textContent.trim()));
+  const card=$('#card'),b=card.getBoundingClientRect();
+  pos.v=desktopLayout(all.map(ic=>({key:ic.dataset.k,right:!sorted&&!!ic.dataset.r})),innerWidth,innerHeight,!card.hidden&&b.width&&b.height?[b.left-8,b.top-8,b.width+16,b.height+16]:null,preferences);
+  all.forEach(put);
+}
 export const sortIcons=()=>arrange(icons().sort((a,b)=>a.textContent.trim().localeCompare(b.textContent.trim())));
 export function pick(b,e){const m=e.ctrlKey||e.metaKey||e.shiftKey;
   if(!m)document.querySelectorAll('.icon.sel').forEach(i=>i!==b&&i.classList.remove('sel'));
@@ -33,9 +59,10 @@ desk.addEventListener('pointermove',e=>{if(!dg)return;const dx=e.clientX-dg.sx,d
   if(!dg.on&&Math.hypot(dx,dy)<6)return;dg.on=true;
   dg.g.forEach(({i,ox,oy})=>{i.classList.add('drag');i.style.left=Math.max(0,Math.min(ox+dx,innerWidth-92))+'px';i.style.top=Math.max(0,Math.min(oy+dy,innerHeight-44-92))+'px'})});
 const drop=()=>{if(!dg)return;const {g,on}=dg;dg=null;if(!on)return;
-  g.forEach(({i})=>{delete pos.v[i.dataset.k]});
-  g.forEach(({i})=>{i.classList.remove('drag');settle(i.dataset.k,[Math.round((i.offsetLeft-PX)/CW),Math.round((i.offsetTop-PX)/CH)]);put(i)});
-  sv('hs.icons',pos.v);dragged=true;setTimeout(()=>dragged=false,60)};
+  g.forEach(({i})=>{i.classList.remove('drag');const right=i.offsetLeft+46>innerWidth/2;
+    preferences[i.dataset.k]={side:right?'right':'left',col:Math.max(0,Math.round((right?innerWidth-PX-92-i.offsetLeft:i.offsetLeft-PX)/CW)),row:Math.max(0,Math.round((i.offsetTop-PX)/CH))};
+  });
+  save();relayout();dragged=true;setTimeout(()=>dragged=false,60)};
 desk.addEventListener('pointerup',drop);
 desk.addEventListener('pointercancel',drop);
 const band=document.createElement('div');

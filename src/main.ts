@@ -24,11 +24,9 @@ import {open, showDesk} from './core/windows';
 import {S, applySet} from './core/settings';
 import {arrange, pos, relayout} from './core/icons';
 
-{let q=7;const r=()=>(q=q*16807%2147483647)/2147483647;
- $('#stars').innerHTML=Array.from({length:80},()=>`<circle cx="${r()*1600|0}" cy="${r()*340|0}" r="${(.5+r()*1.2).toFixed(1)}" opacity="${(.3+r()*.6).toFixed(2)}"/>`).join('')}
 applySet();
 if(!S.boot)$('#boot')?.remove();
-Object.keys(pos.v).length?relayout():arrange();
+relayout();
 addEventListener('resize',relayout);
 $('#sd').onclick=showDesk;
 {const e=$('#sd2');e.addEventListener('pointerenter',ev=>{if(ev.pointerType!=='touch')document.body.classList.add('peek')});

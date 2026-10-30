@@ -24,19 +24,19 @@
 .tips{max-width:46ch;margin:14px auto;padding-left:20px;text-align:left;color:#e6dcc0;line-height:1.7}
 @media(max-width:820px),(max-height:520px){#tasks button span,#pins{display:none}}
 /* hover (kept light) */
-.pad a:not(.btn):not(.lk){text-decoration-color:#e6b42266;text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
+.pad a:not(.btn):not(.lk){text-decoration-color:#c69a4b66;text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
 .pad a:not(.btn):not(.lk):hover{color:var(--cream);text-decoration-color:var(--honey)}
 .btn{transition:background .15s,border-color .15s,color .15s}
-.btn:hover{background:#d4a520;border-color:#d4a520}
-.btn.ghost:hover{background:#e6b42218;border-color:var(--honey);color:var(--cream)}
+.btn:hover{background:#b98b40;border-color:#b98b40}
+.btn.ghost:hover{background:#c69a4b18;border-color:var(--honey);color:var(--cream)}
 .tools button{transition:border-color .15s,background .15s}
-.tools button:hover{background:#2a2213}
-.lk{transition:background .15s}.lk:hover{background:#2a2213}
+.tools button:hover{background:#30261a}
+.lk{transition:background .15s}.lk:hover{background:#30261a}
 #start,#clock,#sd,#sd2,#pins button,#tasks button{transition:background .15s,border-color .15s,color .15s}
 .btns button{transition:background .12s,color .12s}
 /* show desktop (right edge, peeks on hover) */
 #sd2{align-self:stretch;width:14px;margin:0 -6px 0 2px;padding:0;border:0;border-left:1px solid var(--line);background:none;border-radius:0}
-#sd2:hover{background:#e6b42222}
+#sd2:hover{background:#c69a4b22}
 .win{transition:opacity .15s}
 body.peek .win{opacity:0;pointer-events:none}
 /* startup */
@@ -54,7 +54,7 @@ body.peek .win{opacity:0;pointer-events:none}
 .big{font-size:34px;font-weight:800;margin:4px 0 6px;letter-spacing:-.01em}
 @media(max-width:820px),(max-height:520px){.clks{grid-template-columns:1fr}}
 #tasks button.drag{background:#ffffff1f;user-select:none}
-::selection{background:#e6b42255;color:var(--cream)}
+::selection{background:#c69a4b55;color:var(--cream)}
 .proj{display:flex;gap:14px;align-items:flex-start}
 .proj h2{margin:0 0 4px}
 .proj .lg{flex:none;width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:4px;background:var(--ink)}
@@ -62,11 +62,11 @@ body.peek .win{opacity:0;pointer-events:none}
 .pr{margin-top:10px!important}
 .btn.sm{padding:4px 11px;font-size:13px}
 .gm{display:flex;flex-direction:column;align-items:center;gap:10px}
-.gm canvas{max-width:100%;height:auto;background:#130f08;border:1px solid var(--line);border-radius:4px;outline:none}
+.gm canvas{max-width:100%;height:auto;background:#15110c;border:1px solid var(--line);border-radius:4px;outline:none}
 .gh{margin:0;color:var(--mute);font-size:14px}
 .rf .icon{animation:rfl .3s}
 @keyframes rfl{50%{opacity:.25}}
-.note{margin:0 0 14px;padding:10px 14px;border:1px solid var(--line);border-left:3px solid var(--honey);background:#221c0f;border-radius:2px;color:#e6dcc0;font-size:14px}
+.note{margin:0 0 14px;padding:10px 14px;border:1px solid var(--line);border-left:3px solid var(--honey);background:#272016;border-radius:2px;color:#e6dcc0;font-size:14px}
 .feat{padding:16px;margin-bottom:14px;border:1px solid var(--line);border-radius:4px;background:#1f190e}
 .fh{display:flex;align-items:center;gap:14px;margin-bottom:10px}
 .fh>div{flex:1}.fh h2{margin:0;font-size:20px}

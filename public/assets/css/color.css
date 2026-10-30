@@ -27,7 +27,7 @@
             animation: fadeIn 1s ease-in;
             margin-bottom: 30px;
             background: none;
-            color: #e6b422;
+            color: #c69a4b;
         }
 
         .header img {
@@ -55,7 +55,7 @@
             background: none;
             margin-bottom: 12px;
             letter-spacing: -0.025em;
-            color: #e6b422;
+            color: #c69a4b;
         }
 
         .subtitle {
@@ -473,7 +473,7 @@
             .header h1 {
                 font-size: 2rem;
                 background: none;
-                color: #e6b422;
+                color: #c69a4b;
             }
             
             .gradient-controls {
@@ -550,6 +550,6 @@
 
         footer small a { color:#b9b9af; text-underline-offset:3px }
 
-        footer a:hover { color:#e6b422 }
+        footer a:hover { color:#c69a4b }
 
-        footer a:focus-visible { outline:2px solid #e6b422; outline-offset:3px }
+        footer a:focus-visible { outline:2px solid #c69a4b; outline-offset:3px }

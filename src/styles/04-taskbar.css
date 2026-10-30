@@ -6,7 +6,7 @@
 #start:hover i,#start[aria-expanded=true] i{background:var(--ink)}
 #tasks{flex:1;display:flex;gap:4px;overflow:hidden}
 #tasks button{max-width:180px;min-width:0;height:32px;padding:0 10px;border:1px solid var(--line);background:var(--umber);border-radius:2px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#tasks button.on{background:#4a3a12;border-color:var(--honey)}
+#tasks button.on{background:#49351f;border-color:var(--honey)}
 #tasks button.min{opacity:.6}
 #clock{padding:0 12px;height:36px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;border:1px solid var(--line);background:var(--ink);border-radius:2px;line-height:1.15;font-size:13px}
 #clock small{font-size:11px;color:var(--mute)}
@@ -22,6 +22,6 @@
 #menu hr{border:0;border-top:1px solid var(--line);margin:6px 0}
 
 /* discord card */
-#card{position:fixed;right:14px;bottom:calc(var(--bar) + 14px);width:330px;padding:8px;background:var(--umber);border:1px solid var(--line);border-radius:4px}
+#card{position:fixed;right:14px;bottom:calc(var(--bar) + 14px);width:330px;min-height:220px;padding:8px;background:var(--umber);border:1px solid var(--line);border-radius:4px}
 #card small{display:block;margin:0 0 6px 2px;color:var(--mute);font-size:12px}
 #card img{display:block;width:100%;height:auto;border-radius:6px}

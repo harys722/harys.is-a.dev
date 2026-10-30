@@ -135,6 +135,30 @@ for(const name of ['ramadan','eid-ul-adha']){
 console.log('Events: complete versioned page scripts render dates and ticking countdowns.');
 
 const compile=path=>ts.transpileModule(readFileSync(path,'utf8').replace(/^import[^\n]+\r?\n/gm,''),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2020}}).outputText;
+const layoutCode=compile('src/core/icons.ts').split('export const desk')[0];
+const {desktopLayout}=await import('data:text/javascript;base64,'+Buffer.from(layoutCode).toString('base64'));
+const shortcuts=['welcome','about','works','servers','projects','featured','tools','contact','settings','links','time'].map(key=>({key,right:['links','time'].includes(key)}));
+function checkLayout(width,height,card,preferences={}){
+  const layout=desktopLayout(shortcuts,width,height,card,preferences),boxes=Object.values(layout).map(([x,y])=>[x,y,92,92]);
+  assert.equal(boxes.length,shortcuts.length,'All shortcuts have a free cell');
+  const overlap=(a,b)=>a[0]<b[0]+b[2]&&a[0]+a[2]>b[0]&&a[1]<b[1]+b[3]&&a[1]+a[3]>b[1];
+  for(let i=0;i<boxes.length;i++){
+    const b=boxes[i];assert(b[0]>=14&&b[0]+92<=width-14&&b[1]>=14&&b[1]+92<=height-58,'Shortcut stays on desktop');
+    if(card)assert(!overlap(b,card),'Shortcut avoids the Discord card');
+    for(let j=0;j<i;j++)assert(!overlap(b,boxes[j]),'Shortcuts never overlap');
+  }
+  return layout;
+}
+for(const [width,height] of [[821,521],[1024,600],[1280,720],[1366,768],[1440,900],[1920,1080],[2560,1440]]){
+  const card=[width-352,height-286,346,236],layout=checkLayout(width,height,card);
+  assert.equal(layout.links[0],width-106,'Links remains flush to the right edge');assert.equal(layout.time[0],width-106);
+  checkLayout(width,height,[width/2-173,height/2-100,346,236]);
+}
+const intended={projects:{side:'right',col:2,row:5}};
+const original=checkLayout(1920,1080,[1568,794,346,236],intended);
+checkLayout(821,521,[469,235,346,236],intended);
+assert.deepEqual(checkLayout(1920,1080,[1568,794,346,236],intended),original,'Returning to a screen size restores the intended positions');
+console.log('Desktop: edge anchors, card avoidance, no overlaps, and resize round trips across seven screen sizes passed.');
 const trafficCode=compile('src/pages/traffic.ts');
 const {ROAD,trafficRow,hitsCar,trafficSpeed}=await import('data:text/javascript;base64,'+Buffer.from(trafficCode).toString('base64'));
 assert(trafficSpeed(30)>trafficSpeed(0));assert(trafficSpeed(60)>trafficSpeed(30));assert.equal(trafficSpeed(10000),ROAD.maxSpeed);

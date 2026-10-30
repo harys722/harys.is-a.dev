@@ -33,7 +33,7 @@ export function gameUI(id){
   x.scale(dpr,dpr);
   let hi=lk(hk,0),sc=0,state='ready',jump=()=>{},rate=dino?16.67:snakeInterval(0),reset,step,draw,key,renderClock=0,playTime=0;
   const info=()=>{hs.textContent='Score '+sc+'  ·  Best '+hi};
-  const msg=t=>{x.save();const width=Math.min(W-24,330),top=dino?30:16;x.fillStyle='#130f08ed';x.strokeStyle='#54431d';x.beginPath();x.roundRect((W-width)/2,top,width,38,8);x.fill();x.stroke();x.fillStyle='#f4ecd6';x.font='500 13px system-ui,sans-serif';x.textAlign='center';x.fillText(t,W/2,top+24);x.restore()};
+  const msg=t=>{x.save();const width=Math.min(W-24,330),top=dino?30:16;x.fillStyle='#15110ced';x.strokeStyle='#5b452c';x.beginPath();x.roundRect((W-width)/2,top,width,38,8);x.fill();x.stroke();x.fillStyle='#eee2ce';x.font='500 13px system-ui,sans-serif';x.textAlign='center';x.fillText(t,W/2,top+24);x.restore()};
   const over=(won=false)=>{releaseAction();state=won?'won':'over';if(sc>hi){hi=sc;sv(hk,hi)}info()};
   if(dino){
     const gy=H-30;let y=0,vy=0,sp=dinoSpeed(0),ob=[],t=0,bumps=[],clouds=[],nextGap=0,buffer=0,travel=0,dust=[];
@@ -69,7 +69,7 @@ export function gameUI(id){
       x.save();x.translate(33,gy+y+(run?-Math.abs(Math.sin(phase))*1.2:Math.sin(renderClock*.002)*.5));
       // The rear leg sits behind the body; the front leg has a separate running cycle.
       const leg=(px,angle,color)=>{x.save();x.translate(px,-12);x.rotate(angle);x.fillStyle=color;x.strokeStyle='#765923';x.lineWidth=1;x.beginPath();x.moveTo(-4,0);x.quadraticCurveTo(-6,8,-1,11);x.lineTo(8,11);x.quadraticCurveTo(10,9,7,8);x.lineTo(2,7);x.lineTo(4,1);x.closePath();x.fill();x.stroke();x.fillStyle='#f5e2a5';x.fillRect(6,8,2,2);x.restore()};
-      const skin=x.createLinearGradient(15,-48,34,-4);skin.addColorStop(0,dead?'#b18d3b':'#f0cf72');skin.addColorStop(.45,dead?'#a48235':'#e6b422');skin.addColorStop(1,'#ac7c20');
+      const skin=x.createLinearGradient(15,-48,34,-4);skin.addColorStop(0,dead?'#b18d3b':'#f0cf72');skin.addColorStop(.45,dead?'#a48235':'#c69a4b');skin.addColorStop(1,'#ac7c20');
       if(ducking()){
         leg(33,Math.sin(phase+Math.PI)*.35,'#a47f27');x.fillStyle=skin;x.strokeStyle='#775923';x.lineWidth=1.2;
         x.beginPath();x.moveTo(20,-17);x.quadraticCurveTo(8,-12,0,-19);x.quadraticCurveTo(4,-7,22,-7);x.quadraticCurveTo(32,-2,44,-9);x.lineTo(49,-12);x.lineTo(62,-12);x.quadraticCurveTo(68,-12,68,-17);x.lineTo(68,-22);x.quadraticCurveTo(68,-27,62,-27);x.lineTo(48,-27);x.quadraticCurveTo(42,-27,40,-21);x.lineTo(34,-17);x.closePath();x.fill();x.stroke();
@@ -96,7 +96,7 @@ export function gameUI(id){
       x.fillStyle='#fff0c4';x.beginPath();x.moveTo(45,-33);x.lineTo(47,-33);x.lineTo(46,-30.5);x.closePath();x.fill();x.restore();
     };
     draw=()=>{
-      const sky=x.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#130f08');sky.addColorStop(1,'#21180c');x.fillStyle=sky;x.fillRect(0,0,W,H);
+      const sky=x.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#15110c');sky.addColorStop(1,'#21180c');x.fillStyle=sky;x.fillRect(0,0,W,H);
       x.fillStyle='#bba66b44';[[42,24],[216,17],[327,39],[446,19],[568,43]].forEach(([a,b])=>x.fillRect(a,b,1,1));
       x.fillStyle='#5a49232b';x.beginPath();x.arc(106,35,11,0,7);x.fill();x.fillStyle='#cbb57866';x.beginPath();x.arc(106,35,7,0,7);x.fill();
       x.fillStyle='#30230f';for(let j=-1;j<4;j++){const off=j*270-(travel*.075%270);x.beginPath();x.moveTo(off,gy);x.quadraticCurveTo(off+75,gy-70,off+135,gy-24);x.quadraticCurveTo(off+210,gy-65,off+290,gy);x.fill()}
@@ -106,7 +106,7 @@ export function gameUI(id){
         o.k===2?(cactus(o.x,17,o.h),cactus(o.x+19,17,o.h-8)):cactus(o.x,o.w,o.h)});
       x.save();x.globalAlpha=.2*Math.max(.3,1+y/150);x.fillStyle='#000';x.beginPath();x.ellipse(59,gy+2,19*Math.max(.5,1+y/180),3,0,0,7);x.fill();x.restore();
       x.save();dust.forEach(p=>{x.globalAlpha=p.life/45;x.fillStyle='#c5a966';x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});x.restore();dinosaur();
-      x.fillStyle='#b8aa80';x.font='14px "DM Mono",monospace';x.textAlign='right';x.fillText('HI '+String(hi).padStart(5,'0')+'  '+String(sc).padStart(5,'0'),W-12,22);
+      x.fillStyle='#b4a184';x.font='14px "DM Mono",monospace';x.textAlign='right';x.fillText('HI '+String(hi).padStart(5,'0')+'  '+String(sc).padStart(5,'0'),W-12,22);
       if(state==='ready')msg('Press Space or tap to start');if(state==='over')msg('Game over. Press Space to retry')};
     key=(k,e)=>{if(k==='ArrowDown'||k==='s'){e.preventDefault();setDuck(k,true)}else if(k===' '||k==='ArrowUp'||k==='w'){e.preventDefault();if(!e.repeat)jump()}};cv.onclick=()=>{if(!paused)jump()};
   }else{
@@ -155,7 +155,7 @@ export function gameUI(id){
       x.fillStyle='#8e6c26';for(const yy of [-2,2]){x.beginPath();x.arc(8,yy,.65,0,7);x.fill()}
       x.strokeStyle='#bc8f2e';x.lineWidth=.8;x.beginPath();x.moveTo(-5,-3);x.lineTo(-2,0);x.lineTo(-5,3);x.stroke();x.restore();
       sparkles=sparkles.filter(p=>renderClock-p.born<380);sparkles.forEach(p=>{const age=(renderClock-p.born)/380;x.save();x.globalAlpha=1-age;x.fillStyle='#edc76a';x.beginPath();x.arc(p.x+Math.cos(p.a)*age*22,p.y+Math.sin(p.a)*age*22,1.6*(1-age),0,7);x.fill();x.restore()});
-      x.strokeStyle='#54431d';x.lineWidth=1;x.strokeRect(.5,.5,W-1,H-1);
+      x.strokeStyle='#5b452c';x.lineWidth=1;x.strokeRect(.5,.5,W-1,H-1);
       if(state==='ready')msg('Press an arrow key or swipe to start');if(state==='over')msg('Game over. Press Space to retry');if(state==='won')msg('Board complete! Space to play again')};
     const M={ArrowUp:[0,-1],w:[0,-1],ArrowDown:[0,1],s:[0,1],ArrowLeft:[-1,0],a:[-1,0],ArrowRight:[1,0],d:[1,0]};
     key=(k,e)=>{const v=M[k];if(v){e.preventDefault();if(state==='over'||state==='won')return;state='run';const basis=turns[turns.length-1]||dr;if(turns.length<2&&(v[0]!==basis[0]||v[1]!==basis[1])&&(v[0]!==-basis[0]||v[1]!==-basis[1]))turns.push(v)}else if(k===' '&&(state==='over'||state==='won')){e.preventDefault();reset()}};

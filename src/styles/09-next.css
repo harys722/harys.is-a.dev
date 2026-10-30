@@ -8,7 +8,7 @@
 .frame-wrap { height:100%;width:100% }
 .frame-wrap iframe { width:100%;height:100%;border:0 }
 .missing-path { overflow-wrap:anywhere;color:var(--mute) }
-#page-content { position:fixed;inset:0;z-index:100001;background:#1c170d;color:#f4ecd6;padding:24px;overflow:auto;font-family:system-ui,sans-serif }
+#page-content { position:fixed;inset:0;z-index:100001;background:#201a12;color:#eee2ce;padding:24px;overflow:auto;font-family:system-ui,sans-serif }
 #page-content nav { display:flex;gap:16px;flex-wrap:wrap }
 #page-content article { max-width:800px;margin:24px 0 }
 .traffic-controls { display:flex;gap:12px;justify-content:center;margin-top:12px }

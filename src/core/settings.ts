@@ -5,7 +5,7 @@ import {resetWins} from './windows';
 import {cal, drawCal, tick} from './calendar';
 import {resetCard} from './card';
 
-const SB='*{scrollbar-width:thin;scrollbar-color:#a37f1b #130f08}::-webkit-scrollbar{width:12px;height:12px}::-webkit-scrollbar-track{background:#130f08}::-webkit-scrollbar-thumb{background:#a37f1b;border:2px solid #130f08;border-radius:6px}::-webkit-scrollbar-thumb:hover{background:#e6b422}::-webkit-scrollbar-corner{background:#130f08}';
+const SB='*{scrollbar-width:thin;scrollbar-color:#95703a #15110c}::-webkit-scrollbar{width:12px;height:12px}::-webkit-scrollbar-track{background:#15110c}::-webkit-scrollbar-thumb{background:#95703a;border:2px solid #15110c;border-radius:6px}::-webkit-scrollbar-thumb:hover{background:#c69a4b}::-webkit-scrollbar-corner{background:#15110c}';
 export function sbFrame(f){try{const d=f.contentDocument;let st=d.getElementById('hs-sb');if(S.sb&&!st){st=d.createElement('style');st.id='hs-sb';st.textContent=SB;d.head.append(st)}else if(!S.sb&&st)st.remove()}catch{}}
 const mondayFirst=(()=>{try{const l=new Intl.Locale(navigator.language),i=l.getWeekInfo?l.getWeekInfo():l.weekInfo;return !!i&&i.firstDay===1}catch{return false}})();
 export const S=Object.assign({cursor:true,sb:true,motion:!matchMedia('(prefers-reduced-motion:reduce)').matches,card:true,boot:true,h24:false,secs:false,mon:mondayFirst},lk('hs.set',{}));
@@ -28,6 +28,6 @@ export function settingsUI(){
   d.addEventListener('change',e=>{const k=e.target.dataset.set;if(k){S[k]=e.target.checked;sv('hs.set',S);applySet();if(k==='card')relayout()}});
   d.addEventListener('click',e=>{const a=e.target.dataset.act;if(!a)return;
     if(a==='icons'){arrange();resetCard()}else if(a==='wins')resetWins();
-    else{try{localStorage.removeItem('hs.set');localStorage.removeItem('hs.icons')}catch{}location.reload()}});
+    else{try{localStorage.removeItem('hs.set');localStorage.removeItem('hs.icons');localStorage.removeItem('hs.layout');resetCard()}catch{}location.reload()}});
   return d;
 }

@@ -72,7 +72,7 @@
             padding: 20px;
             animation: fadeIn 1s ease-in;
             margin-bottom: 30px;
-            color: #e6b422;
+            color: #c69a4b;
         }
         
         .header img {
@@ -145,7 +145,7 @@
         .btn {
             width: 100%;
             padding: 15px;
-            background: #e6b422;
+            background: #c69a4b;
             color: #1a1a1a;
             border: none;
             border-radius: 12px;
@@ -169,7 +169,7 @@
 
         .send-btn {
             padding: 15px 20px;
-            background: #e6b422;
+            background: #c69a4b;
             color: #1a1a1a;
             border: none;
             border-radius: 12px;
@@ -351,29 +351,29 @@
 
         footer small a { color:#b9b9af; text-underline-offset:3px }
 
-        footer a:hover { color:#e6b422 }
+        footer a:hover { color:#c69a4b }
 
-        footer a:focus-visible { outline:2px solid #e6b422; outline-offset:3px }
+        footer a:focus-visible { outline:2px solid #c69a4b; outline-offset:3px }
 .model-note { font-size:12px;line-height:1.6;color:#a9adaf;margin-top:8px;overflow-wrap:anywhere }
 .text-button { border:0;background:none;padding:8px 0;color:#d8bb6a;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit }
-.text-button:focus-visible { outline:2px solid #e6b422;outline-offset:3px }
+.text-button:focus-visible { outline:2px solid #c69a4b;outline-offset:3px }
 .chat-toolbar { display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px;flex-shrink:0;min-width:0 }
 body:has(#chatContainer[style*="flex"]) .header { display:none }
 body:has(#chatContainer[style*="flex"]) .chat-container { margin-top:0;height:calc(100dvh - 72px);max-height:850px;min-height:480px }
 .chat-title { min-width:0 }
-.chat-title h2 { color:#f4ecd6;font-size:24px;margin:4px 0 }
+.chat-title h2 { color:#eee2ce;font-size:24px;margin:4px 0 }
 .eyebrow { font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#b8a874 }
 .chat-title .model-note { margin:0;font-size:11px;color:#b5b5a8 }
 .chat-actions { display:flex;gap:8px;flex-wrap:wrap }
 .secondary-button { padding:10px 12px;border:1px solid #444;border-radius:8px;background:#1b1b1b;color:#deded5;font:inherit;font-size:12px;cursor:pointer }
-.secondary-button:hover { border-color:#a28a44;color:#f2d98a }
+.secondary-button:hover { border-color:#a28a44;color:#dfc18f }
 .secondary-button[hidden],.chat-activity[hidden] { display:none }
 .chat-activity { font-size:12px;line-height:1.5;color:#c7b87c;margin:-8px 0 10px }
 .composer-note { font-size:10px;color:#979b9c;margin:10px 0 0;line-height:1.6;flex-shrink:0 }
 .message-header { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;min-width:0 }
 .message-header strong { font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:#c3b47e }
 .copy-button { border:0;background:none;color:#a7a79f;padding:3px 0;font:inherit;font-size:10px;cursor:pointer;flex-shrink:0 }
-.copy-button:hover { color:#e6b422 }
+.copy-button:hover { color:#c69a4b }
 .message-content { min-width:0;max-width:100% }
 .message-content>p { margin:0;white-space:pre-wrap }
 .message.error { max-width:100%;background:#231719;border:1px solid #633238;color:#e5b6b6 }
@@ -388,7 +388,7 @@ body:has(#chatContainer[style*="flex"]) .chat-container { margin-top:0;height:ca
 .code-caption { display:flex;justify-content:space-between;align-items:center;gap:12px;padding:7px 12px;border-bottom:1px solid #303030;font-size:10px;color:#aaa }
 .code-block pre { max-width:100%;overflow:auto;padding:14px;margin:0;font:12px/1.7 ui-monospace,Consolas,monospace;white-space:pre }
 .code-block code { font:inherit }
-:focus-visible { outline:2px solid #e6b422;outline-offset:3px }
+:focus-visible { outline:2px solid #c69a4b;outline-offset:3px }
 @media(prefers-reduced-motion:reduce){.message,.header{animation:none}}
 .form-group select { overflow:hidden;text-overflow:ellipsis }
 .chat-input:disabled,.form-group input:disabled,.form-group select:disabled { opacity:.6 }

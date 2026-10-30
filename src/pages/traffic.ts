@@ -68,8 +68,8 @@ export function trafficUI() {
     ctx.fillStyle='#556059';ctx.fillRect(23,0,4,450);ctx.fillRect(333,0,4,450);
     for(let y=(distance%48)-48;y<450;y+=48){ctx.fillStyle='#c5be9b';ctx.fillRect(29,y,2,25);ctx.fillRect(329,y,2,25)}
     ctx.fillStyle='#929895';for(const x of [130,230])for(let y=(distance%80)-80;y<450;y+=80)ctx.fillRect(x-1,y,2,32);
-    cars.forEach(other=>car(ROAD.centers[other.lane],other.y,other.color));car(playerX,ROAD.playerY,crashed?'#c36c52':'#e6b422',true);
-    if(!running){rounded(35,167,290,94,12,'#101619f2');ctx.fillStyle='#f4ecd6';ctx.font='600 21px system-ui';ctx.textAlign='center';ctx.fillText(crashed?'Try another run':'Traffic Run',180,202);ctx.fillStyle='#b8c5c3';ctx.font='13px system-ui';ctx.fillText('Space or tap to '+(crashed?'retry':'start'),180,230)}
+    cars.forEach(other=>car(ROAD.centers[other.lane],other.y,other.color));car(playerX,ROAD.playerY,crashed?'#c36c52':'#c69a4b',true);
+    if(!running){rounded(35,167,290,94,12,'#101619f2');ctx.fillStyle='#eee2ce';ctx.font='600 21px system-ui';ctx.textAlign='center';ctx.fillText(crashed?'Try another run':'Traffic Run',180,202);ctx.fillStyle='#b8c5c3';ctx.font='13px system-ui';ctx.fillText('Space or tap to '+(crashed?'retry':'start'),180,230)}
     requestAnimationFrame(loop);
   }
   info();requestAnimationFrame(loop);return panel;

@@ -55,7 +55,7 @@ font-size: 36px;
 font-weight: 800;
 padding: 20px;
 animation: fadeIn 1s ease-in;
-color: #e6b422;
+color: #c69a4b;
 }
 .header img {
 width: 60px;
@@ -3093,6 +3093,6 @@ footer small { display:block; margin-top:6px; font:inherit; color:#979b9c }
 
 footer small a { color:#b9b9af; text-underline-offset:3px }
 
-footer a:hover { color:#e6b422 }
+footer a:hover { color:#c69a4b }
 
-footer a:focus-visible { outline:2px solid #e6b422; outline-offset:3px }
+footer a:focus-visible { outline:2px solid #c69a4b; outline-offset:3px }
