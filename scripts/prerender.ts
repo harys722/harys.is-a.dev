@@ -26,6 +26,7 @@ export function prerender(){
     featured:'<h1>Featured Projects</h1>'+FEATURED.map(article).join(''),events:'<h1>Events</h1>'+events,
     links:'<h1>Find Harys elsewhere</h1>'+LINKS.map(([name,handle,url])=>`<p>${link(name+' '+handle,url)}</p>`).join(''),games,
     welcome:raw('about'),time:'<h1>My Time</h1><p>Harys is based in Karachi, Pakistan (UTC+5).</p>',
+    calendar:'<h1>Gregorian and Hijri Calendar</h1><p>Browse Gregorian months with corresponding Hijri dates. Hijri dates use the Umm al-Qura calendar; local moon sightings may differ. The calendar works offline after an initial visit.</p>',
     settings:'<h1>Desktop settings</h1><p>Customize your cursor, animations, clock and Discord status card.</p>'
   };
   for(const [id,app] of Object.entries(APPS)){

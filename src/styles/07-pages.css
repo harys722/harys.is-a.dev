@@ -52,3 +52,35 @@
 @container(min-width:700px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.featured-overview{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}.featured-overview .portfolio-preview{margin:18px 0 0 18px;width:calc(100% - 18px);border:1px solid var(--line);border-radius:4px}}
 @media(max-width:480px){.portfolio-copy{padding:15px}.featured-extra{padding:0 15px 15px}.featured-extra .facts{grid-template-columns:1fr}.portfolio-viewer footer{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.portfolio-preview img{transition:none}}
+/* Full calendar page, independent from the taskbar date popup. */
+.dual-calendar{max-width:800px;margin:auto}
+.dual-toolbar{display:flex;gap:14px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.dual-calendar .dual-toolbar h1{font-size:26px;margin:0 0 5px;line-height:1.2}
+.dual-calendar .dual-toolbar p{font-size:12px;color:var(--mute);margin:0;line-height:1.4}
+.dual-actions{display:flex;gap:5px;align-items:center;flex:none}
+.dual-actions .btn{min-height:34px;min-width:34px;padding:4px 10px}
+.dual-actions [data-calendar-move]{font-size:21px;line-height:1}
+.dual-calendar .dual-legend{font-size:12px;color:var(--cream);display:flex;gap:14px;flex-wrap:wrap;margin:0 0 12px}
+.dual-legend span{color:var(--mute)}
+.dual-grid{width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:18px}
+.dual-grid th{font-size:11px;font-weight:400;color:var(--mute);text-align:center;padding:8px 0 12px}
+.dual-grid td{padding:3px 2px;border-top:1px solid #5b452c66;text-align:center}
+.dual-grid button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;min-height:58px;padding:8px 2px;border:1px solid transparent;border-radius:4px;background:none;color:var(--cream)}
+.dual-grid strong{font-size:21px;line-height:1;font-weight:500}
+.dual-grid small{font-size:12px;line-height:1;color:var(--mute)}
+.dual-grid button:hover{background:var(--umber2)}
+.dual-grid .dual-outside button{opacity:.35}
+.dual-grid button[aria-pressed=true]{border-color:var(--brass);background:#c69a4b12}
+.dual-grid button[aria-current=date] strong{color:var(--straw);font-weight:800}
+.dual-grid i{position:absolute;right:8px;top:8px;width:4px;height:4px;border-radius:50%;background:var(--honey)}
+.dual-calendar .dual-calendar-note{font-size:10px;color:var(--mute);line-height:1.5;margin:0}
+@media(max-width:540px){.dual-toolbar{align-items:flex-start;flex-wrap:wrap;gap:12px}.dual-calendar .dual-toolbar h1{font-size:23px}.dual-grid button{min-height:60px}.dual-grid strong{font-size:19px}.dual-grid small{font-size:11px}}
+.dual-options{border-top:1px solid var(--line);padding:10px 0;margin:0 0 8px;color:var(--mute);font-size:12px}
+.dual-options summary{cursor:pointer;color:var(--straw);font-weight:600}
+.dual-options-body{display:grid;grid-template-columns:minmax(140px,1fr) minmax(0,2fr);gap:18px;padding:14px 0 2px}
+.dual-options label{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.dual-options input{max-width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:3px;background:var(--ink);color:var(--cream);color-scheme:dark;font:inherit}
+.dual-options small{display:block;color:var(--mute);font-size:10px;margin-bottom:4px}
+.dual-options small:not(:first-child){margin-top:12px}
+.dual-options span{display:block;color:var(--cream);font-size:12px;line-height:1.6}
+@media(max-width:540px){.dual-options-body{grid-template-columns:1fr;gap:12px}}

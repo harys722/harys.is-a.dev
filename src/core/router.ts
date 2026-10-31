@@ -18,4 +18,3 @@ addEventListener('popstate',route);
 addEventListener('hashchange',route);
 // Remote fonts or Discord images must not delay opening a local window.
 queueMicrotask(route);
-setTimeout(()=>$('#boot')?.remove(),2000);

@@ -40,14 +40,10 @@
 .win{transition:opacity .15s}
 body.peek .win{opacity:0;pointer-events:none}
 /* startup */
-#boot{animation:bye .5s ease 1.3s forwards}
 .bt{display:flex;flex-direction:column;align-items:center;gap:8px;letter-spacing:0}
 .bt img{width:72px;height:72px;border-radius:50%;border:2px solid var(--honey);object-fit:cover;margin-bottom:6px}
 .bt b{font-size:28px;color:var(--cream);letter-spacing:.02em}
 .bt span{font-size:14px;font-weight:400;color:var(--mute)}
-.pg{display:block;width:180px;height:3px;margin-top:10px;background:var(--umber2);border-radius:2px;overflow:hidden;position:relative}
-.pg::after{content:'';position:absolute;inset:0;background:var(--honey);transform-origin:left;animation:fill 1.2s ease-out forwards}
-@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 /* my time */
 .clks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .clk{margin:0}.clk small{color:var(--mute);font-size:13px}
@@ -102,9 +98,9 @@ button,summary,label{touch-action:manipulation}
 @media(max-width:820px),(max-height:520px){.pad{padding:16px}#menu{width:min(330px,calc(100vw - 12px))}.hero{flex-wrap:wrap}.tools{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}}
 @media(max-width:420px){#clock small{display:none}.pad h1{font-size:26px}}
 /* boot */
-#boot{position:fixed;inset:0;z-index:99999;background:var(--ink);display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:.04em;color:var(--honey);animation:bye .5s ease .9s forwards}
+#boot{position:fixed;inset:0;z-index:99999;background:var(--ink);display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:.04em;color:var(--honey);transition:opacity .5s ease}
 @keyframes bye{to{opacity:0;visibility:hidden}}
-@media(prefers-reduced-motion:reduce){#boot{animation-duration:.01s;animation-delay:.2s}}
+@media(prefers-reduced-motion:reduce){#boot{transition:none}}
 
 @media(max-width:820px),(max-height:520px){
   #desk{overflow:auto;display:flex;flex-wrap:wrap;align-content:flex-start;gap:4px;padding:10px}
@@ -114,3 +110,9 @@ button,summary,label{touch-action:manipulation}
   .rz,.btns [data-a=max]{display:none}
   .bar{cursor:default}
 }
+
+#boot.boot-finished{opacity:0;pointer-events:none}
+#boot[hidden]{display:none!important}
+html.desktop-loading #boot[hidden]{display:none!important}
+#wall{background:var(--ink);opacity:0}
+.wallpaper-ready #wall{opacity:1}

@@ -36,7 +36,7 @@ function refreshDesk(){
   desk.classList.add('rf');setTimeout(()=>desk.classList.remove('rf'),320);
   document.querySelectorAll('.icon.sel').forEach(i=>i.classList.remove('sel'));
   relayout();
-  const im=$('#card img');if(S.card&&im.dataset.src)im.src=im.dataset.src+'&r='+Date.now();
+  $('#card').dispatchEvent(new Event('card-refresh'));
   document.querySelectorAll('iframe').forEach(f=>{try{f.contentWindow.location.reload()}catch{f.src=f.src}});
   if(wins.time)$('.body',wins.time.el).replaceChildren(timeUI());
   applySet();tick()}

@@ -4,7 +4,8 @@ import {navigate} from './navigation';
 import {frameUI} from './offline';
 import {$} from './util';
 import {APPS, TOOLS} from '../data/apps';
-import {sbFrame, settingsUI} from './settings';
+import {S, sbFrame, settingsUI} from './settings';
+import {calendarUI} from '../pages/calendar';
 import {PAGES, pageUI, timeUI, welcomeUI} from '../pages/pages';
 import {gameUI} from '../pages/games';
 import {showCtx} from './contextmenu';
@@ -42,6 +43,7 @@ export function open(id){
   else if(id==='settings')body.append(settingsUI());
   else if(id==='welcome')body.append(welcomeUI());
   else if(id==='time')body.append(timeUI());
+  else if(id==='calendar')body.append(calendarUI(S.mon));
   else if(id.startsWith('game/'))body.append(gameUI(id));
   else if(PAGES[id])body.append(pageUI(id));
   else{{const t=document.createElement('template');t.innerHTML=PAGE_HTML[id];body.append(t.content)}

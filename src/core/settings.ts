@@ -10,7 +10,7 @@ export function sbFrame(f){try{const d=f.contentDocument;let st=d.getElementById
 const mondayFirst=(()=>{try{const l=new Intl.Locale(navigator.language),i=l.getWeekInfo?l.getWeekInfo():l.weekInfo;return !!i&&i.firstDay===1}catch{return false}})();
 export const S=Object.assign({cursor:true,sb:true,motion:!matchMedia('(prefers-reduced-motion:reduce)').matches,card:true,boot:true,h24:false,secs:false,mon:mondayFirst},lk('hs.set',{}));
 const ROWS=[
- ['Appearance',[['cursor','Custom cursor','Use the honey cursor instead of your system one.'],['sb','Custom scrollbars','Thin gold scrollbars instead of the browser default.'],['motion','Animations','Hover and window effects. Turn off for a calmer page.'],['card','Discord status card','Loads a small image from lanyard.cnrad.dev.']]],
+ ['Appearance',[['cursor','Custom cursor','Use the honey cursor instead of your system one.'],['sb','Custom scrollbars','Thin gold scrollbars instead of the browser default.'],['motion','Animations','Hover and window effects. Turn off for a calmer page.'],['card','Discord status card','Shows my live Discord presence using Lanyard.']]],
  ['Clock',[['h24','24-hour time'],['secs','Show seconds'],['mon','Week starts on Monday']]],
  ['Startup',[['boot','Show the startup screen']]]
 ];
@@ -18,7 +18,7 @@ export function applySet(){
   const h=document.documentElement;
   h.classList.toggle('cur',S.cursor&&matchMedia('(pointer:fine)').matches);
   h.classList.toggle('calm',!S.motion);h.classList.toggle('sb',S.sb);document.querySelectorAll('iframe').forEach(sbFrame);
-  const c=$('#card'),im=$('img',c);c.hidden=!S.card;if(S.card&&!im.getAttribute('src'))c.dispatchEvent(new Event('card-load'));
+  const c=$('#card');c.hidden=!S.card;c.dispatchEvent(new Event('card-load'));
   tick();if(!cal.hidden)drawCal();
 }
 export function settingsUI(){

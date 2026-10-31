@@ -1,6 +1,6 @@
 #card img[hidden], #card p[hidden], #offline-badge[hidden] { display:none }
-#card .card-status { min-height:86px;margin:0;padding:14px 10px;color:var(--mute);font-size:13px;line-height:1.5 }
-#card .card-hint { margin-top:8px;font-size:11px }
+#card .card-status { min-height:40px;margin:0 4px 10px;padding:0;color:var(--straw);font-size:14px;line-height:1.5;overflow-wrap:anywhere }
+#card .card-hint { font-size:11px }
 #card small span { color:var(--straw) }
 #offline-badge { display:flex;align-items:center;gap:6px;flex:none;padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--umber);color:var(--straw);font-size:12px }
 #offline-badge svg { width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round }

@@ -135,6 +135,76 @@ for(const name of ['ramadan','eid-ul-adha']){
 console.log('Events: complete versioned page scripts render dates and ticking countdowns.');
 
 const compile=path=>ts.transpileModule(readFileSync(path,'utf8').replace(/^import[^\n]+\r?\n/gm,''),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2020}}).outputText;
+// Startup must wait for decoding, and must release on errors or timeouts.
+const {waitForWallpaper}=await import('data:text/javascript;base64,'+Buffer.from(compile('src/core/startup.ts')).toString('base64'));
+class TestImage extends EventTarget{complete=false;naturalWidth=1672;decode=()=>Promise.resolve()}
+let decoded;const delayed=new TestImage();delayed.complete=true;delayed.decode=()=>new Promise(resolve=>decoded=resolve);
+let revealed=false;const pendingWallpaper=waitForWallpaper(delayed,100).then(value=>{revealed=true;return value});
+await Promise.resolve();assert.equal(revealed,false);decoded();assert.equal(await pendingWallpaper,true);
+const broken=new TestImage();const brokenWait=waitForWallpaper(broken,100);broken.dispatchEvent(new Event('error'));assert.equal(await brokenWait,false);
+assert.equal(await waitForWallpaper(new TestImage(),5),false);
+const cached=new TestImage();cached.complete=true;assert.equal(await waitForWallpaper(cached,100),true);
+const startupClasses=new Set(['desktop-loading']),boot={hidden:false,classList:{add(){}},remove(){}},startupWall=new TestImage();startupWall.complete=true;
+const startupDelays=[];
+const startupContext={document:{getElementById:id=>id==='boot'?boot:startupWall,documentElement:{classList:{add:key=>startupClasses.add(key),remove:key=>startupClasses.delete(key),toggle:(key,value)=>value?startupClasses.add(key):startupClasses.delete(key)}}},setTimeout:(fn,ms)=>{startupDelays.push(ms);return setTimeout(fn,Math.min(ms,1))},clearTimeout,requestAnimationFrame:()=>{},dispatchEvent(){},Event};
+vm.runInNewContext(compile('src/core/startup.ts').replace(/export /g,'')+';globalThis.start=initStartup;',startupContext);
+let initialLayouts=0;await startupContext.start(false,()=>{assert(startupClasses.has('desktop-loading'));initialLayouts++});
+assert.equal(initialLayouts,1);assert(startupClasses.has('desktop-ready'));assert(!startupClasses.has('desktop-loading'));assert(boot.hidden,'Startup setting hides the animation without skipping readiness');
+assert(!startupDelays.includes(900),'No intentional delay when the startup setting is disabled');
+startupClasses.clear();startupClasses.add('desktop-loading');boot.hidden=false;
+const animatedStartup=startupContext.start(true,()=>{});await Promise.resolve();assert(startupClasses.has('desktop-loading'),'Cached visits still show startup');await animatedStartup;assert(startupDelays.includes(900),'Retain the requested minimum startup duration');
+const {monthDates,hijriDate}=await import('data:text/javascript;base64,'+Buffer.from(compile('src/pages/calendar.ts')).toString('base64'));
+for(const [year,month,days] of [[2024,1,29],[2025,1,28],[2026,9,31],[2026,11,31]])for(const mondayFirst of [false,true]){
+ const dates=monthDates(year,month,mondayFirst);assert.equal(dates.length%7,0);assert.equal(dates[0].getDay(),mondayFirst?1:0);
+ assert.equal(dates.filter(date=>date.getFullYear()===year&&date.getMonth()===month).length,days);
+ for(let index=1;index<dates.length;index++){const next=new Date(dates[index-1]);next.setDate(next.getDate()+1);assert.equal(next.getTime(),dates[index].getTime(),'Calendar cells are consecutive local days');}
+}
+const eidDate=hijriDate(new Date(2024,3,10,12));assert.equal(eidDate.day,1);assert.equal(eidDate.year,1445);assert(eidDate.month.includes('Shawwal'));
+assert(!readFileSync('src/ui/desktop.html','utf8').includes('data-open="calendar"'),'No desktop shortcut for the new calendar');
+assert(!readFileSync('src/core/calendar.ts','utf8').includes("open('calendar')"),'The taskbar calendar remains independent');
+assert(!existsSync('src/core/moon.ts'));assert(!existsSync('public/images/moon-surface.webp'));
+assert.equal((readFileSync('index.html','utf8').match(/#boot \.pg::after/g)||[]).length,1,'One startup progress animation');
+assert(!readFileSync('src/styles/08-polish-and-responsive.css','utf8').includes('.pg::after'),'No second animation when startup fades');
+console.log('Full calendar: leap years, year boundaries, week starts, consecutive dates and Hijri conversion passed. Startup: one progress animation; dynamic moon removed.');
+
+const cardCode=compile('src/core/card.ts').replace(/export /g,'');
+const cardNodes=new Map(),windowHooks={},documentHooks={},screenHooks={},scheduled=new Map(),intervals=new Map(),sockets=[];let timerId=0;
+const element=()=>({hidden:false,style:{},dataset:{},textContent:'',listeners:{},attributes:{},getAttribute(name){return this.attributes[name]||null},removeAttribute(name){delete this.attributes[name]},set src(value){this.attributes.src=value},get src(){return this.attributes.src},offsetWidth:330,offsetHeight:220,offsetLeft:936,offsetTop:442,addEventListener(name,fn){this.listeners[name]=fn},getBoundingClientRect(){return {left:936,top:442}},classList:{add(){},remove(){}}});
+for(const selector of ['#card','.card-status','.discord-dot','.discord-activity','.discord-photo','.discord-decoration'])cardNodes.set(selector,element());
+const media={matches:true,addEventListener:(name,fn)=>screenHooks[name]=fn},navigation={onLine:true};
+const page={hidden:false,addEventListener:(name,fn)=>documentHooks[name]=fn};
+class TestSocket{readyState=1;sent=[];constructor(url){assert.equal(url,'wss://api.lanyard.rest/socket');sockets.push(this)}send(text){this.sent.push(JSON.parse(text))}close(){this.closed=true}}
+const cardContext={document:page,navigator:navigation,matchMedia:()=>media,WebSocket:TestSocket,ResizeObserver:class{observe(){}},innerWidth:1280,innerHeight:720,localStorage:{removeItem(){}},$:selector=>cardNodes.get(selector),lk:()=>null,sv(){},relayout(){},open(){},addEventListener:(name,fn)=>windowHooks[name]=fn,setTimeout:(fn,ms)=>{scheduled.set(++timerId,{fn,ms});return timerId},clearTimeout:id=>scheduled.delete(id),setInterval:(fn,ms)=>{intervals.set(++timerId,{fn,ms});return timerId},clearInterval:id=>intervals.delete(id),console};
+vm.runInNewContext(cardCode+';initCard();globalThis.view=presenceView;',cardContext);
+assert.equal(sockets.length,1);cardNodes.get('#card').listeners['card-load']();assert.equal(sockets.length,1,'Do not duplicate active subscriptions');
+const message=(socket,payload)=>socket.onmessage({data:JSON.stringify(payload)});
+message(sockets[0],{op:1,d:{heartbeat_interval:30000}});assert.equal(sockets[0].sent[0].op,2);assert.equal(intervals.size,1);
+const presence=state=>({discord_user:{id:'1203357768610746385'},discord_status:state,activities:[]});
+message(sockets[0],{op:0,t:'INIT_STATE',d:{'1203357768610746385':presence('idle')}});
+assert.equal(cardNodes.get('.discord-dot').dataset.status,'idle');assert.equal(cardNodes.get('.card-status').textContent,"I'm online, say hi!");
+for(const state of ['online','dnd','offline']){message(sockets[0],{op:0,t:'PRESENCE_UPDATE',d:presence(state)});assert.equal(cardNodes.get('.discord-dot').dataset.status,state)}
+assert.equal(cardContext.view({...presence('offline'),activities:[{type:0,name:'Old game'}]}).activity,'');assert.equal(cardContext.view(presence('missing')),null);
+assert(!cardContext.view(presence('dnd')).text.includes('—'));
+navigation.onLine=false;windowHooks.offline();assert(sockets[0].closed);assert.equal(intervals.size,0);assert.equal(cardNodes.get('.discord-dot').dataset.status,'unknown');assert(cardNodes.get('.card-status').textContent.includes("You're offline"));
+navigation.onLine=true;windowHooks.online();assert.equal(sockets.length,2);
+sockets[1].onclose();assert.equal(cardNodes.get('.discord-dot').dataset.status,'unknown');assert.equal(scheduled.size,1,'Schedule only one reconnect');
+page.hidden=true;documentHooks.visibilitychange();assert.equal(scheduled.size,0,'Pause reconnects while hidden');page.hidden=false;documentHooks.visibilitychange();assert.equal(sockets.length,3);
+cardNodes.get('#card').hidden=true;cardNodes.get('#card').listeners['card-load']();assert(sockets[2].closed);assert.equal(scheduled.size,0);
+cardNodes.get('#card').hidden=false;cardNodes.get('#card').listeners['card-load']();assert.equal(sockets.length,4);
+media.matches=false;screenHooks.change();assert(sockets[3].closed,'No presence connection when the card is hidden on mobile');
+media.matches=true;screenHooks.change();const decoratedSocket=sockets.at(-1);
+message(decoratedSocket,{op:1,d:{heartbeat_interval:30000}});
+const decoratedPresence={...presence('idle'),discord_user:{id:'1203357768610746385',avatar:'1'.repeat(32),avatar_decoration_data:{asset:'a_'+'2'.repeat(32)}}};
+message(decoratedSocket,{op:0,t:'INIT_STATE',d:decoratedPresence});
+assert.equal(cardNodes.get('.discord-photo').src,'https://cdn.discordapp.com/avatars/1203357768610746385/'+ '1'.repeat(32)+'.webp?size=128');
+assert.equal(cardNodes.get('.discord-decoration').src,'https://cdn.discordapp.com/avatar-decoration-presets/a_'+ '2'.repeat(32)+'.png?size=128');cardNodes.get('.discord-decoration').onload();assert.equal(cardNodes.get('.discord-decoration').hidden,false);
+assert.equal(cardContext.view({...decoratedPresence,discord_user:{...decoratedPresence.discord_user,avatar_decoration_data:{asset:'../../unsafe'}}}).decoration,'','Reject invalid decoration asset paths');
+const beforeBriefSwitch=sockets.length;page.hidden=true;documentHooks.visibilitychange();assert(!decoratedSocket.closed,'Keep the active connection during a brief tab switch');
+page.hidden=false;documentHooks.visibilitychange();assert.equal(sockets.length,beforeBriefSwitch,'No reconnect on a brief tab switch');assert.equal(cardNodes.get('.card-status').textContent,"I'm online, say hi!");
+page.hidden=true;documentHooks.visibilitychange();const idleClose=[...scheduled.values()].find(timer=>timer.ms===60000);assert(idleClose);idleClose.fn();assert(decoratedSocket.closed,'Close the connection after a longer time away');assert.equal(intervals.size,0);
+page.hidden=false;documentHooks.visibilitychange();assert.equal(sockets.length,beforeBriefSwitch+1);windowHooks.pagehide();assert(sockets.at(-1).closed);
+console.log('Startup: decode readiness, cache, image failure and timeout passed. Discord: status mapping, subscription, reconnect, visibility, settings and offline lifecycle passed.');
+
 const layoutCode=compile('src/core/icons.ts').split('export const desk')[0];
 const {desktopLayout}=await import('data:text/javascript;base64,'+Buffer.from(layoutCode).toString('base64'));
 const shortcuts=['welcome','about','works','servers','projects','featured','tools','contact','settings','links','time'].map(key=>({key,right:['links','time'].includes(key)}));
@@ -198,6 +268,10 @@ console.log('Snake: tail clearance, body/wall collisions and a full-board win pa
 
 const worker=readFileSync('dist/sw.js','utf8');
 const paths=JSON.parse(worker.match(/const PRECACHE = (\[[^;]+\]);/)[1]);
+assert(paths.includes('/images/canyon-night.webp'),'Precache the optimized background');
+assert(!paths.includes('/images/canyon-night.png'),'Do not precache the old heavy PNG');
+assert(readFileSync('dist/images/canyon-night.webp').length<200000,'Keep the background under 200 KB');
+assert(readFileSync('dist/index.html','utf8').includes('desktop-loading #root'),'Protect the first paint before the app mounts');
 for(const path of paths)assert(existsSync('dist'+path),`Missing precache file ${path}`);
 for(const asset of paths.filter(path=>/^\/assets\/(css|js)\//.test(path)))assert(/\.[a-f0-9]{12}\.(css|js)$/.test(asset),'Version every standalone asset');
 assert(paths.includes('/events/eid-ul-adha.html'));assert(!paths.some(path=>path.includes('hajj')));
@@ -224,6 +298,8 @@ console.log(`Pages: ${references} local asset references resolve; no deleted dep
 assert(html.includes('Free Domains'));assert(html.includes('<main id="page-content">'));
 assert(html.includes('<link rel="canonical" href="https://harys.is-a.dev/projects">'));
 assert(readFileSync('dist/sitemap.xml','utf8').includes('/game/traffic'));
+assert(readFileSync('dist/sitemap.xml','utf8').includes('/calendar'));
+assert(readFileSync('dist/calendar.html','utf8').includes('Gregorian and Hijri Calendar'));
 assert(readFileSync('dist/404.html','utf8').includes('noindex,follow'));
 assert(!JSON.parse(readFileSync('vercel.json','utf8')).rewrites?.some(rule=>rule.source==='/(.*)'));
 

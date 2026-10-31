@@ -17,6 +17,8 @@ import './core/keyboard';
 import './core/router';
 import {initOffline} from './core/offline';
 import {initCard} from './core/card';
+import {initStartup} from './core/startup';
+
 import {initCursors} from './core/cursors';
 import {$, lk, sv} from './core/util';
 import {APPS} from './data/apps';
@@ -25,7 +27,6 @@ import {S, applySet} from './core/settings';
 import {arrange, pos, relayout} from './core/icons';
 
 applySet();
-if(!S.boot)$('#boot')?.remove();
 relayout();
 addEventListener('resize',relayout);
 $('#sd').onclick=showDesk;
@@ -34,7 +35,9 @@ $('#sd').onclick=showDesk;
  e.addEventListener('click',()=>{document.body.classList.remove('peek');showDesk()})}
 $('#pins').innerHTML=['about','projects','links','time'].map(k=>`<button data-open="${k}" title="${APPS[k].t}" aria-label="${APPS[k].t}"><svg class="ic"><use href="#${APPS[k].i}"/></svg></button>`).join('');
 document.getElementById('page-content')?.remove();
-if(location.pathname==='/'&&!location.hash&&!lk('hs.seen',false)){sv('hs.seen',true);setTimeout(()=>{if(location.pathname==='/')open('welcome')},2100)}
+
 initCard();
 initOffline();
 initCursors();
+
+initStartup(S.boot,relayout).then(()=>{if(location.pathname==='/'&&!location.hash&&!lk('hs.seen',false)){sv('hs.seen',true);setTimeout(()=>{if(location.pathname==='/')open('welcome')},700)}});

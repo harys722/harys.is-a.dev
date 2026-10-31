@@ -16,6 +16,7 @@ export const APPS={
   events:{t:'Events',i:'i-cal',w:640,h:400},
   welcome:{t:'Welcome',i:'home',w:600,h:470},
   time:{t:'My Time',i:'i-clock',w:600,h:400},
+  calendar:{t:'Calendar',i:'i-cal',w:840,h:740},
   games:{t:'Games',i:'gamepad',w:560,h:340},
   'game/snake':{t:'Snake',i:'gamepad',w:460,h:640},
   'game/dino':{t:'Dino Run',i:'gamepad',w:720,h:390},
