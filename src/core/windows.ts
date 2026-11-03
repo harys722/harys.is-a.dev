@@ -1,6 +1,7 @@
 // @ts-nocheck
 import {PAGE_HTML} from '../pages/html';
-import {navigate} from './navigation';
+import {isRestoring, navigate} from './navigation';
+import {openSource, trackWindowOpen} from './analytics';
 import {frameUI} from './offline';
 import {$} from './util';
 import {APPS, TOOLS} from '../data/apps';
@@ -58,6 +59,7 @@ export function open(id){
     ({min:()=>minimize(id),max:()=>el.classList.toggle('max'),x:()=>close(id)})[b.dataset.a]()};
   $('.bar',el).ondblclick=e=>{if(!e.target.closest('button'))el.classList.toggle('max')};
   drag(el);resize(el);focus(id);
+  trackWindowOpen(id,a.t,openSource(isRestoring()));
 }
 function focus(id){
   const w=wins[id];if(!w)return;
