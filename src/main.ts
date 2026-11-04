@@ -33,7 +33,7 @@ $('#sd').onclick=showDesk;
 {const e=$('#sd2');e.addEventListener('pointerenter',ev=>{if(ev.pointerType!=='touch')document.body.classList.add('peek')});
  e.addEventListener('pointerleave',()=>document.body.classList.remove('peek'));
  e.addEventListener('click',()=>{document.body.classList.remove('peek');showDesk()})}
-$('#pins').innerHTML=['about','projects','links','time'].map(k=>`<button data-open="${k}" title="${APPS[k].t}" aria-label="${APPS[k].t}"><svg class="ic"><use href="#${APPS[k].i}"/></svg></button>`).join('');
+$('#pins').innerHTML=['about','projects','links'].map(k=>`<button data-open="${k}" title="${APPS[k].t}" aria-label="${APPS[k].t}"><svg class="ic"><use href="#${APPS[k].i}"/></svg></button>`).join('');
 document.getElementById('page-content')?.remove();
 
 initCard();

@@ -3,6 +3,7 @@ import {$} from './util';
 import {closeMenu} from './menu';
 import {S} from './settings';
 import {hideCtx} from './contextmenu';
+import {MY_TZ} from '../data/timezone';
 
 export const cal=document.createElement('div');
 cal.id='cal';
@@ -13,7 +14,7 @@ document.body.append(cal);
 let cv=new Date();
 cv.setDate(1);
 export const fmt=(d,s,tz)=>d.toLocaleTimeString([],{timeZone:tz,hour:'2-digit',minute:'2-digit',second:s?'2-digit':undefined,...(S.h24?{hourCycle:'h23'}:{hour12:true})});
-export function tick(){const n=new Date();$('#clock').innerHTML=fmt(n,S.secs)+'<small>'+n.toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})+'</small>';
+export function tick(){const n=new Date();const mt=$('#mytime-t');if(mt)mt.textContent=fmt(n,false,MY_TZ);$('#clock').innerHTML=fmt(n,S.secs)+'<small>'+n.toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})+'</small>';
   const t=$('.ct',cal);if(t)t.textContent=fmt(n,true);document.querySelectorAll('[data-tz]').forEach(e=>e.textContent=fmt(n,true,e.dataset.tz||undefined))}
 export function drawCal(){
   const now=new Date(),y=cv.getFullYear(),m=cv.getMonth(),f=S.mon?1:0,lead=(new Date(y,m,1).getDay()-f+7)%7,days=new Date(y,m+1,0).getDate();

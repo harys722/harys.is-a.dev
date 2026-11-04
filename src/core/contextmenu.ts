@@ -28,6 +28,16 @@ desk.addEventListener('contextmenu',e=>{
   if(ic){pick(ic,e);items.unshift(['Open',()=>ic.click()],'-')}
   showCtx(e.clientX,e.clientY,items);
 });
+// Taskbar: no browser menu. Its own small menu is different from the desktop one.
+document.addEventListener('contextmenu',e=>{
+  const t=e.target;
+  if(!t.closest?.('#bar,#menu,#wall'))return;
+  e.preventDefault();
+  if(!t.closest('#bar')||t.closest('#tasks button'))return;   // window buttons have their own menu
+  closeMenu();cal.hidden=true;
+  const anyOpen=Object.keys(wins).length>0;
+  showCtx(e.clientX,e.clientY,[['Show desktop',showDesk],...(anyOpen?[['Close all windows',()=>Object.keys(wins).forEach(close)]]:[]),'-',['Settings',()=>open('settings')]]);
+});
 document.addEventListener('pointerdown',e=>{
   if(!e.target.closest('#ctx'))hideCtx();
   if(!e.target.closest('#cal,#clock')){cal.hidden=true;$('#clock').setAttribute('aria-expanded','false')}
