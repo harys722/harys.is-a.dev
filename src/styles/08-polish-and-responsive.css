@@ -118,8 +118,9 @@ html.desktop-loading #boot[hidden]{display:none!important}
 .wallpaper-ready #wall{opacity:1}
 
 /* "It's 12:01 in my timezone" chip, right side of the taskbar */
-#mytime{display:flex;align-items:baseline;gap:4px;height:32px;padding:0 10px;border:1px solid transparent;background:none;border-radius:2px;color:var(--mute);font-size:13px;white-space:nowrap;transition:background .15s,border-color .15s,color .15s}
+#mytime{display:flex;align-items:center;gap:4px;height:32px;padding:0 10px 0 10px;border:1px solid transparent;background:none;border-radius:2px;color:var(--mute);font-size:13px;white-space:nowrap;transition:background .15s,border-color .15s,color .15s}
 #mytime b{color:var(--honey);font-weight:600;font-variant-numeric:tabular-nums}
+#mytime::after{content:'';flex:none;width:1px;height:20px;margin-left:8px;background:var(--line)}
 #mytime:hover{background:var(--umber);border-color:var(--line);color:var(--cream)}
 @media(max-width:1100px){.mt-a,.mt-b{display:none}#mytime::before{content:'My time';margin-right:2px}}
 @media(max-width:820px),(max-height:520px){#mytime{display:none}}
